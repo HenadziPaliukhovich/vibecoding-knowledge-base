@@ -347,7 +347,7 @@ When tests pass, refactor only if they stay green.</code></pre>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Check the main scenario yourself</h3><span class="step-tag">QA · 5 min</span></div>
           <p>Automated checks are necessary but not sufficient. Open the result and use it as a real person would.</p>
-          <ul class="substeps"><li>Complete the main user scenario manually</li><li>Check browser console or application logs for errors</li><li>Check mobile layout for web apps</li><li>Confirm the Definition of Done from step 3</li></ul>
+          <ul class="substeps"><li>Complete the main user scenario manually</li><li>Check relevant logs or error output (and browser console for web apps)</li><li>For web apps: check responsive and mobile layout</li><li>Confirm the Definition of Done from step 3</li></ul>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Result verified manually</span></label>
         </div>
       </div>
@@ -366,13 +366,13 @@ claude -p "review the staged diff and list risks, unexpected changes, and secret
       <div class="step" data-step="8" id="step-8" data-projects="web python cli">
         <div class="step-marker"><span>8</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Commit and push to GitHub</h3><span class="step-tag">Commit</span></div>
-          <p>This personal repository is speed-first: review the diff, run checks, then commit and push directly to <code>main</code>. Never force-push.</p>
+          <div class="step-top"><h3>Commit and push your project</h3><span class="step-tag">Commit</span></div>
+          <p>This repository is speed-first: review the diff, run checks, then commit and push directly to <code>main</code> (e.g. on GitHub). Never force-push.</p>
           <span class="code-label">Terminal</span><pre><button class="copy-btn">Copy</button><code class="language-bash">git add -A
 git commit -m "Describe the change"
 git remote add origin https://github.com/USER/REPO.git
 git push -u origin main</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Code is committed and on GitHub</span></label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Code is committed and pushed to remote</span></label>
         </div>
       </div>
 
