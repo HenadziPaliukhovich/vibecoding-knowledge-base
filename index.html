@@ -6,7 +6,7 @@
 <title>Vibe Coding Flow — from idea to deploy</title>
 <meta name="description" content="One linear checklist: how to vibe-code a project with Claude Code from idea to a deployed result, without extra theory.">
 <meta property="og:title" content="Vibe Coding Flow — from idea to deploy">
-<meta property="og:description" content="A practical 14-step checklist for shipping with Claude Code.">
+<meta property="og:description" content="A practical 9-step checklist for shipping with Claude Code.">
 <meta property="og:type" content="website">
 <script>(function(){try{var m=localStorage.getItem('vibe_flow_theme_mode'),t=localStorage.getItem('vibe_flow_theme'),h=new Date().getHours();document.documentElement.setAttribute('data-theme',m==='manual'&&(t==='light'||t==='dark')?t:(h>=7&&h<19?'light':'dark'))}catch(e){}})();</script>
 <link rel="preconnect" href="https://api.fontshare.com">
@@ -275,7 +275,7 @@ body::after{right:-220px;top:30vh;background:radial-gradient(circle at 40% 40%,r
           <p>Start with an empty workspace. Open Claude Code in it; the next step sets the rules it will follow for this project.</p>
           <span class="code-label">Terminal</span><pre><button class="copy-btn">Copy</button><code class="language-bash">mkdir my-project && cd my-project
 git init
-claude</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Create an empty GitHub repository now — you will connect and push it at step 13.</div>
+claude</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Create an empty GitHub repository now — you will connect and push it at step 8.</div>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Project folder, git repository, and Claude Code session are open</span></label>
         </div>
       </div>
@@ -348,7 +348,7 @@ When tests pass, refactor only if they stay green.</code></pre>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Check the main scenario yourself</h3><span class="step-tag">QA · 5 min</span></div>
           <p>Automated checks are necessary but not sufficient. Open the result and use it as a real person would.</p>
-          <ul class="substeps"><li>Complete the main user scenario manually</li><li>Check browser console or application logs for errors</li><li>Check mobile layout for web apps</li><li>Confirm the Definition of Done from step 1</li></ul>
+          <ul class="substeps"><li>Complete the main user scenario manually</li><li>Check browser console or application logs for errors</li><li>Check mobile layout for web apps</li><li>Confirm the Definition of Done from step 3</li></ul>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Result verified manually</span></label>
         </div>
       </div>
