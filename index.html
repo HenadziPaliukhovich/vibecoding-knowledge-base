@@ -141,32 +141,6 @@ pre code{white-space:pre}
 .finish h3{font-size:var(--text-xl);margin-bottom:var(--space-3)}
 .finish p{color:var(--color-text-muted);margin:0 auto var(--space-6);max-width:48ch}
 
-/* level-up cards */
-.levelup{padding-block:var(--space-8) var(--space-16);border-top:1px solid var(--color-divider)}
-.levelup .wrap{max-width:var(--content-default)}
-.levelup h2{font-size:var(--text-xl);margin-bottom:var(--space-2)}
-.levelup > .wrap > p{color:var(--color-text-muted);margin-bottom:var(--space-8)}
-.level-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-5)}
-.level-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-sm)}
-.level-card .kicker{display:block;font-size:var(--text-xs);color:var(--color-primary);text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:var(--space-2)}
-.level-card h3{font-size:var(--text-lg);margin-bottom:var(--space-2)}
-.level-card p{color:var(--color-text-muted);font-size:var(--text-sm);margin-bottom:var(--space-3)}
-.level-card pre{margin-bottom:var(--space-3)}
-.level-card a.more{font-size:var(--text-xs);font-weight:600;text-decoration:none}
-.level-card a.more:hover{text-decoration:underline}
-@media (max-width:700px){.level-grid{grid-template-columns:1fr}}
-
-/* deep dive */
-.deepdive{padding-block:var(--space-16) var(--space-20);border-top:1px solid var(--color-divider);background:var(--color-surface-offset)}
-.deepdive .wrap{max-width:var(--content-default)}
-.deepdive h2{font-size:var(--text-xl);margin-bottom:var(--space-3)}
-.deepdive p{color:var(--color-text-muted);margin-bottom:var(--space-8);max-width:60ch}
-.deep-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)}
-.deep-card{display:block;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-6);text-decoration:none;color:var(--color-text);transition:border-color var(--transition),box-shadow var(--transition)}
-.deep-card:hover{border-color:var(--color-primary);box-shadow:var(--shadow-md)}
-.deep-card h4{font-size:var(--text-base);margin-bottom:var(--space-2)}
-.deep-card span{font-size:var(--text-xs);color:var(--color-text-muted)}
-@media (max-width:700px){.deep-grid{grid-template-columns:1fr}}
 
 footer.site{border-top:1px solid var(--color-divider);padding-block:var(--space-8);color:var(--color-text-faint);font-size:var(--text-xs)}
 footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3)}
@@ -197,7 +171,7 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
 
 <div class="progress-shell">
   <div class="progress-inner">
-    <span class="progress-label"><b id="progress-count">0</b>/10 steps</span>
+    <span class="progress-label"><b id="progress-count">0</b>/14 steps</span>
     <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
     <span class="progress-label" id="progress-pct">0%</span>
   </div>
@@ -207,7 +181,7 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
 
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow">One flow, ten steps</span>
+    <span class="eyebrow">One flow, fourteen steps</span>
     <h1>Vibe-code your idea <em>all the way to a deployed result</em>.</h1>
     <p class="lead">No theory, no extra sections — just a linear checklist from a shaped idea to a live link. Check off steps as you go; progress is saved in your browser.</p>
     <div class="hero-cta">
@@ -225,18 +199,12 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
     </div>
 
     <div class="timeline" id="timeline">
-
       <div class="step" data-step="1" id="step-1">
         <div class="step-marker"><span>1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
           <div class="step-top"><h3>Shape the idea before opening the editor</h3><span class="step-tag">10 min</span></div>
           <p>Start with the problem and the smallest useful outcome — not screens or technologies. This stops Claude from guessing the product scope for you.</p>
-          <ul class="substeps">
-            <li>Problem: [who] struggles with [specific problem]</li>
-            <li>Smallest outcome: they can [one action] so that [result]</li>
-            <li>First-version boundary: list up to three essentials and what is explicitly not included</li>
-            <li>Definition of Done: a user can complete the main scenario from start to finish</li>
-          </ul>
+          <ul class="substeps"><li>Problem: [who] struggles with [specific problem]</li><li>Smallest outcome: they can [one action] so that [result]</li><li>First-version boundary: list up to three essentials and what is explicitly not included</li><li>Definition of Done: a user can complete the main scenario from start to finish</li></ul>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Problem, outcome, scope, and Definition of Done are clear</span></label>
         </div>
       </div>
@@ -245,7 +213,7 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
         <div class="step-marker"><span>2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
           <div class="step-top"><h3>Install Claude Code locally</h3><span class="step-tag">10 min · one-time</span></div>
-          <p>This is a one-time setup per machine. After this, it's just running <code>claude</code> inside the project folder.</p>
+          <p>This is a one-time setup per machine. After this, run <code>claude</code> inside the project folder.</p>
           <pre><button class="copy-btn">Copy</button><code>node -v || brew install node
 npm install -g @anthropic-ai/claude-code
 claude --version
@@ -257,19 +225,13 @@ claude   # sign in via browser or set ANTHROPIC_API_KEY</code></pre>
       <div class="step" data-step="3">
         <div class="step-marker"><span>3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Create the project and folder</h3><span class="step-tag">5 min</span></div>
-          <p>A new folder means a new git repository. That way you can deploy at any moment later on.</p>
+          <div class="step-top"><h3>Create the project and repository</h3><span class="step-tag">5 min</span></div>
+          <p>A project folder plus git repository gives every change a history and makes deployment repeatable.</p>
           <pre><button class="copy-btn">Copy</button><code>mkdir my-project && cd my-project
 git init
 claude
-/init   # Claude scans the project and creates a starter CLAUDE.md</code></pre>
-          <ul class="substeps">
-            <li>Keep <code>CLAUDE.md</code> short: add only commands, conventions, verification rules, and repo etiquette Claude cannot infer</li>
-            <li>Use <code>.claude/skills/</code> for focused workflows such as deploy, code review, and debugging</li>
-            <li>Use hooks only for non-negotiable actions, such as blocking destructive commands or reminding Claude to run checks</li>
-          </ul>
-          <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>You'll need an empty GitHub repository before step 9 — create it now on github.com.</div>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Project and git repository created</span></label>
+/init   # Claude scans the project and creates a starter CLAUDE.md</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Create an empty GitHub repository now — you will connect and push it at step 13.</div>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Project folder and git repository created</span></label>
         </div>
       </div>
 
@@ -277,12 +239,11 @@ claude
         <div class="step-marker"><span>4</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
           <div class="step-top"><h3>Create a local Python environment</h3><span class="step-tag">5 min · Python projects</span></div>
-          <p>Keep project packages isolated from your system Python. Create the environment before installing dependencies, and never commit it.</p>
+          <p>Keep project packages isolated from system Python. Create the environment before installing dependencies, and never commit it.</p>
           <pre><button class="copy-btn">Copy</button><code>python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-printf ".venv/\n__pycache__/\n" >> .gitignore</code></pre>
-          <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Skip this step only when the project does not use Python. For Python, use <code>python -m pip</code> so packages go into the active environment.</div>
+printf ".venv/\n__pycache__/\n" >> .gitignore</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Skip this only when the project does not use Python. Use <code>python -m pip</code> so packages go into the active environment.</div>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Local .venv is active and ignored by git</span></label>
         </div>
       </div>
@@ -290,98 +251,128 @@ printf ".venv/\n__pycache__/\n" >> .gitignore</code></pre>
       <div class="step" data-step="5">
         <div class="step-marker"><span>5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Turn the idea into a plan</h3><span class="step-tag">Plan mode</span></div>
-          <p>Do not ask Claude to write code yet. Ask for the smallest approach, assumptions, risks, and a step-by-step plan you can correct before anything changes.</p>
-          <pre><button class="copy-btn">Copy</button><code># Shift+Tab turns on Plan mode
-I want to build: [your sentence from step 1].
-What's the simplest approach? Create a step-by-step plan
-before writing any code.</code></pre>
-          <ul class="substeps">
-            <li>Keep one focused task per Claude session; do not mix unrelated work</li>
-            <li>Before switching context, save the current plan, decisions, and next action in <code>PROGRESS.md</code></li>
-            <li>After <code>/clear</code>, ask Claude to read <code>PROGRESS.md</code> before continuing</li>
-          </ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Plan received and looks good</span></label>
+          <div class="step-top"><h3>Add project instructions to CLAUDE.md</h3><span class="step-tag">5 min</span></div>
+          <p>Give Claude only the project facts it cannot infer from code: commands, conventions, verification rules, and repository etiquette.</p>
+          <pre><button class="copy-btn">Copy</button><code>## Project
+Build: [build command]
+Test: [test command]
+
+## Workflow
+Write failing tests before production code.
+Run checks before committing.</code></pre><ul class="substeps"><li>Keep the root file short and current</li><li>Put specialised instructions in <code>.claude/skills/</code>, not in one giant file</li></ul>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">CLAUDE.md contains the essential project rules</span></label>
         </div>
       </div>
 
       <div class="step" data-step="6">
         <div class="step-marker"><span>6</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Define behavior and write failing tests first</h3><span class="step-tag">Test-first</span></div>
-          <p>Tests written after implementation often mirror the code and stay green even when the product behavior is wrong. Define observable behavior first, then prove the tests fail because that behavior does not exist.</p>
-          <pre><button class="copy-btn">Copy</button><code>Before changing production code:
-1. Restate acceptance criteria as user-visible behavior.
-2. Write tests for that behavior and realistic edge cases.
-3. Run them and show they fail for the right reason.
-4. Only then implement the smallest change to pass them.</code></pre>
-          <ul class="substeps">
-            <li>Test outcomes, UI, API responses, or other observable behavior — not private implementation details</li>
-            <li>A test must fail if the feature is removed or broken</li>
-            <li>Record the red run before implementation, then keep the full suite green afterward</li>
-          </ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Acceptance criteria and correctly failing tests are ready</span></label>
+          <div class="step-top"><h3>Add hooks for non-negotiable safeguards</h3><span class="step-tag">5 min</span></div>
+          <p>Instructions are advisory; hooks enforce actions automatically. Use them only where a missed action has real cost.</p>
+          <pre><button class="copy-btn">Copy</button><code>Write a PreToolUse hook that blocks destructive commands.
+
+Write a PostToolUse hook that reminds Claude to run
+the relevant checks after editing files.</code></pre><ul class="substeps"><li>Block destructive operations such as <code>rm -rf</code></li><li>Do not use hooks to block the normal fast push-to-main workflow</li></ul>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Required safeguards are enforced by hooks</span></label>
         </div>
       </div>
 
       <div class="step" data-step="7">
         <div class="step-marker"><span>7</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Implement with verification, not by eye</h3><span class="step-tag">Implement</span></div>
-          <p>The golden rule: don't just ask Claude to "do it", ask it to "do it and verify it". Give Claude a test, a build, or a screenshot as the acceptance criteria.</p>
-          <pre><button class="copy-btn">Copy</button><code>Implement the plan. Run the app/tests after each change
-and fix failures before moving on. Show me the result
-(screenshot or test output) when done.</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Implemented and verified</span></label>
+          <div class="step-top"><h3>Turn the idea into a plan</h3><span class="step-tag">Plan mode</span></div>
+          <p>Do not ask Claude to write code yet. Ask for the smallest approach, assumptions, risks, and a step-by-step plan you can correct first.</p>
+          <pre><button class="copy-btn">Copy</button><code># Shift+Tab turns on Plan mode
+I want to build: [idea from step 1].
+What is the smallest approach? State assumptions and risks,
+then create a step-by-step plan before writing any code.</code></pre>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Plan received and approved</span></label>
         </div>
       </div>
 
       <div class="step" data-step="8">
         <div class="step-marker"><span>8</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Check it yourself, with your own eyes</h3><span class="step-tag">QA · 5 min</span></div>
-          <p>Even with automated checks, always open the result yourself. Walk through the key scenarios like a real user would.</p>
-          <ul class="substeps">
-            <li>Opened and tried the main scenario manually</li>
-            <li>No errors in the console / logs</li>
-            <li>Works at mobile screen size, if it's a web app</li>
-          </ul>
-          <ul class="substeps">
-            <li>Review the staged diff for unexpected changes and secrets before committing</li>
-            <li>For repeatable checks, use headless Claude: <code>claude -p "review the staged diff and list risks" --output-format text</code></li>
-          </ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Result verified manually</span></label>
+          <div class="step-top"><h3>Preserve context before switching tasks</h3><span class="step-tag">Context</span></div>
+          <p>Keep one focused task per Claude session. Before switching topics or clearing context, save the working state so no decisions are lost.</p>
+          <pre><button class="copy-btn">Copy</button><code>Dump the current plan, decisions, and next action to PROGRESS.md.
+/clear
+Read PROGRESS.md and continue from where we left off.</code></pre><ul class="substeps"><li>Use one task per session</li><li>Update <code>PROGRESS.md</code> before <code>/clear</code> or a context switch</li></ul>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Current decisions and next action are saved</span></label>
         </div>
       </div>
 
       <div class="step" data-step="9">
         <div class="step-marker"><span>9</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Commit and push to GitHub</h3><span class="step-tag">Commit</span></div>
-          <p>Ask Claude for a meaningful commit message right away — don't leave it for "later".</p>
-          <pre><button class="copy-btn">Copy</button><code>commit with a descriptive message
-
-# then in the terminal:
-git remote add origin https://github.com/USER/REPO.git
-git push -u origin main</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Code is on GitHub</span></label>
+          <div class="step-top"><h3>Define behavior and write failing tests first</h3><span class="step-tag">Test-first</span></div>
+          <p>Tests written after implementation often mirror the code and stay green even when product behavior is wrong. Define observable behavior first, then prove tests fail because it is absent.</p>
+          <pre><button class="copy-btn">Copy</button><code>Before changing production code:
+1. Restate acceptance criteria as user-visible behavior.
+2. Write tests for that behavior and realistic edge cases.
+3. Run them and show they fail for the right reason.
+4. Only then implement the smallest change to pass them.</code></pre><ul class="substeps"><li>Test UI, API responses, CLI output, or other observable behavior — not private implementation details</li><li>A test must fail if the feature is removed or broken</li></ul>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Acceptance criteria and correctly failing tests are ready</span></label>
         </div>
       </div>
 
       <div class="step" data-step="10">
         <div class="step-marker"><span>10</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Deploy and check the live link</h3><span class="step-tag">Deploy</span></div>
-          <p>For a static site — GitHub Pages with auto-deploy on every push. The repo should already have a workflow file for this.</p>
-          <pre><button class="copy-btn">Copy</button><code># Settings → Pages → Source: GitHub Actions
-# Actions → Deploy GitHub Pages → check that the run is green
-
-# open the site:
-# https://USER.github.io/REPO/</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="10"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Site opens at the live link</span></label>
+          <div class="step-top"><h3>Implement the smallest change</h3><span class="step-tag">Implement</span></div>
+          <p>Implement only what makes the approved failing tests pass. Run the relevant tests after each small change and fix failures before moving on.</p>
+          <pre><button class="copy-btn">Copy</button><code>Implement the approved plan against the failing tests.
+Run the relevant test suite after each change.
+When tests pass, refactor only if they stay green.</code></pre>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="10"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Implementation passes the relevant tests</span></label>
         </div>
       </div>
 
+      <div class="step" data-step="11">
+        <div class="step-marker"><span>11</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+        <div class="step-card">
+          <div class="step-top"><h3>Check the main scenario yourself</h3><span class="step-tag">QA · 5 min</span></div>
+          <p>Automated checks are necessary but not sufficient. Open the result and use it as a real person would.</p>
+          <ul class="substeps"><li>Complete the main user scenario manually</li><li>Check browser console or application logs for errors</li><li>Check mobile layout for web apps</li><li>Confirm the Definition of Done from step 1</li></ul>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="11"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Result verified manually</span></label>
+        </div>
+      </div>
+
+      <div class="step" data-step="12">
+        <div class="step-marker"><span>12</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+        <div class="step-card">
+          <div class="step-top"><h3>Run an automated final review</h3><span class="step-tag">Automation</span></div>
+          <p>Move repeatable review work out of the interactive session. Review the staged diff before committing, especially for unwanted edits and secrets.</p>
+          <pre><button class="copy-btn">Copy</button><code>git diff --staged
+claude -p "review the staged diff and list risks, unexpected changes, and secrets" --output-format text</code></pre>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="12"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Staged diff reviewed and no critical risks remain</span></label>
+        </div>
+      </div>
+
+      <div class="step" data-step="13">
+        <div class="step-marker"><span>13</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+        <div class="step-card">
+          <div class="step-top"><h3>Commit and push to GitHub</h3><span class="step-tag">Commit</span></div>
+          <p>This personal repository is speed-first: review the diff, run checks, then commit and push directly to <code>main</code>. Never force-push.</p>
+          <pre><button class="copy-btn">Copy</button><code>git add -A
+git commit -m "Describe the change"
+git remote add origin https://github.com/USER/REPO.git
+git push -u origin main</code></pre>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="13"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Code is committed and on GitHub</span></label>
+        </div>
+      </div>
+
+      <div class="step" data-step="14">
+        <div class="step-marker"><span>14</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+        <div class="step-card">
+          <div class="step-top"><h3>Deploy and check the live link</h3><span class="step-tag">Deploy</span></div>
+          <p>GitHub Actions validates the site first, then deploys GitHub Pages only if validation passes.</p>
+          <pre><button class="copy-btn">Copy</button><code># Settings → Pages → Source: GitHub Actions
+# Actions → Validate and Deploy GitHub Pages → wait for green
+# https://USER.github.io/REPO/</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>To redeploy the current version without a new commit: Actions → Validate and Deploy GitHub Pages → Run workflow.</div>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="14"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Site opens at the live link</span></label>
+        </div>
+      </div>
     </div>
 
     <div class="finish" id="finish-card">
