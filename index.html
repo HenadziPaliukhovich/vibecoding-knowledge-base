@@ -301,6 +301,7 @@ Create CLAUDE.md for this project. Add these working rules:
 - When I give an idea, do not start coding. Ask only the questions needed to understand the users, main outcome, scope, constraints, and success criteria.
 - After my answers, create PRODUCT.md with the approved user, problem, first useful version, exclusions, and success criteria. Then propose the smallest useful version and a clear step-by-step plan. Wait for my approval before changing product files.
 - Once I approve the plan, create or update README.md with a short product description and how to run or use it. Create .gitignore before adding dependencies or local configuration; include secrets, generated files, dependencies, caches, and local environments appropriate to the chosen stack.
+- Never write API keys, tokens, or passwords directly in code. Store them in a local .env file (or equivalent) excluded by .gitignore, and read them from environment variables. Before configuring the live environment in the release step, tell me exactly which secrets need to be set there.
 - After approval, choose the technical approach, prepare the required environment, implement the work, run relevant checks, fix issues, and explain results in plain language.
 - Create DECISIONS.md only when we make a meaningful product or technical decision that would be hard to reconstruct later. Record the decision, its date, and a brief reason.
 - Before a release, create or update CHECKLIST.md with the smallest practical manual release checks for this project. Use it for the final review and update it when a recurring issue is found.
@@ -391,8 +392,10 @@ Write a clear, short commit message describing what changed and why. If no remot
           <p>A project is only finished when it runs where you actually need it. Let Claude configure and verify the target run environment for your stack.</p>
           <span class="code-label">Prompt for Claude Code</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">The core changes are committed. Propose the simplest way to run or publish this project so I can use it end-to-end (e.g. GitHub Pages or Vercel for web, server or daemon for Python, or a global command for CLI).
 
-Explain what needs to happen in plain language, handle the configuration yourself, and give me the command or link to test it.</code></pre>
-          <ul class="substeps"><li>Web: verify the public link on desktop and mobile</li><li>CLI: run the installed command from any directory with real inputs</li><li>Python / Backend: verify the service or bot starts cleanly and responds</li></ul>
+Explain what needs to happen in plain language, handle the configuration yourself, and give me the command or link to test it. If any secrets from .env are needed in the live environment, tell me exactly which ones to set there — never commit them.
+
+Also tell me the simplest way to roll back to the previous working version if something breaks after this release, in case I need it.</code></pre>
+          <ul class="substeps"><li>Web: verify the public link on desktop and mobile</li><li>CLI: run the installed command from any directory with real inputs</li><li>Python / Backend: verify the service or bot starts cleanly and responds</li><li>Confirm you know the rollback step before moving on</li></ul>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">It’s live, and I’ve checked it works</span></label>
         </div>
       </div>
