@@ -376,11 +376,10 @@ claude -p "review the staged diff and list risks, unexpected changes, and secret
         <div class="step-marker"><span>8</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Commit and push your project</h3><span class="step-tag">Commit</span></div>
-          <p>This repository is speed-first: review the diff, run checks, then commit and push directly to <code>main</code> (e.g. on GitHub). Never force-push.</p>
-          <span class="code-label">Terminal</span><pre><button class="copy-btn">Copy</button><code class="language-bash">git add -A
-git commit -m "Describe the change"
-git remote add origin https://github.com/USER/REPO.git
-git push -u origin main</code></pre>
+          <p>This repository is speed-first: review the diff, run checks, then commit and push directly to <code>main</code>. Never force-push.</p>
+          <span class="code-label">Prompt for Claude Code</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Review the current changes, then stage, commit, and push them directly to main on the remote repository. Never force-push.
+
+Write a clear, short commit message describing what changed and why. If no remote is configured yet, set it up first, then push.</code></pre>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Code is committed and pushed to remote</span></label>
         </div>
       </div>
