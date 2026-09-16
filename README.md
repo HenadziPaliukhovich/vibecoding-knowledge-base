@@ -1,22 +1,22 @@
 # Vibe Coding Knowledge Base
 
-Статическая база знаний по вайб-кодингу: практические советы, QA-проверки, шаблоны промптов и примеры файлов `CLAUDE.md`.
+A static knowledge base for vibe coding: practical guidance, QA checklists, prompt templates, and example `CLAUDE.md` files.
 
-## Сайт
+## Site
 
-После включения GitHub Pages сайт доступен по адресу:
+Once GitHub Pages is enabled, the site is available at:
 
 `https://henadzipaliukhovich.github.io/vibecoding-knowledge-base/`
 
-## Локальный запуск
+## Run locally
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Откройте `http://localhost:8000`.
+Open `http://localhost:8000`.
 
-## Обновление
+## Updating
 
 ```bash
 git add .
@@ -24,11 +24,12 @@ git commit -m "Update knowledge base"
 git push
 ```
 
-Публикация запускается автоматически после push в `main`. Повторный деплой без изменения файлов: **Actions → Deploy GitHub Pages → Run workflow**.
+Deployment runs automatically after every push to `main`. To redeploy without changing files: **Actions → Deploy GitHub Pages → Run workflow**.
 
-## Структура
+## Structure
 
-- `index.html` — сайт
-- `CLAUDE.md` — правила для AI-агента
-- `artifacts/` — переиспользуемые промпты, чек-листы и примеры
-- `.github/workflows/deploy-pages.yml` — автоматический деплой
+- `index.html` — the site
+- `CLAUDE.md` — rules for the AI agent
+- `.claude/settings.json` — hooks configuration (deterministic enforcement)
+- `artifacts/` — reusable prompts, checklists, and examples
+- `.github/workflows/deploy-pages.yml` — automated deployment

@@ -24,7 +24,7 @@ Static GitHub Pages site for Vibe Coding Bootcamp notes.
 3. Make one logical change at a time.
 4. Preserve existing content unless removal is explicitly requested.
 5. Never disable validation or delete content merely to make a check pass.
-6. Keep all user-facing content in Russian unless requested otherwise.
+6. Keep all user-facing content in English unless another language is explicitly requested.
 7. Do not add secrets, tokens, credentials, or private URLs to the repository.
 8. Keep external links explicit and safe (`target="_blank"` with `rel="noopener noreferrer"`).
 

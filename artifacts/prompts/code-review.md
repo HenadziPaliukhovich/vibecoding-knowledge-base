@@ -1,15 +1,15 @@
 # Code review prompt
 
-Проведи независимое ревью текущего diff. Не предполагай, что реализация правильная.
+Do an independent review of the current diff. Do not assume the implementation is correct.
 
-Проверь:
-- соответствие acceptance criteria;
-- ошибки логики и граничные случаи;
-- авторизацию и доступ к чужим данным;
-- валидацию входных данных;
-- обработку ошибок;
-- утечку секретов и персональных данных;
-- обратную совместимость API;
-- недостающие тесты.
+Check for:
+- alignment with the acceptance criteria;
+- logic errors and edge cases;
+- authorization and access to other users' data;
+- input validation;
+- error handling;
+- leaked secrets or personal data;
+- API backward compatibility;
+- missing tests.
 
-Для каждой проблемы укажи severity, файл и строку, сценарий воспроизведения и минимальное исправление.
+For each issue, report severity, file and line, a reproduction scenario, and the minimal fix.

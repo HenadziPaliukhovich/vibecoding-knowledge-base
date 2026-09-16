@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Vibe Coding Flow — от идеи до деплоя</title>
-<meta name="description" content="Один линейный чек-лист: как навайбкодить проект с Claude Code от идеи до задеплоенного результата, без лишней теории.">
+<title>Vibe Coding Flow — from idea to deploy</title>
+<meta name="description" content="One linear checklist: how to vibe-code a project with Claude Code from idea to a deployed result, without extra theory.">
 <link rel="preconnect" href="https://api.fontshare.com">
 <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@500,700,800&display=swap" rel="stylesheet">
 <style>
@@ -53,6 +53,7 @@ p,li{text-wrap:pretty;max-width:66ch}
 a{color:var(--color-primary)}
 :focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
 button{font:inherit;color:inherit}
+code{font-family:ui-monospace,'SF Mono',Menlo,monospace}
 .wrap{max-width:var(--content-wide);margin:auto;padding-inline:var(--space-5)}
 .narrow{max-width:var(--content-default);margin-inline:auto}
 
@@ -113,46 +114,59 @@ h1 em{font-style:normal;color:var(--color-primary)}
 .step-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6);box-shadow:var(--shadow-sm);transition:border-color var(--transition),box-shadow var(--transition)}
 .step.done .step-card{border-color:color-mix(in oklch,var(--color-primary) 35%,var(--color-border))}
 .step-top{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--space-4);margin-bottom:var(--space-2)}
-.step-card h3{font-size:var(--text-lg);margin-bottom:var(--space-2)}
-.step-tag{font-size:var(--text-xs);color:var(--color-text-faint);font-weight:600;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
-.step-card p{color:var(--color-text-muted);font-size:var(--text-sm);margin-bottom:var(--space-4)}
+.step-top h3{font-size:var(--text-lg)}
+.step-tag{flex-shrink:0;font-size:var(--text-xs);color:var(--color-primary);background:var(--color-primary-highlight);padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);white-space:nowrap;font-weight:600}
+.step-card p{color:var(--color-text-muted);font-size:var(--text-sm);margin-bottom:var(--space-3)}
+.substeps{padding-left:var(--space-5);color:var(--color-text-muted);font-size:var(--text-sm);margin-bottom:var(--space-4)}
+.substeps li{margin:var(--space-1) 0}
 
-pre{position:relative;overflow:auto;background:#171512;color:#eae7e0;padding:var(--space-4) var(--space-5);border-radius:var(--radius-md);font-size:var(--text-xs);line-height:1.7;font-family:ui-monospace,'SF Mono',Menlo,monospace;box-shadow:var(--shadow-sm);margin-bottom:var(--space-4)}
+pre{position:relative;overflow:auto;background:#171512;color:#eae7e0;padding:var(--space-5);border-radius:var(--radius-md);font-size:var(--text-xs);line-height:1.7;margin-bottom:var(--space-4);box-shadow:var(--shadow-sm)}
 [data-theme="dark"] pre{background:#0d0c0a}
 pre code{white-space:pre}
-.copy-btn{position:absolute;top:var(--space-2);right:var(--space-2);background:oklch(1 0 0 / .1);color:#eae7e0;border:1px solid oklch(1 0 0 / .16);border-radius:var(--radius-sm);font-size:var(--text-xs);padding:var(--space-1) var(--space-3);cursor:pointer}
+.copy-btn{position:absolute;top:var(--space-3);right:var(--space-3);background:oklch(1 0 0 / .1);color:#eae7e0;border:1px solid oklch(1 0 0 / .16);border-radius:var(--radius-sm);font-size:var(--text-xs);padding:var(--space-1) var(--space-3);cursor:pointer}
 .copy-btn:hover{background:oklch(1 0 0 / .18)}
 
-.done-toggle{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);font-weight:600;cursor:pointer;padding:var(--space-2) var(--space-4);border-radius:var(--radius-full);border:1px solid var(--color-border);background:var(--color-surface-2);color:var(--color-text-muted);width:fit-content;transition:background var(--transition),color var(--transition),border-color var(--transition)}
+.hint{display:flex;gap:var(--space-2);align-items:flex-start;font-size:var(--text-xs);color:var(--color-warning);background:var(--color-warning-highlight);padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);margin-bottom:var(--space-4)}
+.hint svg{flex-shrink:0;width:16px;height:16px;margin-top:1px}
+
+.done-toggle{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);font-weight:600;cursor:pointer;color:var(--color-text-muted);width:fit-content}
 .done-toggle input{position:absolute;opacity:0;width:1px;height:1px}
-.done-toggle svg{width:16px;height:16px;flex-shrink:0}
-.step.done .done-toggle{background:var(--color-success-highlight);color:var(--color-success);border-color:transparent}
-.done-toggle:hover{border-color:var(--color-primary)}
+.done-toggle svg{width:22px;height:22px;flex-shrink:0;padding:3px;border-radius:var(--radius-sm);border:2px solid var(--color-border);color:transparent;transition:background var(--transition),border-color var(--transition),color var(--transition)}
+.done-toggle input:checked + svg{background:var(--color-success);border-color:var(--color-success);color:var(--color-text-inverse)}
+.done-toggle input:checked ~ .done-label{color:var(--color-success)}
+.done-toggle input:focus-visible + svg{outline:2px solid var(--color-primary);outline-offset:2px}
 
-.substeps{list-style:none;margin:0 0 var(--space-4);padding:0;display:grid;gap:var(--space-1)}
-.substeps li{display:flex;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-muted)}
-.substeps li::before{content:'—';color:var(--color-text-faint);flex-shrink:0}
-
-.hint{display:flex;gap:var(--space-2);align-items:flex-start;font-size:var(--text-xs);color:var(--color-warning);background:var(--color-warning-highlight);padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);margin-top:var(--space-2)}
-.hint svg{width:15px;height:15px;flex-shrink:0;margin-top:2px}
-
-/* finish card */
-.finish{margin-top:var(--space-10);padding:var(--space-8);border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--color-primary-highlight),var(--color-surface));border:1px solid var(--color-border);text-align:center;display:none}
+.finish{display:none;text-align:center;padding:var(--space-12) var(--space-8);border-radius:var(--radius-xl);background:var(--color-success-highlight);margin-top:var(--space-8)}
 .finish.show{display:block}
 .finish h3{font-size:var(--text-xl);margin-bottom:var(--space-3)}
-.finish p{color:var(--color-text-muted);margin:auto;margin-bottom:var(--space-6)}
+.finish p{color:var(--color-text-muted);margin:0 auto var(--space-6);max-width:48ch}
 
-/* deep dive links */
-.deepdive{padding-block:var(--space-16);border-top:1px solid var(--color-divider);background:var(--color-surface-2)}
+/* level-up cards */
+.levelup{padding-block:var(--space-8) var(--space-16);border-top:1px solid var(--color-divider)}
+.levelup .wrap{max-width:var(--content-default)}
+.levelup h2{font-size:var(--text-xl);margin-bottom:var(--space-2)}
+.levelup > .wrap > p{color:var(--color-text-muted);margin-bottom:var(--space-8)}
+.level-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-5)}
+.level-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-sm)}
+.level-card .kicker{display:block;font-size:var(--text-xs);color:var(--color-primary);text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:var(--space-2)}
+.level-card h3{font-size:var(--text-lg);margin-bottom:var(--space-2)}
+.level-card p{color:var(--color-text-muted);font-size:var(--text-sm);margin-bottom:var(--space-3)}
+.level-card pre{margin-bottom:var(--space-3)}
+.level-card a.more{font-size:var(--text-xs);font-weight:600;text-decoration:none}
+.level-card a.more:hover{text-decoration:underline}
+@media (max-width:700px){.level-grid{grid-template-columns:1fr}}
+
+/* deep dive */
+.deepdive{padding-block:var(--space-16) var(--space-20);border-top:1px solid var(--color-divider);background:var(--color-surface-offset)}
 .deepdive .wrap{max-width:var(--content-default)}
-.deepdive h2{font-size:var(--text-xl);margin-bottom:var(--space-2)}
-.deepdive > .wrap > p{color:var(--color-text-muted);margin-bottom:var(--space-8)}
+.deepdive h2{font-size:var(--text-xl);margin-bottom:var(--space-3)}
+.deepdive p{color:var(--color-text-muted);margin-bottom:var(--space-8);max-width:60ch}
 .deep-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)}
-@media (max-width:680px){.deep-grid{grid-template-columns:1fr}}
-.deep-card{display:block;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-5);text-decoration:none;color:var(--color-text);transition:border-color var(--transition),transform var(--transition),box-shadow var(--transition)}
-.deep-card:hover{border-color:var(--color-primary);transform:translateY(-2px);box-shadow:var(--shadow-md)}
-.deep-card h4{font-size:var(--text-sm);margin-bottom:var(--space-1)}
+.deep-card{display:block;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-6);text-decoration:none;color:var(--color-text);transition:border-color var(--transition),box-shadow var(--transition)}
+.deep-card:hover{border-color:var(--color-primary);box-shadow:var(--shadow-md)}
+.deep-card h4{font-size:var(--text-base);margin-bottom:var(--space-2)}
 .deep-card span{font-size:var(--text-xs);color:var(--color-text-muted)}
+@media (max-width:700px){.deep-grid{grid-template-columns:1fr}}
 
 footer.site{border-top:1px solid var(--color-divider);padding-block:var(--space-8);color:var(--color-text-faint);font-size:var(--text-xs)}
 footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3)}
@@ -175,15 +189,15 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
       Vibe Coding Flow
     </a>
     <div class="head-actions">
-      <a href="artifacts/playbook/detailed-playbook.html" target="_blank" rel="noopener noreferrer">Подробный справочник</a>
-      <button id="theme-toggle" aria-label="Переключить тему"></button>
+      <a href="artifacts/playbook/detailed-playbook.html" target="_blank" rel="noopener noreferrer">Detailed reference</a>
+      <button id="theme-toggle" aria-label="Toggle theme"></button>
     </div>
   </div>
 </header>
 
 <div class="progress-shell">
   <div class="progress-inner">
-    <span class="progress-label"><b id="progress-count">0</b>/8 шагов</span>
+    <span class="progress-label"><b id="progress-count">0</b>/8 steps</span>
     <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
     <span class="progress-label" id="progress-pct">0%</span>
   </div>
@@ -193,12 +207,12 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
 
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow">Один флоу, восемь шагов</span>
-    <h1>Навайбкодь идею <em>до задеплоенного результата</em>.</h1>
-    <p class="lead">Без теории и лишних разделов — линейный чек-лист от первой мысли до живой ссылки. Отмечай шаги по ходу, прогресс сохраняется в браузере.</p>
+    <span class="eyebrow">One flow, eight steps</span>
+    <h1>Vibe-code your idea <em>all the way to a deployed result</em>.</h1>
+    <p class="lead">No theory, no extra sections — just a linear checklist from the first thought to a live link. Check off steps as you go; progress is saved in your browser.</p>
     <div class="hero-cta">
-      <a class="btn primary" href="#step-1">Начать флоу</a>
-      <a class="btn ghost" href="artifacts/playbook/detailed-playbook.html" target="_blank" rel="noopener noreferrer">Открыть справочник</a>
+      <a class="btn primary" href="#step-1">Start the flow</a>
+      <a class="btn ghost" href="artifacts/playbook/detailed-playbook.html" target="_blank" rel="noopener noreferrer">Open the reference</a>
     </div>
   </div>
 </section>
@@ -206,8 +220,8 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
 <section class="flow">
   <div class="wrap">
     <div class="flow-header">
-      <h2>Чек-лист до 100%</h2>
-      <button class="reset-link" id="reset-progress">Сбросить прогресс</button>
+      <h2>Checklist to 100%</h2>
+      <button class="reset-link" id="reset-progress">Reset progress</button>
     </div>
 
     <div class="timeline" id="timeline">
@@ -215,131 +229,186 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
       <div class="step" data-step="1" id="step-1">
         <div class="step-marker"><span>1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Сформулируй идею в одно предложение</h3><span class="step-tag">5 мин</span></div>
-          <p>Без чёткой цели Claude будет угадывать за тебя. Опиши: что делает продукт, для кого и какой результат считается готовым.</p>
+          <div class="step-top"><h3>Write the idea as one sentence</h3><span class="step-tag">5 min</span></div>
+          <p>Without a clear goal, Claude will guess on your behalf. Describe what the product does, who it's for, and what "done" looks like.</p>
           <ul class="substeps">
-            <li>Одно предложение: «Хочу [что] для [кого], чтобы [результат]»</li>
-            <li>Определи Definition of Done — как ты поймёшь, что готово</li>
+            <li>One sentence: "I want [what] for [who], so that [outcome]"</li>
+            <li>Define the Definition of Done — how you'll know it's finished</li>
           </ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Идея сформулирована</label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Idea written down</span></label>
         </div>
       </div>
 
       <div class="step" data-step="2">
         <div class="step-marker"><span>2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Установи Claude Code локально</h3><span class="step-tag">10 мин · один раз</span></div>
-          <p>Делается один раз на машине. Дальше — просто запуск <code>claude</code> в папке проекта.</p>
-          <pre><button class="copy-btn">Копировать</button><code>node -v || brew install node
+          <div class="step-top"><h3>Install Claude Code locally</h3><span class="step-tag">10 min · one-time</span></div>
+          <p>This is a one-time setup per machine. After this, it's just running <code>claude</code> inside the project folder.</p>
+          <pre><button class="copy-btn">Copy</button><code>node -v || brew install node
 npm install -g @anthropic-ai/claude-code
 claude --version
-claude   # войти через браузер или задать ANTHROPIC_API_KEY</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Claude Code установлен и авторизован</label>
+claude   # sign in via browser or set ANTHROPIC_API_KEY</code></pre>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Claude Code installed and signed in</span></label>
         </div>
       </div>
 
       <div class="step" data-step="3">
         <div class="step-marker"><span>3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Создай проект и папку</h3><span class="step-tag">5 мин</span></div>
-          <p>Новая папка — новый git-репозиторий. Так проще будет задеплоить в любой момент.</p>
-          <pre><button class="copy-btn">Копировать</button><code>mkdir my-project && cd my-project
+          <div class="step-top"><h3>Create the project and folder</h3><span class="step-tag">5 min</span></div>
+          <p>A new folder means a new git repository. That way you can deploy at any moment later on.</p>
+          <pre><button class="copy-btn">Copy</button><code>mkdir my-project && cd my-project
 git init
 claude
-/init   # Claude сканирует проект и создаёт стартовый CLAUDE.md</code></pre>
-          <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Пустой репозиторий на GitHub понадобится на шаге 7 — можно создать его прямо сейчас на github.com.</div>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Проект и git-репозиторий созданы</label>
+/init   # Claude scans the project and creates a starter CLAUDE.md</code></pre>
+          <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>You'll need an empty GitHub repository at step 7 — you can create it right now on github.com.</div>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Project and git repository created</span></label>
         </div>
       </div>
 
       <div class="step" data-step="4">
         <div class="step-marker"><span>4</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Опиши задачу и попроси план</h3><span class="step-tag">Plan mode</span></div>
-          <p>Не проси сразу писать код. Сначала — план, который можно поправить до того, как Claude что-то изменит.</p>
-          <pre><button class="copy-btn">Копировать</button><code># Shift+Tab включает Plan mode
-I want to build: [твоё предложение из шага 1].
+          <div class="step-top"><h3>Describe the task and ask for a plan</h3><span class="step-tag">Plan mode</span></div>
+          <p>Don't ask Claude to write code right away. Ask for a plan first — one you can correct before anything actually changes.</p>
+          <pre><button class="copy-btn">Copy</button><code># Shift+Tab turns on Plan mode
+I want to build: [your sentence from step 1].
 What's the simplest approach? Create a step-by-step plan
 before writing any code.</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>План получен и устраивает меня</label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Plan received and looks good</span></label>
         </div>
       </div>
 
       <div class="step" data-step="5">
         <div class="step-marker"><span>5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Реализуй с проверкой, а не «на глаз»</h3><span class="step-tag">Implement</span></div>
-          <p>Главное правило: не проси просто «сделай», проси «сделай и проверь». Дай Claude тест, сборку или скриншот как критерий готовности.</p>
-          <pre><button class="copy-btn">Копировать</button><code>Implement the plan. Run the app/tests after each change
+          <div class="step-top"><h3>Implement with verification, not by eye</h3><span class="step-tag">Implement</span></div>
+          <p>The golden rule: don't just ask Claude to "do it", ask it to "do it and verify it". Give Claude a test, a build, or a screenshot as the acceptance criteria.</p>
+          <pre><button class="copy-btn">Copy</button><code>Implement the plan. Run the app/tests after each change
 and fix failures before moving on. Show me the result
 (screenshot or test output) when done.</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Реализовано и проверено</label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Implemented and verified</span></label>
         </div>
       </div>
 
       <div class="step" data-step="6">
         <div class="step-marker"><span>6</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Проверь сам глазами</h3><span class="step-tag">QA · 5 мин</span></div>
-          <p>Даже с автопроверкой всегда открой результат сам. Пройди по ключевым сценариям как реальный пользователь.</p>
+          <div class="step-top"><h3>Check it yourself, with your own eyes</h3><span class="step-tag">QA · 5 min</span></div>
+          <p>Even with automated checks, always open the result yourself. Walk through the key scenarios like a real user would.</p>
           <ul class="substeps">
-            <li>Открыл и попробовал главный сценарий вручную</li>
-            <li>Нет ошибок в консоли / логах</li>
-            <li>Работает на мобильном размере экрана, если это веб</li>
+            <li>Opened and tried the main scenario manually</li>
+            <li>No errors in the console / logs</li>
+            <li>Works at mobile screen size, if it's a web app</li>
           </ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Результат проверен вручную</label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Result verified manually</span></label>
         </div>
       </div>
 
       <div class="step" data-step="7">
         <div class="step-marker"><span>7</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Закоммить и запушь на GitHub</h3><span class="step-tag">Commit</span></div>
-          <p>Попроси у Claude сразу осмысленное сообщение коммита — не оставляй это на «потом».</p>
-          <pre><button class="copy-btn">Копировать</button><code>commit with a descriptive message
+          <div class="step-top"><h3>Commit and push to GitHub</h3><span class="step-tag">Commit</span></div>
+          <p>Ask Claude for a meaningful commit message right away — don't leave it for "later".</p>
+          <pre><button class="copy-btn">Copy</button><code>commit with a descriptive message
 
-# затем в терминале:
+# then in the terminal:
 git remote add origin https://github.com/USER/REPO.git
 git push -u origin main</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Код на GitHub</label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Code is on GitHub</span></label>
         </div>
       </div>
 
       <div class="step" data-step="8">
         <div class="step-marker"><span>8</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Задеплой и проверь живую ссылку</h3><span class="step-tag">Deploy</span></div>
-          <p>Для статичного сайта — GitHub Pages с автодеплоем на каждый push. В репозитории уже должен быть workflow-файл для этого.</p>
-          <pre><button class="copy-btn">Копировать</button><code># Settings → Pages → Source: GitHub Actions
-# Actions → Deploy GitHub Pages → проверить, что запуск зелёный
+          <div class="step-top"><h3>Deploy and check the live link</h3><span class="step-tag">Deploy</span></div>
+          <p>For a static site — GitHub Pages with auto-deploy on every push. The repo should already have a workflow file for this.</p>
+          <pre><button class="copy-btn">Copy</button><code># Settings → Pages → Source: GitHub Actions
+# Actions → Deploy GitHub Pages → check that the run is green
 
-# открыть сайт:
+# open the site:
 # https://USER.github.io/REPO/</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Сайт открывается по живой ссылке</label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Site opens at the live link</span></label>
         </div>
       </div>
 
     </div>
 
     <div class="finish" id="finish-card">
-      <h3>100%. Готово задеплоено 🎉</h3>
-      <p>Ты прошёл весь путь от идеи до живой ссылки. Для новой идеи просто сбрось прогресс и начни заново.</p>
-      <button class="btn primary" id="reset-progress-2">Начать новый флоу</button>
+      <h3>100%. Deployed 🎉</h3>
+      <p>You've gone from idea to a live link. For a new idea, just reset your progress and start again.</p>
+      <button class="btn primary" id="reset-progress-2">Start a new flow</button>
+    </div>
+  </div>
+</section>
+
+<section class="levelup">
+  <div class="wrap">
+    <h2>Level up the flow</h2>
+    <p>Once the 8 steps feel natural, these four habits make Claude noticeably more reliable on bigger projects.</p>
+    <div class="level-grid">
+
+      <div class="level-card">
+        <span class="kicker">Steering</span>
+        <h3>CLAUDE.md</h3>
+        <p>A short root file Claude reads at the start of every session. Only include what Claude can't infer from the code: build/test commands, unusual conventions, repo etiquette, and verification criteria.</p>
+        <pre><button class="copy-btn">Copy</button><code>## Project
+Build: npm run build. Test: npm test.
+
+## Code style
+Use ES modules, not CommonJS.
+
+## Workflow
+Run tests after changes. No premature abstractions.</code></pre>
+        <a class="more" href="artifacts/playbook/detailed-playbook.html#claudemd" target="_blank" rel="noopener noreferrer">Full guide →</a>
+      </div>
+
+      <div class="level-card">
+        <span class="kicker">Enforcement</span>
+        <h3>Hooks</h3>
+        <p>CLAUDE.md is advice — it's not always followed. Hooks are deterministic scripts that run automatically, guaranteeing an action every single time, like auto-formatting or blocking dangerous commands.</p>
+        <pre><button class="copy-btn">Copy</button><code>Write a hook that blocks 'git push' directly to main
+and suggests opening a PR instead.
+
+Write a hook that runs prettier after every Edit/Write.</code></pre>
+        <a class="more" href="artifacts/playbook/detailed-playbook.html#hooks" target="_blank" rel="noopener noreferrer">Full guide →</a>
+      </div>
+
+      <div class="level-card">
+        <span class="kicker">Focus</span>
+        <h3>Context management</h3>
+        <p>Response quality drops well before the context window fills up. Keep one task per session, clear between unrelated topics, and dump progress to a file before clearing so nothing important is lost.</p>
+        <pre><button class="copy-btn">Copy</button><code>Dump current plan and progress to PROGRESS.md.
+/clear
+Read PROGRESS.md and continue from where we left off.</code></pre>
+        <a class="more" href="artifacts/playbook/detailed-playbook.html#context" target="_blank" rel="noopener noreferrer">Full guide →</a>
+      </div>
+
+      <div class="level-card">
+        <span class="kicker">Scale</span>
+        <h3>Automation</h3>
+        <p>Once the basic loop works, move repeatable tasks to headless mode: no interactive UI, just a prompt in and a result out. Useful for CI, batch migrations, and diff reviews.</p>
+        <pre><button class="copy-btn">Copy</button><code>claude -p "review the staged diff and list risks" \
+  --output-format text</code></pre>
+        <a class="more" href="artifacts/playbook/detailed-playbook.html#automation" target="_blank" rel="noopener noreferrer">Full guide →</a>
+      </div>
+
     </div>
   </div>
 </section>
 
 <section class="deepdive">
   <div class="wrap">
-    <h2>Нужно глубже?</h2>
-    <p>Этот флоу — минимум для 100% результата. Если хочешь разобраться в деталях (CLAUDE.md, хуки, контекст, автоматизация) — открой подробный справочник.</p>
+    <h2>Need more depth?</h2>
+    <p>This flow is the minimum for a 100% result. If you want to go deeper into setup, workflow, CLAUDE.md, context, hooks, steering, automation, prompts, and QA — open the detailed reference.</p>
     <div class="deep-grid">
       <a class="deep-card" href="artifacts/playbook/detailed-playbook.html" target="_blank" rel="noopener noreferrer">
-        <h4>Полный playbook Claude Code</h4>
-        <span>Все 10 разделов: workflow, CLAUDE.md, хуки, контекст, автоматизация</span>
+        <h4>Full Claude Code playbook</h4>
+        <span>All 10 sections: workflow, CLAUDE.md, hooks, context, automation</span>
       </a>
       <a class="deep-card" href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener noreferrer">
-        <h4>Официальный гайд Anthropic</h4>
+        <h4>Official Anthropic guide</h4>
         <span>code.claude.com/docs/en/best-practices</span>
       </a>
     </div>
@@ -350,8 +419,8 @@ git push -u origin main</code></pre>
 
 <footer class="site">
   <div class="wrap">
-    <span>Vibe Coding Flow · линейный чек-лист для 100% результата</span>
-    <span>Прогресс хранится локально в этом браузере</span>
+    <span>Vibe Coding Flow · a linear checklist for a 100% result</span>
+    <span>Progress is stored locally in this browser</span>
   </div>
 </footer>
 
@@ -375,15 +444,15 @@ git push -u origin main</code></pre>
     if(e.target.classList.contains('copy-btn')){
       var code = e.target.nextElementSibling.innerText;
       var done = function(){
-        var t=e.target.textContent; e.target.textContent='Готово';
+        var t=e.target.textContent; e.target.textContent='Copied';
         setTimeout(function(){e.target.textContent=t;},1400);
       };
       if(navigator.clipboard && navigator.clipboard.writeText){
         navigator.clipboard.writeText(code).then(done).catch(function(){
-          window.prompt('Скопируй команду вручную:', code);
+          window.prompt('Copy this command manually:', code);
         });
       } else {
-        window.prompt('Скопируй команду вручную:', code);
+        window.prompt('Copy this command manually:', code);
       }
     }
   });

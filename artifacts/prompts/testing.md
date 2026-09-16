@@ -1,15 +1,15 @@
 # Testing prompt
 
-На основе спецификации, а не текущей реализации, подготовь тестовые сценарии.
+Based on the specification, not the current implementation, prepare test scenarios.
 
-Обязательно покрой:
-- happy path;
-- пустые и отсутствующие значения;
-- минимальные и максимальные границы;
-- неверные типы и форматы;
-- ошибки зависимостей и таймауты;
-- права доступа и попытку получить данные другого пользователя;
-- повторные запросы и идемпотентность;
-- регрессионные сценарии.
+Be sure to cover:
+- the happy path;
+- empty and missing values;
+- minimum and maximum boundaries;
+- invalid types and formats;
+- dependency failures and timeouts;
+- permissions and attempts to access another user's data;
+- repeated requests and idempotency;
+- regression scenarios.
 
-Не меняй production-код. Сначала покажи список тестов и объясни, какой риск закрывает каждый тест.
+Do not change production code. First show the list of tests and explain which risk each test closes.
