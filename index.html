@@ -263,6 +263,11 @@ claude   # sign in via browser or set ANTHROPIC_API_KEY</code></pre>
 git init
 claude
 /init   # Claude scans the project and creates a starter CLAUDE.md</code></pre>
+          <ul class="substeps">
+            <li>Keep <code>CLAUDE.md</code> short: add only commands, conventions, verification rules, and repo etiquette Claude cannot infer</li>
+            <li>Use <code>.claude/skills/</code> for focused workflows such as deploy, code review, and debugging</li>
+            <li>Use hooks only for non-negotiable actions, such as blocking destructive commands or reminding Claude to run checks</li>
+          </ul>
           <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>You'll need an empty GitHub repository before step 9 — create it now on github.com.</div>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Project and git repository created</span></label>
         </div>
@@ -291,6 +296,11 @@ printf ".venv/\n__pycache__/\n" >> .gitignore</code></pre>
 I want to build: [your sentence from step 1].
 What's the simplest approach? Create a step-by-step plan
 before writing any code.</code></pre>
+          <ul class="substeps">
+            <li>Keep one focused task per Claude session; do not mix unrelated work</li>
+            <li>Before switching context, save the current plan, decisions, and next action in <code>PROGRESS.md</code></li>
+            <li>After <code>/clear</code>, ask Claude to read <code>PROGRESS.md</code> before continuing</li>
+          </ul>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Plan received and looks good</span></label>
         </div>
       </div>
@@ -336,6 +346,10 @@ and fix failures before moving on. Show me the result
             <li>No errors in the console / logs</li>
             <li>Works at mobile screen size, if it's a web app</li>
           </ul>
+          <ul class="substeps">
+            <li>Review the staged diff for unexpected changes and secrets before committing</li>
+            <li>For repeatable checks, use headless Claude: <code>claude -p "review the staged diff and list risks" --output-format text</code></li>
+          </ul>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Result verified manually</span></label>
         </div>
       </div>
@@ -378,77 +392,9 @@ git push -u origin main</code></pre>
   </div>
 </section>
 
-<section class="levelup">
-  <div class="wrap">
-    <h2>Level up the flow</h2>
-    <p>Once the 10 steps feel natural, these four habits make Claude noticeably more reliable on bigger projects.</p>
-    <div class="level-grid">
 
-      <div class="level-card">
-        <span class="kicker">Steering</span>
-        <h3>CLAUDE.md</h3>
-        <p>A short root file Claude reads at the start of every session. Only include what Claude can't infer from the code: build/test commands, unusual conventions, repo etiquette, and verification criteria.</p>
-        <pre><button class="copy-btn">Copy</button><code>## Project
-Build: npm run build. Test: npm test.
 
-## Code style
-Use ES modules, not CommonJS.
 
-## Workflow
-Run tests after changes. No premature abstractions.</code></pre>
-        <a class="more" href="artifacts/playbook/detailed-playbook.html#claudemd" target="_blank" rel="noopener noreferrer">Full guide →</a>
-      </div>
-
-      <div class="level-card">
-        <span class="kicker">Enforcement</span>
-        <h3>Hooks</h3>
-        <p>CLAUDE.md is advice — it's not always followed. Hooks are deterministic scripts that run automatically, guaranteeing an action every single time, like auto-formatting or blocking dangerous commands.</p>
-        <pre><button class="copy-btn">Copy</button><code>Write a hook that blocks 'git push' directly to main
-and suggests opening a PR instead.
-
-Write a hook that runs prettier after every Edit/Write.</code></pre>
-        <a class="more" href="artifacts/playbook/detailed-playbook.html#hooks" target="_blank" rel="noopener noreferrer">Full guide →</a>
-      </div>
-
-      <div class="level-card">
-        <span class="kicker">Focus</span>
-        <h3>Context management</h3>
-        <p>Response quality drops well before the context window fills up. Keep one task per session, clear between unrelated topics, and dump progress to a file before clearing so nothing important is lost.</p>
-        <pre><button class="copy-btn">Copy</button><code>Dump current plan and progress to PROGRESS.md.
-/clear
-Read PROGRESS.md and continue from where we left off.</code></pre>
-        <a class="more" href="artifacts/playbook/detailed-playbook.html#context" target="_blank" rel="noopener noreferrer">Full guide →</a>
-      </div>
-
-      <div class="level-card">
-        <span class="kicker">Scale</span>
-        <h3>Automation</h3>
-        <p>Once the basic loop works, move repeatable tasks to headless mode: no interactive UI, just a prompt in and a result out. Useful for CI, batch migrations, and diff reviews.</p>
-        <pre><button class="copy-btn">Copy</button><code>claude -p "review the staged diff and list risks" \
-  --output-format text</code></pre>
-        <a class="more" href="artifacts/playbook/detailed-playbook.html#automation" target="_blank" rel="noopener noreferrer">Full guide →</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section class="deepdive">
-  <div class="wrap">
-    <h2>Need more depth?</h2>
-    <p>This flow is the minimum for a 100% result. If you want to go deeper into setup, workflow, CLAUDE.md, context, hooks, steering, automation, prompts, and QA — open the detailed reference.</p>
-    <div class="deep-grid">
-      <a class="deep-card" href="artifacts/playbook/detailed-playbook.html" target="_blank" rel="noopener noreferrer">
-        <h4>Full Claude Code playbook</h4>
-        <span>All 10 sections: workflow, CLAUDE.md, hooks, context, automation</span>
-      </a>
-      <a class="deep-card" href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener noreferrer">
-        <h4>Official Anthropic guide</h4>
-        <span>code.claude.com/docs/en/best-practices</span>
-      </a>
-    </div>
-  </div>
-</section>
 
 </main>
 
