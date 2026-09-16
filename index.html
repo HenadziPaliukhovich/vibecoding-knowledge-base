@@ -379,12 +379,13 @@ git push -u origin main</code></pre>
       <div class="step" data-step="9" id="step-9" data-projects="web python cli">
         <div class="step-marker"><span>9</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Deploy and check the live link</h3><span class="step-tag">Deploy</span></div>
-          <p>GitHub Actions validates the site first, then deploys GitHub Pages only if validation passes.</p>
-          <span class="code-label">GitHub Pages</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext"># Settings → Pages → Source: GitHub Actions
-# Actions → Validate and Deploy GitHub Pages → wait for green
-# https://USER.github.io/REPO/</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>To redeploy the current version without a new commit: Actions → Validate and Deploy GitHub Pages → Run workflow.</div>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Site opens at the live link</span></label>
+          <div class="step-top"><h3>Run in the real environment</h3><span class="step-tag">Release</span></div>
+          <p>A project is only finished when it runs where you actually need it. Let Claude configure and verify the target run environment for your stack.</p>
+          <span class="code-label">Prompt for Claude Code</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">The core changes are committed. Propose the simplest way to run or publish this project so I can use it end-to-end (e.g. GitHub Pages or Vercel for web, server or daemon for Python, or a global command for CLI).
+
+Explain what needs to happen in plain language, handle the configuration yourself, and give me the command or link to test it.</code></pre>
+          <ul class="substeps"><li>Web: verify the public link on desktop and mobile</li><li>CLI: run the installed command from any directory with real inputs</li><li>Python / Backend: verify the service or bot starts cleanly and responds</li></ul>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Project is running and verified in its target environment</span></label>
         </div>
       </div>
 
