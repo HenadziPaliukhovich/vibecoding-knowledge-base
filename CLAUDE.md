@@ -2,7 +2,11 @@
 
 ## Project overview
 
-Static GitHub Pages knowledge base for Vibe Coding Bootcamp notes, practical AI-assisted development guidance, QA checklists, prompts, and examples.
+Static GitHub Pages site for Vibe Coding Bootcamp notes.
+
+- `/index.html` is the primary entry point: a single linear 8-step checklist flow (idea -> local setup -> plan -> implement+verify -> QA -> commit -> deploy) with a persistent progress bar. Keep this page simple, focused, and free of long reference material.
+- `/artifacts/playbook/detailed-playbook.html` is the archived detailed reference (10 sections: setup, workflow, CLAUDE.md, context, hooks, steering, automation, prompts, QA, notes). Link to it from the homepage instead of duplicating its content inline.
+- `/artifacts/notes/` holds durable personal notes committed as markdown files (not localStorage).
 
 ## Technical constraints
 

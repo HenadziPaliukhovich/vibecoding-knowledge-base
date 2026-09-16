@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Claude Code — практическое руководство</title>
+<meta name="description" content="Настройка окружения, workflow, CLAUDE.md, хуки и промпты для Claude Code — по официальным best practices Anthropic.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=cabinet-grotesk@500,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --text-xs:clamp(.75rem,.7rem + .25vw,.875rem);
+  --text-sm:clamp(.875rem,.8rem + .35vw,1rem);
+  --text-base:clamp(1rem,.95rem + .25vw,1.125rem);
+  --text-lg:clamp(1.125rem,1rem + .75vw,1.5rem);
+  --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+  --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.25rem);
+  --text-hero:clamp(2.5rem,1rem + 5vw,4.75rem);
+  --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;
+  --space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;--space-24:6rem;
+  --radius-sm:.375rem;--radius-md:.5rem;--radius-lg:.75rem;--radius-xl:1rem;--radius-full:9999px;
+  --font-display:'Cabinet Grotesk','General Sans',sans-serif;
+  --font-body:'General Sans','Helvetica Neue',sans-serif;
+  --transition:180ms cubic-bezier(.16,1,.3,1);
+  --content-default:960px;--content-wide:1180px;
+}
+:root,[data-theme="light"]{
+  --color-bg:#f7f6f2;--color-surface:#fff;--color-surface-2:#fbfbf9;--color-surface-offset:#f1efe9;
+  --color-divider:#dcd9d5;--color-border:oklch(.2 .01 80 / .12);
+  --color-text:#28251d;--color-text-muted:#5f5d57;--color-text-faint:#9c9a94;--color-text-inverse:#f9f8f4;
+  --color-primary:#01696f;--color-primary-hover:#0c4e54;--color-primary-highlight:#cedcd8;
+  --color-warning:#964219;--color-warning-highlight:#ddcfc6;
+  --color-error:#a12c7b;--color-error-highlight:#e0ced7;
+  --color-success:#437a22;--color-success-highlight:#d4dfcc;
+  --shadow-sm:0 1px 2px oklch(.2 .01 80 / .07);--shadow-md:0 6px 18px oklch(.2 .01 80 / .1);--shadow-lg:0 16px 40px oklch(.2 .01 80 / .14);
+}
+[data-theme="dark"]{
+  --color-bg:#15140f;--color-surface:#1b1a15;--color-surface-2:#201f19;--color-surface-offset:#211f18;
+  --color-divider:#2c2a24;--color-border:oklch(1 0 0 / .1);
+  --color-text:#e7e4dc;--color-text-muted:#a3a09669;--color-text-muted:#a19d92;--color-text-faint:#6c6a61;--color-text-inverse:#1b1a15;
+  --color-primary:#5bb4b3;--color-primary-hover:#7ecac9;--color-primary-highlight:#26403f;
+  --color-warning:#d99461;--color-warning-highlight:#4a382b;
+  --color-error:#dd8fbe;--color-error-highlight:#42303b;
+  --color-success:#9bc47a;--color-success-highlight:#33402a;
+  --shadow-sm:0 1px 2px oklch(0 0 0 / .3);--shadow-md:0 6px 18px oklch(0 0 0 / .35);--shadow-lg:0 16px 40px oklch(0 0 0 / .45);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--space-16);-webkit-text-size-adjust:none}
+body{min-height:100dvh;font-family:var(--font-body),sans-serif;font-size:var(--text-base);line-height:1.62;color:var(--color-text);background:var(--color-bg)}
+img,svg{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--font-display),sans-serif;line-height:1.1;text-wrap:balance}
+p,li{text-wrap:pretty;max-width:70ch}
+a{color:var(--color-primary)}
+:focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+.wrap{max-width:var(--content-wide);margin:auto;padding-inline:var(--space-5)}
+.narrow{max-width:var(--content-default);margin-inline:auto}
+
+/* header */
+header.site{position:sticky;top:0;z-index:20;background:color-mix(in oklch,var(--color-bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--color-divider)}
+.nav-row{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);padding-block:var(--space-3)}
+.brand{display:flex;align-items:center;gap:var(--space-2);font-family:var(--font-display);font-weight:700;font-size:var(--text-sm);text-decoration:none;color:var(--color-text)}
+.brand svg{width:26px;height:26px;color:var(--color-primary)}
+.nav-links{display:flex;gap:var(--space-1);flex-wrap:wrap}
+.nav-links a{font-size:var(--text-xs);text-decoration:none;color:var(--color-text-muted);padding:var(--space-2) var(--space-3);border-radius:var(--radius-full);transition:background var(--transition),color var(--transition)}
+.nav-links a:hover{background:var(--color-surface-offset);color:var(--color-text)}
+#theme-toggle{border:1px solid var(--color-border);background:var(--color-surface);border-radius:var(--radius-full);width:36px;height:36px;display:grid;place-items:center;color:var(--color-text-muted)}
+@media (max-width:760px){.nav-links{display:none}}
+
+/* hero */
+.hero{padding-block:var(--space-16) var(--space-12)}
+.hero-grid{display:grid;grid-template-columns:1.3fr .9fr;gap:var(--space-10);align-items:end}
+.eyebrow{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--color-primary);border:1px solid var(--color-primary-highlight);background:var(--color-primary-highlight);padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);margin-bottom:var(--space-5)}
+.hero h1{font-size:var(--text-hero);font-weight:700;letter-spacing:-.01em}
+.hero p.lead{margin-top:var(--space-5);color:var(--color-text-muted);font-size:var(--text-lg);max-width:46ch}
+.hero-stats{display:flex;flex-direction:column;gap:var(--space-4);border-left:1px solid var(--color-divider);padding-left:var(--space-6)}
+.stat b{font-family:var(--font-display);font-size:var(--text-xl);display:block}
+.stat span{color:var(--color-text-muted);font-size:var(--text-xs)}
+.hero-cta{display:flex;gap:var(--space-3);margin-top:var(--space-8);flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);font-weight:600;padding:var(--space-3) var(--space-5);border-radius:var(--radius-md);text-decoration:none;border:1px solid transparent;transition:transform var(--transition),background var(--transition),box-shadow var(--transition);cursor:pointer}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:var(--color-primary);color:#fff;box-shadow:var(--shadow-sm)}
+.btn.primary:hover{background:var(--color-primary-hover);box-shadow:var(--shadow-md)}
+.btn.ghost{border-color:var(--color-border);color:var(--color-text)}
+.btn.ghost:hover{background:var(--color-surface-offset)}
+@media (max-width:820px){.hero-grid{grid-template-columns:1fr}.hero-stats{flex-direction:row;border-left:none;border-top:1px solid var(--color-divider);padding:var(--space-5) 0 0;gap:var(--space-8)}}
+
+section{padding-block:clamp(var(--space-12),6vw,var(--space-24))}
+section + section{border-top:1px solid var(--color-divider)}
+.section-head{display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-6);margin-bottom:var(--space-8);flex-wrap:wrap}
+.section-head h2{font-size:var(--text-2xl)}
+.section-head .num{font-family:var(--font-display);color:var(--color-text-faint);font-size:var(--text-lg)}
+.kicker{color:var(--color-primary);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:var(--space-2);display:block}
+
+/* steps */
+.steps{display:grid;gap:var(--space-4)}
+.step{display:grid;grid-template-columns:56px 1fr;gap:var(--space-5);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-sm)}
+.step .n{font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-primary);font-weight:700}
+.step h3{font-size:var(--text-lg);margin-bottom:var(--space-2)}
+.step p{color:var(--color-text-muted);font-size:var(--text-sm)}
+.step ul{margin-top:var(--space-2);padding-left:var(--space-5);color:var(--color-text-muted);font-size:var(--text-sm)}
+.step li{margin:var(--space-1) 0}
+
+pre{position:relative;overflow:auto;background:#171512;color:#eae7e0;padding:var(--space-5);border-radius:var(--radius-md);font-size:var(--text-xs);line-height:1.7;font-family:ui-monospace,'SF Mono',Menlo,monospace;box-shadow:var(--shadow-sm)}
+[data-theme="dark"] pre{background:#0d0c0a}
+pre code{white-space:pre}
+.copy-btn{position:absolute;top:var(--space-3);right:var(--space-3);background:oklch(1 0 0 / .1);color:#eae7e0;border:1px solid oklch(1 0 0 / .16);border-radius:var(--radius-sm);font-size:var(--text-xs);padding:var(--space-1) var(--space-3);cursor:pointer}
+.copy-btn:hover{background:oklch(1 0 0 / .18)}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5)}
+@media (max-width:820px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+.card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-sm)}
+.card h3{font-size:var(--text-lg);margin-bottom:var(--space-3)}
+.card p{color:var(--color-text-muted);font-size:var(--text-sm)}
+.card ul{margin-top:var(--space-3);padding-left:var(--space-5);color:var(--color-text-muted);font-size:var(--text-sm)}
+.card li{margin:var(--space-2) 0}
+
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden}
+.compare > div{padding:var(--space-6)}
+.compare .no{background:var(--color-error-highlight)}
+.compare .yes{background:var(--color-success-highlight)}
+.compare h4{font-family:var(--font-body);font-weight:700;font-size:var(--text-sm);margin-bottom:var(--space-3);display:flex;align-items:center;gap:var(--space-2)}
+.compare p{font-size:var(--text-sm);color:var(--color-text)}
+@media (max-width:700px){.compare{grid-template-columns:1fr}}
+
+table.rules{width:100%;border-collapse:collapse;font-size:var(--text-sm)}
+table.rules th,table.rules td{text-align:left;padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-divider);vertical-align:top}
+table.rules th{color:var(--color-text-muted);font-weight:600;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.04em}
+table.rules tr:last-child td{border-bottom:none}
+.table-wrap{overflow-x:auto;border:1px solid var(--color-border);border-radius:var(--radius-lg)}
+table.rules th:first-child,table.rules td:first-child{padding-left:var(--space-5)}
+
+.tag{display:inline-block;font-size:var(--text-xs);padding:var(--space-1) var(--space-2);border-radius:var(--radius-full);background:var(--color-surface-offset);color:var(--color-text-muted);margin-bottom:var(--space-3)}
+
+.checklist{display:grid;gap:var(--space-2)}
+.checklist label{display:flex;gap:var(--space-3);align-items:flex-start;font-size:var(--text-sm);padding:var(--space-3);border-radius:var(--radius-md);border:1px solid transparent;transition:background var(--transition)}
+.checklist label:hover{background:var(--color-surface-offset)}
+.checklist input{margin-top:3px;accent-color:var(--color-primary);width:16px;height:16px}
+
+.notes-form{display:grid;gap:var(--space-3)}
+.notes-form label{font-size:var(--text-xs);font-weight:600;color:var(--color-text-muted)}
+.notes-form input,.notes-form select,.notes-form textarea{width:100%;padding:var(--space-3);border:1px solid var(--color-border);border-radius:var(--radius-md);background:var(--color-surface-2);color:var(--color-text);font:inherit;font-size:var(--text-sm)}
+.notes-form textarea{min-height:110px;font-family:ui-monospace,monospace}
+#notes-list{display:grid;gap:var(--space-3);margin-top:var(--space-6)}
+.note-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-5)}
+.note-item header{display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);margin-bottom:var(--space-2)}
+.note-item pre{margin-top:var(--space-3)}
+.del{border:none;background:none;color:var(--color-text-faint);cursor:pointer;font-size:var(--text-xs)}
+.del:hover{color:var(--color-error)}
+.empty-hint{color:var(--color-text-faint);font-size:var(--text-sm);text-align:center;padding:var(--space-10) 0;border:1px dashed var(--color-border);border-radius:var(--radius-lg)}
+
+footer.site{border-top:1px solid var(--color-divider);padding-block:var(--space-10);color:var(--color-text-faint);font-size:var(--text-xs)}
+footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3)}
+
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 17V7l8-4 8 4v10l-8 4-8-4Z"/><path d="M4 7l8 4 8-4M12 11v10"/></svg>
+      Claude Code Playbook
+    </a>
+    <nav class="nav-links" aria-label="Разделы">
+      <a href="#setup">Установка</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#claudemd">CLAUDE.md</a>
+      <a href="#context">Контекст</a>
+      <a href="#hooks">Хуки</a>
+      <a href="#steering">Steering</a>
+      <a href="#automation">Автоматизация</a>
+      <a href="#prompts">Промпты</a>
+      <a href="#qa">QA</a>
+      <a href="#notes">Заметки</a>
+    </nav>
+    <button id="theme-toggle" aria-label="Переключить тему"></button>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">По материалам Anthropic · code.claude.com/docs</span>
+      <h1>Claude Code без хаоса.<br>Только рабочий процесс.</h1>
+      <p class="lead">Личная база практик: как настроить окружение, писать CLAUDE.md, управлять контекстом и заставлять Claude проверять собственную работу — а не просто «выглядит готово».</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#setup">Начать установку</a>
+        <a class="btn ghost" href="#workflow">Показать workflow</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>4 фазы</b><span>Explore → Plan → Implement → Commit</span></div>
+      <div class="stat"><b>&lt;60 строк</b><span>рекомендуемый размер CLAUDE.md</span></div>
+      <div class="stat"><b>~60%</b><span>предел заполнения контекстного окна</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="setup">
+  <div class="wrap narrow">
+    <div class="section-head"><h2>Настройка локального окружения</h2><span class="num">01</span></div>
+    <p style="color:var(--color-text-muted);margin-bottom:var(--space-8)">Выполняется один раз на новой машине. Дальше — только запуск <code>claude</code> в папке проекта.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="n">01</span>
+        <div>
+          <h3>Установи Node.js и Claude Code CLI</h3>
+          <p>Claude Code — это Node-пакет, ставится глобально через npm.</p>
+          <pre><button class="copy-btn">Копировать</button><code>node -v || brew install node
+npm install -g @anthropic-ai/claude-code
+claude --version</code></pre>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">02</span>
+        <div>
+          <h3>Авторизуйся</h3>
+          <p>Через Claude аккаунт (Pro/Max) или API-ключ Anthropic.</p>
+          <pre><button class="copy-btn">Копировать</button><code>claude
+# в интерактивном режиме появится ссылка для входа в браузере
+# либо задай переменную окружения:
+export ANTHROPIC_API_KEY="sk-ant-..."</code></pre>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">03</span>
+        <div>
+          <h3>Поставь вспомогательные CLI</h3>
+          <p>Claude эффективнее работает с внешними сервисами через их официальные CLI, а не «вручную» через API.</p>
+          <pre><button class="copy-btn">Копировать</button><code>brew install gh          # GitHub
+gh auth login
+brew install awscli       # если используешь AWS
+brew install google-cloud-sdk   # если используешь GCP</code></pre>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">04</span>
+        <div>
+          <h3>Инициализируй проект</h3>
+          <p>Команда <code>/init</code> сканирует структуру репозитория и создаёт стартовый CLAUDE.md, который дальше нужно вручную сократить и уточнить.</p>
+          <pre><button class="copy-btn">Копировать</button><code>cd my-project
+claude
+/init
+/context   # проверить, что CLAUDE.md действительно загрузился</code></pre>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">05</span>
+        <div>
+          <h3>Режимы доступа и sandbox</h3>
+          <p>У Claude Code три режима выполнения — выбирай по риску задачи, а не один режим на всё.</p>
+          <ul>
+            <li><b>Plan mode</b> — читаешь и уточняешь, ничего не меняется</li>
+            <li><b>Manual approvals</b> — подтверждаешь Edit и Bash по одному</li>
+            <li><b>Auto-accept</b> — безопасные действия идут быстрее, но только в изолированной среде</li>
+          </ul>
+          <pre><button class="copy-btn">Копировать</button><code>/permissions
+# добавь в allowlist: npm run lint, npm test, git commit *, git diff
+/sandbox   # включить изоляцию файловой системы и сети
+/model     # переключить модель под задачу</code></pre>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">06</span>
+        <div>
+          <h3>Личные настройки vs командные</h3>
+          <p>Три уровня памяти помогают не смешивать личные привычки, правила команды и локальные заметки.</p>
+          <ul>
+            <li><code>./CLAUDE.md</code> — общие правила проекта, коммитится в git</li>
+            <li><code>./CLAUDE.local.md</code> — твои временные заметки, в <code>.gitignore</code></li>
+            <li><code>~/.claude/CLAUDE.md</code> — глобальные личные правила для всех проектов</li>
+          </ul>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">07</span>
+        <div>
+          <h3>Зафиксируй локальное окружение</h3>
+          <p>Лучше работать в воспроизводимой среде: одинаковые версии Node, Python и системных CLI дают предсказуемый результат и тебе, и Claude.</p>
+          <pre><button class="copy-btn">Копировать</button><code># .devcontainer/devcontainer.json
+{
+  "image": "node:20",
+  "postCreateCommand": "npm install -g @anthropic-ai/claude-code && npm ci",
+  "remoteEnv": { "ANTHROPIC_API_KEY": "${localEnv:ANTHROPIC_API_KEY}" }
+}
+
+# быстрый изолированный запуск через Docker
+docker run --rm -it -v $(pwd):/work -w /work node:20 bash -lc   "npm install -g @anthropic-ai/claude-code && claude"</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="workflow">
+  <div class="wrap narrow">
+    <div class="section-head"><h2>Рабочий цикл: 4 фазы</h2><span class="num">02</span></div>
+    <p style="color:var(--color-text-muted);margin-bottom:var(--space-8)">Главная ошибка — дать Claude сразу писать код. Разделяй исследование, план и реализацию, иначе получишь решение неправильной задачи.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <div>
+          <h3>Explore — план-режим</h3>
+          <p><code>Shift+Tab</code> до статуса «plan mode on». Claude читает код и отвечает на вопросы, ничего не меняя.</p>
+          <pre><button class="copy-btn">Копировать</button><code>read /src/auth and understand how we handle sessions and login.
+also look at how we manage environment variables for secrets.</code></pre>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">2</span>
+        <div>
+          <h3>Plan — попроси детальный план</h3>
+          <p>План можно открыть в редакторе через <code>Ctrl+G</code> и вручную проаннотировать: «используй PATCH, не PUT», «добавь created_at с NOW()».</p>
+          <pre><button class="copy-btn">Копировать</button><code>I want to add Google OAuth. What files need to change?
+What's the session flow? Create a plan.
+
+# после правок в плане:
+address all notes, don't implement yet</code></pre>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">3</span>
+        <div>
+          <h3>Implement — с проверкой</h3>
+          <p>Выходишь из план-режима и даёшь Claude критерий успеха: тесты, скрипт, скриншот.</p>
+          <pre><button class="copy-btn">Копировать</button><code>implement the OAuth flow from your plan. write tests for the
+callback handler, run the test suite and fix any failures.</code></pre>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n">4</span>
+        <div>
+          <h3>Commit — с описанием</h3>
+          <p>Не оставляй сообщения коммитов на потом — проси их сразу.</p>
+          <pre><button class="copy-btn">Копировать</button><code>commit with a descriptive message and open a PR</code></pre>
+        </div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-top:var(--space-6)">
+      <div class="card">
+        <h3>Verification loop</h3>
+        <p>Главное правило из практики Anthropic: не проси «сделай», проси «сделай и проверь». Тест, build, screenshot diff или точный acceptance-check превращают Claude из генератора текста в исполнителя с критерием завершения.</p>
+        <pre><button class="copy-btn">Копировать</button><code>implement the change, run tests, fix failures,
+and summarize what you verified before stopping.</code></pre>
+      </div>
+      <div class="card">
+        <h3>Checkpoint и откат</h3>
+        <p>Если Claude ушел̈ не туда, не спорь 20 сообщений подряд. Используй быстрый откат к прошлому checkpoint или очищай сессию и заходи с более точным промптом.</p>
+        <pre><button class="copy-btn">Копировать</button><code>Esc Esc      # открыть checkpoints
+/rewind      # вернуться к более раннему состоянию
+/clear       # начать свежую сессию для другой задачи</code></pre>
+      </div>
+    </div>
+    <div class="card" style="margin-top:var(--space-6)">
+      <h3>Когда план-режим — избыточен</h3>
+      <p>Если правку можно описать одним предложением (опечатка, лог, переименование переменной) — план не нужен, проси делать сразу. План оправдан, когда: неясен подход, меняется несколько файлов, или ты не знаком с этим кодом.</p>
+    </div>
+  </div>
+</section>
+
+<section id="claudemd">
+  <div class="wrap narrow">
+    <div class="section-head"><h2>Как писать CLAUDE.md</h2><span class="num">03</span></div>
+    <p style="color:var(--color-text-muted);margin-bottom:var(--space-8)">CLAUDE.md читается в начале каждой сессии. Системный промпт Claude Code уже занимает часть «бюджета следования инструкциям» — раздутый файл означает, что важные правила потеряются в шуме.</p>
+
+    <div class="compare">
+      <div class="yes"><h4>✓ Включай</h4><p>Bash-команды, которые Claude не угадает · стиль кода, отличающийся от дефолта · инструкции по тестам · repo-этикет (ветки, PR) · архитектурные решения · переменные окружения · неочевидные особенности проекта</p></div>
+      <div class="no"><h4>✗ Исключай</h4><p>Всё, что Claude выведет из кода сам · стандартные конвенции языка · подробную документацию API (дай ссылку) · часто меняющуюся информацию · длинные объяснения и туториалы · файл-за-файлом описание кодовой базы</p></div>
+    </div>
+
+    <p class="tag" style="margin-top:var(--space-8)">Пример короткого корневого файла (реальная структура)</p>
+    <pre><button class="copy-btn">Копировать</button><code># CLAUDE.md
+
+## Project
+Monorepo managed with pnpm workspaces. Packages in packages/*.
+Build: pnpm build. Test: pnpm test.
+
+## Code style
+- Use ES modules (import/export), not CommonJS (require)
+- Destructure imports when possible: import { foo } from 'bar'
+
+## Workflow
+- Typecheck after a series of changes: pnpm typecheck
+- Prefer running single tests, not the whole suite, for speed
+- Use the simplest possible approach — no premature abstractions
+
+## For domain-specific rules, see:
+- Payments: read docs/payment-architecture.md first
+- API conventions: src/api/CLAUDE.md</code></pre>
+
+    <div class="grid-2" style="margin-top:var(--space-8)">
+      <div class="card">
+        <h3>Прогрессивное раскрытие</h3>
+        <p>Не вставляй целый документ в CLAUDE.md — это съедает лимит инструкций на каждой сессии. Вместо этого дай ссылку на файл, который Claude прочитает только при необходимости.</p>
+        <pre><button class="copy-btn">Копировать</button><code>## Payments
+When touching src/payments/, first read
+docs/payment-architecture.md before editing.</code></pre>
+      </div>
+      <div class="card">
+        <h3>Файлы по подпапкам</h3>
+        <p>Claude подгружает CLAUDE.md от текущей рабочей директории вверх до корня. Правила для БД или API можно держать локально — они активируются только в нужной зоне.</p>
+        <pre><button class="copy-btn">Копировать</button><code>src/persistence/CLAUDE.md   → правила БД
+src/api/CLAUDE.md           → конвенции эндпоинтов
+~/.claude/CLAUDE.md         → твои личные глобальные правила</code></pre>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:var(--space-6)">
+      <h3>Диагностика</h3>
+      <p style="margin-bottom:0">Если Claude игнорирует правило — файл слишком длинный, и правило теряется в шуме; сократи его. Если Claude переспрашивает то, что уже написано в файле — формулировка неоднозначна. Если правило постоянно пропускается, выдели его одним словом «IMPORTANT», но не выделяй так много строк — тогда ничего не будет выделяться. Держи файл в git, чтобы команда могла его дополнять, и запускай <code>/doctor</code> для автоматических предложений по сокращению.</p>
+    </div>
+  </div>
+</section>
+
+<section id="context">
+  <div class="wrap narrow">
+    <div class="section-head"><h2>Управление контекстом</h2><span class="num">04</span></div>
+    <p style="color:var(--color-text-muted);margin-bottom:var(--space-8)">Качество ответов начинает падать задолго до лимита окна — многие практики согласны не превышать 60% заполнения на глаз. Автокомпакция срабатывает около 83% и теряет детали.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Document &amp; Clear — базовый паттерн</h3>
+        <p>Как только контекст «тяжелеет»: выгружаешь план и прогресс в markdown, чистишь сессию, начинаешь заново с чтением этого файла. Так ты сам решаешь, что переживёт очистку — а не автокомпакция.</p>
+        <pre><button class="copy-btn">Копировать</button><code># сохранить прогресс перед очисткой
+Dump current plan and progress to PROGRESS.md,
+including decisions made and files touched.
+
+/clear
+
+# новая сессия
+Read PROGRESS.md and continue from where we left off.</code></pre>
+      </div>
+      <div class="card">
+        <h3>Одна задача — одна сессия</h3>
+        <p>«Сессия-помойка»: начал с одной задачи, спросил что-то не связанное, вернулся к первой — контекст забит нерелевантным. После двух неудачных исправлений одной и той же проблемы — очищай сессию и переформулируй промпт точнее, вместо продолжения спора.</p>
+        <ul>
+          <li><code>/clear</code> между несвязанными задачами</li>
+          <li><code>/compact Focus on the API changes</code> для точечного сжатия</li>
+          <li><code>/btw</code> для побочных вопросов, которые не должны расти в контексте</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:var(--space-6)">
+      <h3>Субагенты для разведки</h3>
+      <p>Исследование кода читает десятки файлов — весь этот объём съедает основной контекст. Субагент работает в отдельном окне и возвращает только summary.</p>
+      <pre><button class="copy-btn">Копировать</button><code>Use subagents to investigate how our authentication system handles
+token refresh, and whether we have any existing OAuth utilities I should reuse.</code></pre>
+    </div>
+  </div>
+</section>
+
+<section id="hooks">
+  <div class="wrap narrow">
+    <div class="section-head"><h2>Хуки и проверка результата</h2><span class="num">05</span></div>
+    <p style="color:var(--color-text-muted);margin-bottom:var(--space-8)">CLAUDE.md — это советы, им следуют не всегда. Хуки — детерминированные скрипты, которые гарантируют действие каждый раз без исключений.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Автоформатирование после правок</h3>
+        <p><code>PostToolUse</code>-хук запускает Prettier или линтер сразу после Edit/Write, без остановки работы Claude.</p>
+        <pre><button class="copy-btn">Копировать</button><code>{
+  "hooks": {
+    "PostToolUse": [{
+      "matcher": "Edit|Write",
+      "hooks": [{
+        "type": "command",
+        "command": "prettier --write \"$CLAUDE_FILE_PATHS\""
+      }]
+    }]
+  }
+}</code></pre>
+      </div>
+      <div class="card">
+        <h3>Жёсткий запрет опасных команд</h3>
+        <p><code>PreToolUse</code>-хук с exit code 2 блокирует действие целиком — например, push в main или <code>rm -rf</code>.</p>
+        <pre><button class="copy-btn">Копировать</button><code>Write a hook that blocks 'git push' directly to main
+and suggests opening a PR instead.
+
+Write a hook that blocks 'rm -rf' and suggests 'trash' instead.</code></pre>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:var(--space-6)">
+      <h3>Дай Claude способ себя проверить</h3>
+      <p>Без проверяемого критерия «выглядит готово» — это единственный сигнал, и тогда ты сам становишься циклом проверки. Дай тест, сборку или скриншот для сравнения.</p>
+      <div class="table-wrap">
+        <table class="rules">
+          <tr><th>До</th><th>После</th></tr>
+          <tr><td>implement a function that validates email addresses</td><td>write a validateEmail function. example test cases: user@example.com is true, invalid is false. run the tests after implementing</td></tr>
+          <tr><td>make the dashboard look better</td><td>[скриншот] implement this design. take a screenshot of the result and compare it to the original. list differences and fix them</td></tr>
+          <tr><td>the build is failing</td><td>the build fails with this error: [текст]. fix it and verify the build succeeds. address the root cause, don't suppress the error</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:var(--space-6)">
+      <h3>Adversarial review — второе мнение</h3>
+      <p>Свежий субагент видит только diff и критерий, а не ход рассуждений — поэтому оценивает результат честно.</p>
+      <pre><button class="copy-btn">Копировать</button><code>Use a subagent to review the rate limiter diff against PLAN.md. Check that
+every requirement is implemented, listed edge cases have tests, and nothing
+outside the task's scope changed. Report gaps, not style preferences.</code></pre>
+    </div>
+  </div>
+</section>
+
+<section id="steering">
+  <div class="wrap narrow">
+    <div class="section-head"><h2>Что чем управлять</h2><span class="num">06</span></div>
+    <p style="color:var(--color-text-muted);margin-bottom:var(--space-8)">Не всё нужно запихивать в один CLAUDE.md. Качественная рабочая среда строится из мягких правил, жестких ограничений и контекста по требованию.</p>
+    <div class="table-wrap">
+      <table class="rules">
+        <tr><th>Инструмент</th><th>Когда использовать</th><th>Что хранить</th></tr>
+        <tr><td><code>CLAUDE.md</code></td><td>Для коротких правил, которые нужны почти в каждой сессии</td><td>workflow, стиль, команды, критерии проверки</td></tr>
+        <tr><td>Hooks</td><td>Когда правило должно выполняться всегда</td><td>форматирование, блокировки push в main, запрет опасных команд</td></tr>
+        <tr><td>Skills</td><td>Когда знание нужно не всегда, а по конкретной задаче</td><td>deploy, migrations, release, performance review</td></tr>
+        <tr><td>Subagents</td><td>Когда нужно изолировать исследование или ревью</td><td>auth audit, security review, diff review, docs pass</td></tr>
+      </table>
+    </div>
+    <div class="grid-2" style="margin-top:var(--space-6)">
+      <div class="card">
+        <h3>Как держать CLAUDE.md коротким</h3>
+        <p>Пиши только то, что модель сама не выведет из кода. Хорошее правило проверяемо, кратко и, если что-то запрещает, сразу предлагает безопасную альтернативу.</p>
+        <pre><button class="copy-btn">Копировать</button><code>Bad: don't use destructive commands.
+Good: never run rm -rf; move files to Trash or ask first.</code></pre>
+      </div>
+      <div class="card">
+        <h3>Skills вместо длинных простыней</h3>
+        <p>Редкие, объёмные инструкции выноси в <code>.claude/skills/</code>. Тогда корневой CLAUDE.md останется компактным, а Claude прочитает детальный playbook только в нужный момент.</p>
+        <pre><button class="copy-btn">Копировать</button><code>.claude/
+  skills/
+    deploy/SKILL.md
+    db-migrations/SKILL.md
+    code-review/SKILL.md</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="automation">
+  <div class="wrap narrow">
+    <div class="section-head"><h2>Автоматизация и масштаб</h2><span class="num">07</span></div>
+    <p style="color:var(--color-text-muted);margin-bottom:var(--space-8)">Когда базовый цикл работает, переноси повторяемые задачи в headless-команды, batch-режим и отдельные ревью-сессии.</p>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Headless и CI</h3>
+        <p>Для повторяемых задач удобен запуск без интерактивного UI. Это подходит для генерации описаний, проверки diff, миграции серии файлов и CI-задач.</p>
+        <pre><button class="copy-btn">Копировать</button><code>claude -p "review the staged diff and list risks"   --output-format text
+
+claude -p "summarize changes in this PR"   --output-format json</code></pre>
+      </div>
+      <div class="card">
+        <h3>Fan-out и writer/reviewer</h3>
+        <p>Одна сессия пишет, другая проверяет с нуля. Для серии однотипных файлов удобнее прогонять Claude циклом или через batch-подход с узким prompt scope.</p>
+        <pre><button class="copy-btn">Копировать</button><code>for file in $(cat files.txt); do
+  claude -p "migrate $file to the new API and report OK or FAIL"
+done</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prompts">
+  <div class="wrap narrow">
+    <div class="section-head"><h2>Библиотека промптов</h2><span class="num">08</span></div>
+    <div class="grid-3">
+      <div class="card">
+        <h3>TDD-цикл</h3>
+        <pre><button class="copy-btn">Копировать</button><code>1. Write tests for the auth module using pytest.
+TDD approach, no mock implementations.
+2. Run the tests — they should all fail.
+3. Commit the failing tests as a checkpoint.
+4. Write the implementation. Do not modify
+the tests. Keep going until all tests pass.</code></pre>
+      </div>
+      <div class="card">
+        <h3>Интервью перед фичей</h3>
+        <pre><button class="copy-btn">Копировать</button><code>I want to build [описание]. Interview me in detail
+using the AskUserQuestion tool. Ask about technical
+implementation, UI/UX, edge cases, and tradeoffs.
+Don't ask obvious questions. Keep interviewing until
+we've covered everything, then write a spec to SPEC.md.</code></pre>
+      </div>
+      <div class="card">
+        <h3>Исследование багов</h3>
+        <pre><button class="copy-btn">Копировать</button><code>Users report that login fails after session timeout.
+Check the auth flow in src/auth/, especially token
+refresh. Write a failing test that reproduces the
+issue, then fix it.</code></pre>
+      </div>
+      <div class="card">
+        <h3>Автономный batch-режим</h3>
+        <pre><button class="copy-btn">Копировать</button><code>for file in $(cat files.txt); do
+  claude -p "Migrate $file from Python 2 to Python 3.
+  Return OK or FAIL." \
+    --allowedTools "Edit,Bash(git commit *)"
+done</code></pre>
+      </div>
+      <div class="card">
+        <h3>Writer / Reviewer</h3>
+        <pre><button class="copy-btn">Копировать</button><code># Сессия A
+Implement a rate limiter for our API endpoints
+
+# Сессия B (свежий контекст)
+Review the rate limiter in @src/middleware/rateLimiter.ts.
+Look for edge cases, race conditions, and consistency
+with existing middleware patterns.</code></pre>
+      </div>
+      <div class="card">
+        <h3>Изучение чужого CLI</h3>
+        <pre><button class="copy-btn">Копировать</button><code>Use 'foo-cli-tool --help' to learn about foo tool,
+then use it to solve A, B, C.</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="qa">
+  <div class="wrap narrow">
+    <div class="section-head"><h2>Чек-лист перед коммитом</h2><span class="num">09</span></div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Проверка кода</h3>
+        <div class="checklist">
+          <label><input type="checkbox"><span>Diff не выходит за согласованный scope плана</span></label>
+          <label><input type="checkbox"><span>Тесты добавлены и проходят, старые не удалены ради green build</span></label>
+          <label><input type="checkbox"><span>Root cause исправлен, а не подавлена ошибка</span></label>
+          <label><input type="checkbox"><span>Новые зависимости обоснованы и подтверждены</span></label>
+          <label><input type="checkbox"><span>Нет секретов, ключей и PII в коде или логах</span></label>
+          <label><input type="checkbox"><span>Lint, typecheck и build проходят</span></label>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Частые провалы сессии</h3>
+        <div class="checklist">
+          <label><input type="checkbox"><span>Session-помойка: несвязанные задачи в одном контексте → <code>/clear</code></span></label>
+          <label><input type="checkbox"><span>Больше 2 неудачных исправлений подряд → очистить и переформулировать</span></label>
+          <label><input type="checkbox"><span>CLAUDE.md раздут и правила теряются → сократить безжалостно</span></label>
+          <label><input type="checkbox"><span>Разведка без ограничений съела контекст → скоуп или субагент</span></label>
+          <label><input type="checkbox"><span>Ответ принят без проверки → потребовать evidence (тест, скрин)</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="wrap narrow">
+    <div class="section-head"><h2>Личные заметки</h2><span class="num">10</span></div>
+    <p style="color:var(--color-text-muted);margin-bottom:var(--space-6)">Эта форма удобна только как черновик в текущем браузере. Всё, чем ты реально хочешь пользоваться на другой машине или после нового деплоя, должно жить в репозитории как файл.</p>
+    <div class="card" style="margin-bottom:var(--space-6)">
+      <h3>Постоянные заметки — только через git</h3>
+      <p>Храни личные playbook-заметки в <code>artifacts/notes/</code>, а проектные правила — в <code>CLAUDE.md</code> или <code>.claude/skills/</code>. Тогда знания будут переживать новый компьютер, очистку браузера и любой повторный деплой.</p>
+      <pre><button class="copy-btn">Копировать</button><code>mkdir -p artifacts/notes
+cat > artifacts/notes/debugging-session.md <<'EOF'
+# Debugging session
+- Symptom:
+- Root cause:
+- Fix:
+- Verification:
+EOF
+
+git add artifacts/notes/debugging-session.md
+git commit -m "Add debugging note"
+git push</code></pre>
+    </div>
+    <form id="note-form" class="notes-form card">
+      <div>
+        <label for="n-title">Заголовок</label>
+        <input id="n-title" required placeholder="Например: правило для CLAUDE.md">
+      </div>
+      <div>
+        <label for="n-cat">Категория</label>
+        <select id="n-cat">
+          <option>Промпт</option>
+          <option>Хук</option>
+          <option>CLAUDE.md</option>
+          <option>Наблюдение</option>
+        </select>
+      </div>
+      <div>
+        <label for="n-body">Содержимое</label>
+        <textarea id="n-body" required placeholder="Промпт, команда или заметка..."></textarea>
+      </div>
+      <button class="btn primary" type="submit" style="justify-self:start">Сохранить заметку</button>
+    </form>
+    <div id="notes-list"></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Claude Code Playbook · собрано по code.claude.com/docs/en/best-practices</span>
+    <span>Обновляй через GitHub Pages · <code>artifacts/</code></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme-toggle');
+  var theme = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark':'light';
+  function icon(t){return t==='dark'
+    ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+    : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';}
+  root.setAttribute('data-theme', theme);
+  btn.innerHTML = icon(theme);
+  btn.addEventListener('click', function(){
+    theme = theme==='dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', theme);
+    btn.innerHTML = icon(theme);
+  });
+
+  document.addEventListener('click', function(e){
+    if(e.target.classList.contains('copy-btn')){
+      var code = e.target.nextElementSibling.innerText;
+      var done = function(){
+        var t=e.target.textContent; e.target.textContent='Готово';
+        setTimeout(function(){e.target.textContent=t;},1400);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(code).then(done).catch(function(){
+          window.prompt('Скопируй команду вручную:', code);
+        });
+      } else {
+        window.prompt('Скопируй команду вручную:', code);
+      }
+    }
+  });
+
+  var KEY='ccp_notes';
+  function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ return []; } }
+  function save(v){ try{ localStorage.setItem(KEY, JSON.stringify(v)); }catch(e){} }
+  function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+  function render(){
+    var items = load();
+    var list = document.getElementById('notes-list');
+    if(!items.length){ list.innerHTML = '<div class="empty-hint">Заметок пока нет — добавь первую выше.</div>'; return; }
+    list.innerHTML = items.map(function(it, i){
+      return '<div class="note-item"><header><div><span class="tag">'+esc(it.cat)+'</span></div>'
+        + '<button class="del" data-i="'+i+'">Удалить</button></header>'
+        + '<h3>'+esc(it.title)+'</h3>'
+        + '<pre><code>'+esc(it.body)+'</code></pre></div>';
+    }).join('');
+  }
+  document.getElementById('note-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var items = load();
+    items.unshift({
+      title: document.getElementById('n-title').value.trim(),
+      cat: document.getElementById('n-cat').value,
+      body: document.getElementById('n-body').value.trim()
+    });
+    save(items);
+    e.target.reset();
+    render();
+  });
+  document.getElementById('notes-list').addEventListener('click', function(e){
+    if(e.target.classList.contains('del')){
+      var items = load();
+      items.splice(+e.target.dataset.i, 1);
+      save(items);
+      render();
+    }
+  });
+  render();
+})();
+</script>
+</body>
+</html>
