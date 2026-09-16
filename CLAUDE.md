@@ -33,6 +33,10 @@ Static GitHub Pages knowledge base for Vibe Coding Bootcamp notes, practical AI-
 - No horizontal overflow on mobile.
 - JavaScript must not throw errors when storage or clipboard APIs are unavailable.
 - Escape user-entered content before inserting it into the DOM.
+- Prefer checkable instructions: ask Claude to verify with tests, builds, screenshots, or explicit acceptance checks.
+- Keep root CLAUDE.md short; move rare or deep instructions into scoped files or skills.
+- Use hooks for mandatory enforcement and CLAUDE.md for advisory guidance.
+- When forbidding an action, provide the preferred safe alternative.
 
 ## Definition of done
 
