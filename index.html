@@ -295,14 +295,13 @@ Create CLAUDE.md for this project. Add these working rules:
 - Create DECISIONS.md only when we make a meaningful product or technical decision that would be hard to reconstruct later. Record the decision, its date, and a brief reason.
 - Before a release, create or update CHECKLIST.md with the smallest practical manual release checks for this project. Use it for the final review and update it when a recurring issue is found.
 - Before switching tasks or clearing context, save the current plan, decisions, completed work, open questions, and next action in PROGRESS.md. At the start of a new session, read PROGRESS.md first. Create PROGRESS.md when the first planned task starts.
-- Use these request modes: “New idea:” means discovery first; “Do:” means implement the requested outcome; “Check:” means verify and report; “Release:” means prepare and publish a release.
 - Before any non-trivial work, show a short task card: what user outcome we are delivering, how we will know it works, which areas will change, and the one decision you need from me, if any. Wait for my “ok”.
 - Work on one outcome at a time. If I introduce a separate idea, ask whether to include it now or save it in BACKLOG.md. Create BACKLOG.md only when there is a first deferred idea.
 - Act independently on routine technical work, implementation, checks, documentation, and small fixes. Ask before destructive changes, paid services, irreversible migrations, changes to the product direction, or publishing confidential information.
 - Before a push to main, show one short release note: what changed, what was checked, and what will be published. Wait for my “ok”, then commit, push to main, deploy, and verify the live link.
 - End every completed task with: Done; Changed; Checked; What I need you to check; Next.
 
-Then show me the CLAUDE.md content and summarise it in plain language. Do not implement the product yet.</code></pre><ul class="substeps"><li>Use <code>New idea:</code>, <code>Do:</code>, <code>Check:</code>, or <code>Release:</code> to make your intent clear</li><li>Claude shows a short task card and waits for <code>ok</code> before non-trivial work</li><li>After discovery: Claude creates <code>PRODUCT.md</code>; after approval, it creates <code>README.md</code>, <code>.gitignore</code>, and <code>PROGRESS.md</code></li><li>When needed: Claude maintains <code>DECISIONS.md</code>, <code>BACKLOG.md</code>, and the pre-release <code>CHECKLIST.md</code></li></ul>
+Then show me the CLAUDE.md content and summarise it in plain language. Do not implement the product yet.</code></pre><ul class="substeps"><li>Claude shows a short task card and waits for <code>ok</code> before non-trivial work</li><li>After discovery: Claude creates <code>PRODUCT.md</code>; after approval, it creates <code>README.md</code>, <code>.gitignore</code>, and <code>PROGRESS.md</code></li><li>When needed: Claude maintains <code>DECISIONS.md</code>, <code>BACKLOG.md</code>, and the pre-release <code>CHECKLIST.md</code></li></ul>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">CLAUDE.md defines how Claude works with me on this project</span></label>
         </div>
       </div>
@@ -312,7 +311,7 @@ Then show me the CLAUDE.md content and summarise it in plain language. Do not im
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Give Claude your idea</h3><span class="step-tag">Discovery</span></div>
           <p>Describe the product in your own words. Claude clarifies what you need, then gives you a plan to approve — it does not guess and start coding.</p>
-          <span class="code-label">Prompt</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">New idea: [describe it in your own words].
+          <span class="code-label">Prompt</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Here is my idea: [describe it in your own words].
 
 Follow the project instructions. First ask only the questions you need to understand the goal, users, main scenario, scope, and success criteria. Do not make changes yet.
 
