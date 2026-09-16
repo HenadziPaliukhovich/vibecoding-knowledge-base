@@ -211,27 +211,27 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
 
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow">One flow, fourteen steps</span>
-    <h1>Vibe-code your idea <em>all the way to a deployed result</em>.</h1>
-    <p class="lead">No theory, no extra sections — just a linear checklist from a shaped idea to a live link. Check off steps as you go; progress is saved in your browser.</p>
+    <span class="eyebrow">You lead the product. Claude ships it.</span>
+    <h1>Turn your idea into <em>a live product with Claude Code</em>.</h1>
+    <p class="lead">You define the outcome and approve decisions. Claude Code owns the technical work: planning, implementation, checks, Git and deployment.</p>
     <div class="hero-cta">
-      <a class="btn primary" href="#step-1">Start the flow</a>
+      <a class="btn primary" href="#step-1">Start my project</a>
     </div>
   </div>
 </section>
 
-<section class="studio" aria-labelledby="studio-title"><div class="wrap"><div class="studio-card"><h2 id="studio-title">Start with a project brief</h2><p>Turn a rough idea into a focused brief and a ready-to-paste Claude prompt.</p><div class="studio-grid"><div class="studio-field"><label for="brief-type">Project type</label><select id="brief-type"><option value="web">Web project</option><option value="python">Python tool</option><option value="cli">CLI tool</option></select></div><div class="studio-field"><label for="brief-name">Project name</label><input id="brief-name" placeholder="e.g. Launch notes"></div><div class="studio-field full"><label for="brief-idea">Idea</label><textarea id="brief-idea" placeholder="What are you building?"></textarea></div><div class="studio-field"><label for="brief-user">Who is it for?</label><input id="brief-user" placeholder="e.g. indie makers"></div><div class="studio-field"><label for="brief-outcome">Smallest useful outcome</label><input id="brief-outcome" placeholder="e.g. publish a note in one minute"></div><div class="studio-field full"><label for="brief-boundary">What is explicitly out of scope?</label><input id="brief-boundary" placeholder="e.g. accounts, payments, team collaboration"></div></div><div class="studio-actions"><button class="tool-btn primary-action" id="generate-brief">Generate brief + prompt</button><button class="tool-btn" id="copy-prompt">Copy Claude prompt</button></div><div class="studio-output" id="studio-output"><span class="code-label">PROJECT_BRIEF.md</span><pre><code class="language-markdown" id="brief-result"></code></pre></div></div></div></section>
+<section class="studio" aria-labelledby="studio-title"><div class="wrap"><div class="studio-card"><h2 id="studio-title">Set the product direction</h2><p>Describe what you want to achieve. Claude Code will turn it into a technical plan and do the implementation.</p><div class="studio-grid"><div class="studio-field"><label for="brief-type">Project type</label><select id="brief-type"><option value="web">Web project</option><option value="python">Python tool</option><option value="cli">CLI tool</option></select></div><div class="studio-field"><label for="brief-name">Project name</label><input id="brief-name" placeholder="e.g. Launch notes"></div><div class="studio-field full"><label for="brief-idea">Idea</label><textarea id="brief-idea" placeholder="What are you building?"></textarea></div><div class="studio-field"><label for="brief-user">Who is it for?</label><input id="brief-user" placeholder="e.g. indie makers"></div><div class="studio-field"><label for="brief-outcome">Smallest useful outcome</label><input id="brief-outcome" placeholder="e.g. publish a note in one minute"></div><div class="studio-field full"><label for="brief-boundary">What is explicitly out of scope?</label><input id="brief-boundary" placeholder="e.g. accounts, payments, team collaboration"></div></div><div class="studio-actions"><button class="tool-btn primary-action" id="generate-brief">Create my starting prompt</button><button class="tool-btn" id="copy-prompt">Copy prompt for Claude</button></div><div class="studio-output" id="studio-output"><span class="code-label">PROJECT_BRIEF.md</span><pre><code class="language-markdown" id="brief-result"></code></pre></div></div></div></section>
 <section class="flow" id="flow">
   <div class="wrap">
     <div class="flow-header">
-      <h2>Checklist to 100%</h2>
+      <h2>From idea to live product</h2>
       <button class="reset-link" id="reset-progress">Reset progress</button>
     </div>
     <div class="flow-tools" aria-label="Flow controls">
       <div class="project-filter" role="group" aria-label="Project type">
         <button class="filter-btn" data-filter="all" aria-pressed="true">All</button><button class="filter-btn" data-filter="web" aria-pressed="false">Web</button><button class="filter-btn" data-filter="python" aria-pressed="false">Python</button><button class="filter-btn" data-filter="cli" aria-pressed="false">CLI</button>
       </div>
-      <div class="tool-actions"><span class="deploy-status" id="deploy-status" aria-live="polite">Pages status: checking</span><button class="tool-btn primary-action" id="continue-flow">Continue flow</button><button class="tool-btn" id="export-progress">Export PROGRESS.md</button><button class="tool-btn" id="share-progress">Share progress</button><button class="tool-btn" id="focus-enter">Focus mode</button></div>
+      <div class="tool-actions"><span class="deploy-status" id="deploy-status" aria-live="polite">Pages status: checking</span><button class="tool-btn primary-action" id="continue-flow">Show my next action</button><button class="tool-btn" id="export-progress">Export PROGRESS.md</button><button class="tool-btn" id="share-progress">Share progress</button><button class="tool-btn" id="focus-enter">One step at a time</button></div>
       <div class="step-map" id="step-map" aria-label="Step navigation"></div>
     </div>
 
@@ -239,8 +239,8 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
       <div class="step" data-step="1" id="step-1">
         <div class="step-marker"><span>1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Shape the idea before opening the editor</h3><span class="step-tag">10 min</span></div>
-          <p>Start with the problem and the smallest useful outcome — not screens or technologies. This stops Claude from guessing the product scope for you.</p>
+          <div class="step-top"><h3>Define the outcome</h3><span class="step-tag">10 min</span></div>
+          <p>Describe the outcome you want for people using your product. You own the goal; Claude Code will decide how to build it and explain the plan before starting.</p>
           <ul class="substeps"><li>Problem: [who] struggles with [specific problem]</li><li>Smallest outcome: they can [one action] so that [result]</li><li>First-version boundary: list up to three essentials and what is explicitly not included</li><li>Definition of Done: a user can complete the main scenario from start to finish</li></ul>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Problem, outcome, scope, and Definition of Done are clear</span></label>
         </div>
@@ -288,15 +288,13 @@ printf ".venv/\n__pycache__/\n" >> .gitignore</code></pre><div class="hint"><svg
       <div class="step" data-step="5">
         <div class="step-marker"><span>5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Add project instructions to CLAUDE.md</h3><span class="step-tag">5 min</span></div>
-          <p>Give Claude only the project facts it cannot infer from code: commands, conventions, verification rules, and repository etiquette.</p>
-          <span class="code-label">CLAUDE.md</span><pre><button class="copy-btn">Copy</button><code class="language-markdown">## Project
-Build: [build command]
-Test: [test command]
+          <div class="step-top"><h3>Ask Claude to create project instructions</h3><span class="step-tag">5 min</span></div>
+          <p>Claude Code should inspect the repository and create a concise CLAUDE.md itself, so each new session understands how to work on this project.</p>
+          <span class="code-label">Prompt for Claude Code</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">You are my technical partner. I set the product goal and approve the result; you own the technical execution.
 
-## Workflow
-Write failing tests before production code.
-Run checks before committing.</code></pre><ul class="substeps"><li>Keep the root file short and current</li><li>Put specialised instructions in <code>.claude/skills/</code>, not in one giant file</li></ul>
+Inspect this repository and create or update CLAUDE.md yourself. Discover the real commands, project structure, checks, deployment path, and conventions. Keep it concise and actionable. Do not invent anything.
+
+Then explain in plain language: what you added, what you will handle automatically, and what you need me to check as the product owner.</code></pre><ul class="substeps"><li>Claude discovers the actual project rules instead of asking you to write technical instructions</li><li>Review the plain-language summary, then approve or adjust it</li></ul>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">CLAUDE.md contains the essential project rules</span></label>
         </div>
       </div>
@@ -304,8 +302,8 @@ Run checks before committing.</code></pre><ul class="substeps"><li>Keep the root
       <div class="step" data-step="6">
         <div class="step-marker"><span>6</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Add hooks for non-negotiable safeguards</h3><span class="step-tag">5 min</span></div>
-          <p>Instructions are advisory; hooks enforce actions automatically. Use them only where a missed action has real cost.</p>
+          <div class="step-top"><h3>Ask Claude to add safety checks</h3><span class="step-tag">5 min</span></div>
+          <p>Tell Claude which outcomes must never be compromised. It can add the appropriate guardrails and explain them in plain language.</p>
           <span class="code-label">Prompt</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Write a PreToolUse hook that blocks destructive commands.
 
 Write a PostToolUse hook that reminds Claude to run
@@ -452,7 +450,7 @@ document.querySelectorAll('[data-step-checkbox]').forEach(function(c){c.onchange
 document.querySelectorAll('.filter-btn').forEach(function(b){b.onclick=function(){var f=b.dataset.filter;document.querySelectorAll('.filter-btn').forEach(function(q){q.setAttribute('aria-pressed',q===b?'true':'false')});steps.forEach(function(x){x.classList.toggle('filtered-out',f!=='all'&&!(x.dataset.projects||'web python cli').includes(f))});draw()}});
 document.getElementById('export-progress').onclick=function(){var s=load(),done=steps.filter(function(x){return s[x.dataset.step]}).map(function(x){return '- [x] '+x.dataset.step+'. '+x.querySelector('h3').textContent}).join('\n');var text='# Vibe Coding Progress\n\nCompleted: '+Object.keys(s).length+'/'+TOTAL+'\n\n## Done\n'+(done||'- None yet')+'\n\n## Next action\n- [ ] '+current().querySelector('h3').textContent+'\n',a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/markdown'}));a.download='PROGRESS.md';a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},100)};
 document.getElementById('share-progress').onclick=function(){var u=new URL(location.href);u.hash='progress='+steps.filter(function(x){return load()[x.dataset.step]}).map(function(x){return x.dataset.step}).join(',');navigator.clipboard&&navigator.clipboard.writeText(u.href);this.textContent='Link copied';var b=this;setTimeout(function(){b.textContent='Share progress'},1400)};
-function brief(){var v=function(id){return document.getElementById(id).value.trim()||'[add this]'},type=v('brief-type'),name=v('brief-name'),idea=v('brief-idea'),user=v('brief-user'),out=v('brief-outcome'),boundary=v('brief-boundary');var text='# '+name+'\n\n## Problem\n'+user+' need a way to '+idea+'\n\n## Smallest useful outcome\nThey can '+out+'.\n\n## Out of scope\n'+boundary+'\n\n## Project type\n'+type+'\n\n## Definition of Done\nA user can complete the main outcome end to end.';document.getElementById('brief-result').textContent=text;document.getElementById('studio-output').classList.add('show');if(window.hljs){hljs.highlightElement(document.getElementById('brief-result'))}return {text:text,type:type,name:name,idea:idea,user:user,out:out,boundary:boundary}}document.getElementById('generate-brief').onclick=brief;document.getElementById('copy-prompt').onclick=function(){var b=brief(),prompt='Create a step-by-step implementation plan before writing code.\n\n'+b.text+'\n\nState assumptions, risks, files to create, and verification commands.';navigator.clipboard?navigator.clipboard.writeText(prompt):window.prompt('Copy prompt:',prompt);this.textContent='Prompt copied';var x=this;setTimeout(function(){x.textContent='Copy Claude prompt'},1400)};
+function brief(){var v=function(id){return document.getElementById(id).value.trim()||'[add this]'},type=v('brief-type'),name=v('brief-name'),idea=v('brief-idea'),user=v('brief-user'),out=v('brief-outcome'),boundary=v('brief-boundary');var text='# '+name+'\n\n## Problem\n'+user+' need a way to '+idea+'\n\n## Smallest useful outcome\nThey can '+out+'.\n\n## Out of scope\n'+boundary+'\n\n## Project type\n'+type+'\n\n## Definition of Done\nA user can complete the main outcome end to end.';document.getElementById('brief-result').textContent=text;document.getElementById('studio-output').classList.add('show');if(window.hljs){hljs.highlightElement(document.getElementById('brief-result'))}return {text:text,type:type,name:name,idea:idea,user:user,out:out,boundary:boundary}}document.getElementById('generate-brief').onclick=brief;document.getElementById('copy-prompt').onclick=function(){var b=brief(),prompt='You are my technical partner. I set the product direction and approve the result; you own the technical execution.\n\nUse this project brief:\n\n'+b.text+'\n\nFirst, explain the product in plain language and propose a short implementation plan. State what you will build, what I should review, and any decisions that need my approval. Do not change files until I approve the plan. After approval, handle implementation, checks, Git and deployment yourself.';navigator.clipboard?navigator.clipboard.writeText(prompt):window.prompt('Copy prompt:',prompt);this.textContent='Prompt copied';var x=this;setTimeout(function(){x.textContent='Copy prompt for Claude'},1400)};
 function focus(on){document.body.classList.toggle('focus-mode',on);if(on){var x=current();x.classList.add('expanded');document.getElementById('focus-label').textContent='Step '+x.dataset.step+' of '+TOTAL+': '+x.querySelector('h3').textContent;x.scrollIntoView({behavior:'smooth',block:'center'})}}document.getElementById('focus-enter').onclick=function(){focus(true)};document.getElementById('focus-exit').onclick=function(){focus(false)};document.getElementById('focus-complete').onclick=function(){var c=current().querySelector('input');c.checked=true;c.dispatchEvent(new Event('change'));focus(true)};document.getElementById('focus-prev').onclick=function(){var i=steps.indexOf(current());var x=steps[Math.max(0,i-1)];x.classList.add('expanded');x.scrollIntoView({behavior:'smooth',block:'center'});document.getElementById('focus-label').textContent='Step '+x.dataset.step+' of '+TOTAL+': '+x.querySelector('h3').textContent};
 var help=document.getElementById('kbd-help');document.getElementById('keyboard-help').onclick=function(){help.classList.add('show');document.getElementById('close-help').focus()};document.getElementById('close-help').onclick=function(){help.classList.remove('show')};help.onclick=function(e){if(e.target===help)help.classList.remove('show')};
 document.addEventListener('click',function(e){if(e.target.classList.contains('copy-btn')){var c=e.target.nextElementSibling.innerText;navigator.clipboard?navigator.clipboard.writeText(c):window.prompt('Copy:',c);e.target.textContent='Copied';setTimeout(function(){e.target.textContent='Copy'},1200)}});document.addEventListener('keydown',function(e){if(e.key==='Escape')help.classList.remove('show');if(/INPUT|TEXTAREA|BUTTON/.test(document.activeElement.tagName))return;if(e.key==='j'||e.key==='k'){var i=steps.indexOf(current()),x=steps[Math.max(0,Math.min(TOTAL-1,i+(e.key==='j'?1:-1)))];x.scrollIntoView({behavior:'smooth',block:'center'})}if(e.key===' '){e.preventDefault();var c=current().querySelector('input');c.checked=!c.checked;c.dispatchEvent(new Event('change'))}});
