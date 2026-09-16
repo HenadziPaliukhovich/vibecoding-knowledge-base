@@ -5,7 +5,6 @@
 Static GitHub Pages site for Vibe Coding Bootcamp notes.
 
 - `/index.html` is the primary entry point: a single linear 10-step checklist flow (shape idea -> setup -> Python venv when relevant -> plan -> test-first specification -> implement -> QA -> commit -> deploy) with a persistent progress bar. Keep this page simple, focused, and free of long reference material.
-- `/artifacts/playbook/detailed-playbook.html` is the archived detailed reference (10 sections: setup, workflow, CLAUDE.md, context, hooks, steering, automation, prompts, QA, notes). Link to it from the homepage instead of duplicating its content inline.
 - `/artifacts/notes/` holds durable personal notes committed as markdown files (not localStorage).
 
 ## Technical constraints
