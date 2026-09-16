@@ -301,7 +301,7 @@ Create CLAUDE.md for this project. Add these working rules:
 - Before a push to main, show one short release note: what changed, what was checked, and what will be published. Wait for my “ok”, then commit, push to main, deploy, and verify the live link.
 - End every completed task with: Done; Changed; Checked; What I need you to check; Next.
 
-Then show me the CLAUDE.md content and summarise it in plain language. Do not implement the product yet.</code></pre><ul class="substeps"><li>Claude shows a short task card and waits for <code>ok</code> before non-trivial work</li><li>After discovery: Claude creates <code>PRODUCT.md</code>; after approval, it creates <code>README.md</code>, <code>.gitignore</code>, and <code>PROGRESS.md</code></li><li>When needed: Claude maintains <code>DECISIONS.md</code>, <code>BACKLOG.md</code>, and the pre-release <code>CHECKLIST.md</code></li></ul>
+Then show me the CLAUDE.md content and summarise it in plain language. Do not implement the product yet.</code></pre><ul class="substeps"><li>Keep <code>CLAUDE.md</code> concise and under 150 lines so rules are never ignored</li><li>Claude shows a short task card and waits for <code>ok</code> before non-trivial work</li><li>After discovery: Claude creates <code>PRODUCT.md</code>; after approval, it creates <code>README.md</code>, <code>.gitignore</code>, and <code>PROGRESS.md</code></li><li>When needed: Claude maintains <code>DECISIONS.md</code>, <code>BACKLOG.md</code>, and the pre-release <code>CHECKLIST.md</code></li></ul>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">CLAUDE.md defines how Claude works with me on this project</span></label>
         </div>
       </div>
@@ -315,7 +315,7 @@ Then show me the CLAUDE.md content and summarise it in plain language. Do not im
 
 Follow the project instructions. First ask only the questions you need to understand the goal, users, main scenario, scope, and success criteria. Do not make changes yet.
 
-After I answer, give me the smallest useful version and a step-by-step plan for approval.</code></pre>
+After I answer, give me the smallest useful version and a step-by-step plan for approval.</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Pro-tip: Press <code>Shift+Tab</code> in terminal to toggle Claude Code Plan Mode so Claude cannot touch files until you approve.</div>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Claude has clarified the idea, created PRODUCT.md, and I have approved the plan</span></label>
         </div>
       </div>
@@ -337,7 +337,7 @@ After I answer, give me the smallest useful version and a step-by-step plan for 
           <p>Implement only what makes the approved failing tests pass. Run the relevant tests after each small change and fix failures before moving on.</p>
           <span class="code-label">Prompt</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Implement the approved plan against the failing tests.
 Run the relevant test suite after each change.
-When tests pass, refactor only if they stay green.</code></pre>
+When tests pass, refactor only if they stay green.</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Context tip: If the session gets long or sluggish, ask Claude to update <code>PROGRESS.md</code>, type <code>/clear</code>, and continue with a fresh context.</div>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Implementation passes the relevant tests</span></label>
         </div>
       </div>
