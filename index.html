@@ -201,7 +201,7 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
 
 <div class="progress-shell">
   <div class="progress-inner">
-    <span class="progress-label"><b id="progress-count">0</b>/14 steps</span>
+    <span class="progress-label"><b id="progress-count">0</b>/9 steps</span>
     <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
     <span class="progress-label" id="progress-pct">0%</span>
   </div>
@@ -236,118 +236,66 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
     </div>
 
     <div class="timeline" id="timeline">
-      <div class="step" data-step="1" id="step-1">
-        <div class="step-marker"><span>1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
-        <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Define the outcome</h3><span class="step-tag">10 min</span></div>
-          <p>Describe the outcome you want for people using your product. You own the goal; Claude Code will decide how to build it and explain the plan before starting.</p>
-          <ul class="substeps"><li>Problem: [who] struggles with [specific problem]</li><li>Smallest outcome: they can [one action] so that [result]</li><li>First-version boundary: list up to three essentials and what is explicitly not included</li><li>Definition of Done: a user can complete the main scenario from start to finish</li></ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Problem, outcome, scope, and Definition of Done are clear</span></label>
-        </div>
-      </div>
-
-      <div class="step" data-step="2" data-projects="web python cli">
-        <div class="step-marker"><span>2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
-        <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Install Claude Code locally</h3><span class="step-tag">10 min · one-time</span></div>
-          <p>This is a one-time setup per machine. After this, run <code>claude</code> inside the project folder.</p>
-          <span class="code-label">Terminal</span><pre><button class="copy-btn">Copy</button><code class="language-bash">node -v || brew install node
-npm install -g @anthropic-ai/claude-code
-claude --version
-claude   # sign in via browser or set ANTHROPIC_API_KEY</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Claude Code installed and signed in</span></label>
-        </div>
-      </div>
-
       <div class="step" data-step="3">
         <div class="step-marker"><span>3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Create the project and repository</h3><span class="step-tag">5 min</span></div>
-          <p>A project folder plus git repository gives every change a history and makes deployment repeatable.</p>
+          <div class="step-top"><h3>Create a project folder and start Claude</h3><span class="step-tag">2 min</span></div>
+          <p>Start with an empty workspace. Open Claude Code in it; the next step sets the rules it will follow for this project.</p>
           <span class="code-label">Terminal</span><pre><button class="copy-btn">Copy</button><code class="language-bash">mkdir my-project && cd my-project
 git init
-claude
-/init   # Claude scans the project and creates a starter CLAUDE.md</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Create an empty GitHub repository now — you will connect and push it at step 13.</div>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Project folder and git repository created</span></label>
-        </div>
-      </div>
-
-      <div class="step" data-step="4" data-projects="python">
-        <div class="step-marker"><span>4</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
-        <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Create a local Python environment</h3><span class="step-tag">5 min · Python projects</span></div>
-          <p>Keep project packages isolated from system Python. Create the environment before installing dependencies, and never commit it.</p>
-          <span class="code-label">Terminal</span><pre><button class="copy-btn">Copy</button><code class="language-bash">python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-printf ".venv/\n__pycache__/\n" >> .gitignore</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Skip this only when the project does not use Python. Use <code>python -m pip</code> so packages go into the active environment.</div>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Local .venv is active and ignored by git</span></label>
+claude</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Create an empty GitHub repository now — you will connect and push it at step 13.</div>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Project folder, git repository, and Claude Code session are open</span></label>
         </div>
       </div>
 
       <div class="step" data-step="5">
         <div class="step-marker"><span>5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Ask Claude to create project instructions</h3><span class="step-tag">5 min</span></div>
-          <p>Claude Code should inspect the repository and create a concise CLAUDE.md itself, so each new session understands how to work on this project.</p>
-          <span class="code-label">Prompt for Claude Code</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">You are my technical partner. I set the product goal and approve the result; you own the technical execution.
+          <div class="step-top"><h3>Set the working agreement</h3><span class="step-tag">5 min</span></div>
+          <p>Set the rules once. Claude saves them in CLAUDE.md and follows them whenever you work on this project.</p>
+          <span class="code-label">Prompt for Claude Code</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">You are my technical partner. I lead the product: I give the idea, answer product questions, approve the plan, and accept the result. You own the technical execution.
 
-Inspect this repository and create or update CLAUDE.md yourself. Discover the real commands, project structure, checks, deployment path, and conventions. Keep it concise and actionable. Do not invent anything.
+Create CLAUDE.md for this project. Add these working rules:
+- When I give an idea, do not start coding. Ask only the questions needed to understand the users, main outcome, scope, constraints, and success criteria.
+- After my answers, create PRODUCT.md with the approved user, problem, first useful version, exclusions, and success criteria. Then propose the smallest useful version and a clear step-by-step plan. Wait for my approval before changing product files.
+- Once I approve the plan, create or update README.md with a short product description and how to run or use it. Create .gitignore before adding dependencies or local configuration; include secrets, generated files, dependencies, caches, and local environments appropriate to the chosen stack.
+- After approval, choose the technical approach, prepare the required environment, implement the work, run relevant checks, fix issues, and explain results in plain language.
+- Create DECISIONS.md only when we make a meaningful product or technical decision that would be hard to reconstruct later. Record the decision, its date, and a brief reason.
+- Before a release, create or update CHECKLIST.md with the smallest practical manual release checks for this project. Use it for the final review and update it when a recurring issue is found.
+- Before switching tasks or clearing context, save the current plan, decisions, completed work, open questions, and next action in PROGRESS.md. At the start of a new session, read PROGRESS.md first. Create PROGRESS.md when the first planned task starts.
+- Use these request modes: “New idea:” means discovery first; “Do:” means implement the requested outcome; “Check:” means verify and report; “Release:” means prepare and publish a release.
+- Before any non-trivial work, show a short task card: what user outcome we are delivering, how we will know it works, which areas will change, and the one decision you need from me, if any. Wait for my “ok”.
+- Work on one outcome at a time. If I introduce a separate idea, ask whether to include it now or save it in BACKLOG.md. Create BACKLOG.md only when there is a first deferred idea.
+- Act independently on routine technical work, implementation, checks, documentation, and small fixes. Ask before destructive changes, paid services, irreversible migrations, changes to the product direction, or publishing confidential information.
+- Before a push to main, show one short release note: what changed, what was checked, and what will be published. Wait for my “ok”, then commit, push to main, deploy, and verify the live link.
+- End every completed task with: Done; Changed; Checked; What I need you to check; Next.
 
-Then explain in plain language: what you added, what you will handle automatically, and what you need me to check as the product owner.</code></pre><ul class="substeps"><li>Claude discovers the actual project rules instead of asking you to write technical instructions</li><li>Review the plain-language summary, then approve or adjust it</li></ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">CLAUDE.md contains the essential project rules</span></label>
-        </div>
-      </div>
-
-      <div class="step" data-step="6">
-        <div class="step-marker"><span>6</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
-        <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Ask Claude to add safety checks</h3><span class="step-tag">5 min</span></div>
-          <p>Tell Claude which outcomes must never be compromised. It can add the appropriate guardrails and explain them in plain language.</p>
-          <span class="code-label">Prompt</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Write a PreToolUse hook that blocks destructive commands.
-
-Write a PostToolUse hook that reminds Claude to run
-the relevant checks after editing files.</code></pre><ul class="substeps"><li>Block destructive operations such as <code>rm -rf</code></li><li>Do not use hooks to block the normal fast push-to-main workflow</li></ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Required safeguards are enforced by hooks</span></label>
+Then show me the CLAUDE.md content and summarise it in plain language. Do not implement the product yet.</code></pre><ul class="substeps"><li>Use <code>New idea:</code>, <code>Do:</code>, <code>Check:</code>, or <code>Release:</code> to make your intent clear</li><li>Claude shows a short task card and waits for <code>ok</code> before non-trivial work</li><li>After discovery: Claude creates <code>PRODUCT.md</code>; after approval, it creates <code>README.md</code>, <code>.gitignore</code>, and <code>PROGRESS.md</code></li><li>When needed: Claude maintains <code>DECISIONS.md</code>, <code>BACKLOG.md</code>, and the pre-release <code>CHECKLIST.md</code></li></ul>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">CLAUDE.md defines how Claude works with me on this project</span></label>
         </div>
       </div>
 
       <div class="step" data-step="7">
         <div class="step-marker"><span>7</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Turn the idea into a plan</h3><span class="step-tag">Plan mode</span></div>
-          <p>Do not ask Claude to write code yet. Ask for the smallest approach, assumptions, risks, and a step-by-step plan you can correct first.</p>
-          <span class="code-label">Prompt</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext"># Shift+Tab turns on Plan mode
-I want to build: [idea from step 1].
-What is the smallest approach? State assumptions and risks,
-then create a step-by-step plan before writing any code.</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Plan received and approved</span></label>
-        </div>
-      </div>
+          <div class="step-top"><h3>Give Claude your idea</h3><span class="step-tag">Discovery</span></div>
+          <p>Describe the product in your own words. Claude clarifies what you need, then gives you a plan to approve — it does not guess and start coding.</p>
+          <span class="code-label">Prompt</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">New idea: [describe it in your own words].
 
-      <div class="step" data-step="8">
-        <div class="step-marker"><span>8</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
-        <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Preserve context before switching tasks</h3><span class="step-tag">Context</span></div>
-          <p>Keep one focused task per Claude session. Before switching topics or clearing context, save the working state so no decisions are lost.</p>
-          <span class="code-label">Prompt</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Dump the current plan, decisions, and next action to PROGRESS.md.
-/clear
-Read PROGRESS.md and continue from where we left off.</code></pre><ul class="substeps"><li>Use one task per session</li><li>Update <code>PROGRESS.md</code> before <code>/clear</code> or a context switch</li></ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Current decisions and next action are saved</span></label>
+Follow the project instructions. First ask only the questions you need to understand the goal, users, main scenario, scope, and success criteria. Do not make changes yet.
+
+After I answer, give me the smallest useful version and a step-by-step plan for approval.</code></pre>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Claude has clarified the idea, created PRODUCT.md, and I have approved the plan</span></label>
         </div>
       </div>
 
       <div class="step" data-step="9">
         <div class="step-marker"><span>9</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Define behavior and write failing tests first</h3><span class="step-tag">Test-first</span></div>
-          <p>Tests written after implementation often mirror the code and stay green even when product behavior is wrong. Define observable behavior first, then prove tests fail because it is absent.</p>
-          <span class="code-label">Test plan</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Before changing production code:
-1. Restate acceptance criteria as user-visible behavior.
-2. Write tests for that behavior and realistic edge cases.
-3. Run them and show they fail for the right reason.
-4. Only then implement the smallest change to pass them.</code></pre><ul class="substeps"><li>Test UI, API responses, CLI output, or other observable behavior — not private implementation details</li><li>A test must fail if the feature is removed or broken</li></ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Acceptance criteria and correctly failing tests are ready</span></label>
+          <div class="step-top"><h3>Agree on what “working” means</h3><span class="step-tag">Acceptance criteria</span></div>
+          <p>Turn the approved plan into clear, observable checks. Claude chooses the right kind of automated or manual verification for this project.</p>
+          <span class="code-label">Test plan</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Based on the approved plan, define the acceptance criteria as user-visible behavior. Propose the smallest useful set of automated checks and manual checks. Explain what each check proves, then wait for my approval before implementing.</code></pre><ul class="substeps"><li>Test UI, API responses, CLI output, or other observable behavior — not private implementation details</li><li>A test must fail if the feature is removed or broken</li></ul>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Acceptance criteria and verification approach are approved</span></label>
         </div>
       </div>
 
@@ -408,12 +356,6 @@ git push -u origin main</code></pre>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="14"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Site opens at the live link</span></label>
         </div>
       </div>
-    </div>
-
-    <div class="finish" id="finish-card">
-      <h3>100%. Deployed 🎉</h3>
-      <p>You've gone from idea to a live link. For a new idea, just reset your progress and start again.</p>
-      <button class="btn primary" id="reset-progress-2">Start a new flow</button>
     </div>
   </div>
 </section>
