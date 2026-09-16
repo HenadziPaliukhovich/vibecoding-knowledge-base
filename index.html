@@ -268,20 +268,20 @@ body::after{right:-220px;top:30vh;background:radial-gradient(circle at 40% 40%,r
     </div>
 
     <div class="timeline" id="timeline">
-      <div class="step" data-step="3">
-        <div class="step-marker"><span>3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="step" data-step="1" id="step-1" data-projects="web python cli">
+        <div class="step-marker"><span>1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Create a project folder and start Claude</h3><span class="step-tag">2 min</span></div>
           <p>Start with an empty workspace. Open Claude Code in it; the next step sets the rules it will follow for this project.</p>
           <span class="code-label">Terminal</span><pre><button class="copy-btn">Copy</button><code class="language-bash">mkdir my-project && cd my-project
 git init
 claude</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Create an empty GitHub repository now — you will connect and push it at step 13.</div>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Project folder, git repository, and Claude Code session are open</span></label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Project folder, git repository, and Claude Code session are open</span></label>
         </div>
       </div>
 
-      <div class="step" data-step="5">
-        <div class="step-marker"><span>5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="step" data-step="2" id="step-2" data-projects="web python cli">
+        <div class="step-marker"><span>2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Set the working agreement</h3><span class="step-tag">5 min</span></div>
           <p>Set the rules once. Claude saves them in CLAUDE.md and follows them whenever you work on this project.</p>
@@ -303,12 +303,12 @@ Create CLAUDE.md for this project. Add these working rules:
 - End every completed task with: Done; Changed; Checked; What I need you to check; Next.
 
 Then show me the CLAUDE.md content and summarise it in plain language. Do not implement the product yet.</code></pre><ul class="substeps"><li>Use <code>New idea:</code>, <code>Do:</code>, <code>Check:</code>, or <code>Release:</code> to make your intent clear</li><li>Claude shows a short task card and waits for <code>ok</code> before non-trivial work</li><li>After discovery: Claude creates <code>PRODUCT.md</code>; after approval, it creates <code>README.md</code>, <code>.gitignore</code>, and <code>PROGRESS.md</code></li><li>When needed: Claude maintains <code>DECISIONS.md</code>, <code>BACKLOG.md</code>, and the pre-release <code>CHECKLIST.md</code></li></ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">CLAUDE.md defines how Claude works with me on this project</span></label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">CLAUDE.md defines how Claude works with me on this project</span></label>
         </div>
       </div>
 
-      <div class="step" data-step="7">
-        <div class="step-marker"><span>7</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="step" data-step="3" id="step-3" data-projects="web python cli">
+        <div class="step-marker"><span>3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Give Claude your idea</h3><span class="step-tag">Discovery</span></div>
           <p>Describe the product in your own words. Claude clarifies what you need, then gives you a plan to approve — it does not guess and start coding.</p>
@@ -317,55 +317,55 @@ Then show me the CLAUDE.md content and summarise it in plain language. Do not im
 Follow the project instructions. First ask only the questions you need to understand the goal, users, main scenario, scope, and success criteria. Do not make changes yet.
 
 After I answer, give me the smallest useful version and a step-by-step plan for approval.</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Claude has clarified the idea, created PRODUCT.md, and I have approved the plan</span></label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Claude has clarified the idea, created PRODUCT.md, and I have approved the plan</span></label>
         </div>
       </div>
 
-      <div class="step" data-step="9">
-        <div class="step-marker"><span>9</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="step" data-step="4" id="step-4" data-projects="web python cli">
+        <div class="step-marker"><span>4</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Agree on what “working” means</h3><span class="step-tag">Acceptance criteria</span></div>
           <p>Turn the approved plan into clear, observable checks. Claude chooses the right kind of automated or manual verification for this project.</p>
           <span class="code-label">Test plan</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Based on the approved plan, define the acceptance criteria as user-visible behavior. Propose the smallest useful set of automated checks and manual checks. Explain what each check proves, then wait for my approval before implementing.</code></pre><ul class="substeps"><li>Test UI, API responses, CLI output, or other observable behavior — not private implementation details</li><li>A test must fail if the feature is removed or broken</li></ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Acceptance criteria and verification approach are approved</span></label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Acceptance criteria and verification approach are approved</span></label>
         </div>
       </div>
 
-      <div class="step" data-step="10">
-        <div class="step-marker"><span>10</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="step" data-step="5" id="step-5" data-projects="web python cli">
+        <div class="step-marker"><span>5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Implement the smallest change</h3><span class="step-tag">Implement</span></div>
           <p>Implement only what makes the approved failing tests pass. Run the relevant tests after each small change and fix failures before moving on.</p>
           <span class="code-label">Prompt</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Implement the approved plan against the failing tests.
 Run the relevant test suite after each change.
 When tests pass, refactor only if they stay green.</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="10"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Implementation passes the relevant tests</span></label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Implementation passes the relevant tests</span></label>
         </div>
       </div>
 
-      <div class="step" data-step="11">
-        <div class="step-marker"><span>11</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="step" data-step="6" id="step-6" data-projects="web python cli">
+        <div class="step-marker"><span>6</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Check the main scenario yourself</h3><span class="step-tag">QA · 5 min</span></div>
           <p>Automated checks are necessary but not sufficient. Open the result and use it as a real person would.</p>
           <ul class="substeps"><li>Complete the main user scenario manually</li><li>Check browser console or application logs for errors</li><li>Check mobile layout for web apps</li><li>Confirm the Definition of Done from step 1</li></ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="11"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Result verified manually</span></label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Result verified manually</span></label>
         </div>
       </div>
 
-      <div class="step" data-step="12">
-        <div class="step-marker"><span>12</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="step" data-step="7" id="step-7" data-projects="web python cli">
+        <div class="step-marker"><span>7</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Run an automated final review</h3><span class="step-tag">Automation</span></div>
           <p>Move repeatable review work out of the interactive session. Review the staged diff before committing, especially for unwanted edits and secrets.</p>
           <span class="code-label">Terminal</span><pre><button class="copy-btn">Copy</button><code class="language-bash">git diff --staged
 claude -p "review the staged diff and list risks, unexpected changes, and secrets" --output-format text</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="12"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Staged diff reviewed and no critical risks remain</span></label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Staged diff reviewed and no critical risks remain</span></label>
         </div>
       </div>
 
-      <div class="step" data-step="13">
-        <div class="step-marker"><span>13</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="step" data-step="8" id="step-8" data-projects="web python cli">
+        <div class="step-marker"><span>8</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Commit and push to GitHub</h3><span class="step-tag">Commit</span></div>
           <p>This personal repository is speed-first: review the diff, run checks, then commit and push directly to <code>main</code>. Never force-push.</p>
@@ -373,21 +373,27 @@ claude -p "review the staged diff and list risks, unexpected changes, and secret
 git commit -m "Describe the change"
 git remote add origin https://github.com/USER/REPO.git
 git push -u origin main</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="13"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Code is committed and on GitHub</span></label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Code is committed and on GitHub</span></label>
         </div>
       </div>
 
-      <div class="step" data-step="14">
-        <div class="step-marker"><span>14</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="step" data-step="9" id="step-9" data-projects="web python cli">
+        <div class="step-marker"><span>9</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Deploy and check the live link</h3><span class="step-tag">Deploy</span></div>
           <p>GitHub Actions validates the site first, then deploys GitHub Pages only if validation passes.</p>
           <span class="code-label">GitHub Pages</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext"># Settings → Pages → Source: GitHub Actions
 # Actions → Validate and Deploy GitHub Pages → wait for green
 # https://USER.github.io/REPO/</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>To redeploy the current version without a new commit: Actions → Validate and Deploy GitHub Pages → Run workflow.</div>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="14"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Site opens at the live link</span></label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Site opens at the live link</span></label>
         </div>
       </div>
+
+    <div class="finish" id="finish-card">
+      <h3>100%. Product is live 🎉</h3>
+      <p>You went all the way from idea to a deployed live link. To start your next project, reset progress.</p>
+      <button class="btn primary" id="reset-progress-2">Start new project</button>
+    </div>
     </div>
   </div>
 </section>
@@ -412,7 +418,7 @@ git push -u origin main</code></pre>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 <script>
 (function(){
-var root=document.documentElement,btn=document.getElementById('theme-toggle'),modeBtn=document.getElementById('theme-mode'),TOTAL=14,KEY='vibe_flow_progress',TK='vibe_flow_theme',MK='vibe_flow_theme_mode',steps=[].slice.call(document.querySelectorAll('.step'));
+var root=document.documentElement,btn=document.getElementById('theme-toggle'),modeBtn=document.getElementById('theme-mode'),TOTAL=9,KEY='vibe_flow_progress',TK='vibe_flow_theme',MK='vibe_flow_theme_mode',steps=[].slice.call(document.querySelectorAll('.step'));
 if(window.hljs)document.querySelectorAll('pre code').forEach(function(x){hljs.highlightElement(x)});
 function clockTheme(){var h=new Date().getHours();return h>=7&&h<19?'light':'dark'}function get(k){try{return localStorage.getItem(k)}catch(e){return null}}function put(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 var mode=get(MK)==='manual'?'manual':'auto',theme=mode==='manual'&&/^(light|dark)$/.test(get(TK)||'')?get(TK):clockTheme();
@@ -421,6 +427,7 @@ function load(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){
 function draw(){var st=load(),visible=steps.filter(function(x){return !x.classList.contains('filtered-out')}),count=visible.filter(function(x){return st[x.dataset.step]}).length,act=current();steps.forEach(function(x){var d=!!st[x.dataset.step];x.classList.toggle('done',d);x.classList.toggle('active',x===act);x.querySelector('input').checked=d});document.getElementById('progress-count').textContent=count;document.getElementById('progress-pct').textContent=Math.round(count/visible.length*100)+'%';document.getElementById('progress-fill').style.width=(count/visible.length*100)+'%';var m=document.getElementById('step-map');m.innerHTML='';visible.forEach(function(x){var b=document.createElement('button');b.className='map-dot'+(st[x.dataset.step]?' done':'')+(x===act?' active':'');b.setAttribute('aria-label','Go to step '+x.dataset.step);b.onclick=function(){x.classList.add('expanded');x.scrollIntoView({behavior:'smooth',block:'center'})};m.appendChild(b)});document.getElementById('finish-card').classList.toggle('show',Object.keys(st).length===TOTAL)}
 var hash=new URLSearchParams(location.hash.slice(1));if(hash.has('progress')&&!get(KEY)){var imported={};hash.get('progress').split(',').forEach(function(n){if(/^([1-9]|1[0-4])$/.test(n))imported[n]=true});save(imported)}
 document.querySelectorAll('[data-step-checkbox]').forEach(function(c){c.onchange=function(){var s=load();s[c.dataset.stepCheckbox]=c.checked;save(s);draw()}});steps.forEach(function(x){x.querySelector('.step-card').onclick=function(e){if(x.classList.contains('done')&&!e.target.closest('label,button,a,pre'))x.classList.toggle('expanded')}});document.getElementById('continue-flow').onclick=function(){var x=current();x.classList.add('expanded');x.scrollIntoView({behavior:'smooth',block:'center'})};document.getElementById('reset-progress').onclick=function(){save({});draw()};
+var r2=document.getElementById('reset-progress-2');if(r2)r2.onclick=function(){save({});draw();location.href='#top'};
 document.querySelectorAll('.filter-btn').forEach(function(b){b.onclick=function(){var f=b.dataset.filter;document.querySelectorAll('.filter-btn').forEach(function(q){q.setAttribute('aria-pressed',q===b?'true':'false')});steps.forEach(function(x){x.classList.toggle('filtered-out',f!=='all'&&!(x.dataset.projects||'web python cli').includes(f))});draw()}});
 document.getElementById('export-progress').onclick=function(){var s=load(),done=steps.filter(function(x){return s[x.dataset.step]}).map(function(x){return '- [x] '+x.dataset.step+'. '+x.querySelector('h3').textContent}).join('\n');var text='# Vibe Coding Progress\n\nCompleted: '+Object.keys(s).length+'/'+TOTAL+'\n\n## Done\n'+(done||'- None yet')+'\n\n## Next action\n- [ ] '+current().querySelector('h3').textContent+'\n',a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/markdown'}));a.download='PROGRESS.md';a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},100)};
 document.getElementById('share-progress').onclick=function(){var u=new URL(location.href);u.hash='progress='+steps.filter(function(x){return load()[x.dataset.step]}).map(function(x){return x.dataset.step}).join(',');navigator.clipboard&&navigator.clipboard.writeText(u.href);this.textContent='Link copied';var b=this;setTimeout(function(){b.textContent='Share progress'},1400)};
