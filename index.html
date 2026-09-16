@@ -366,8 +366,7 @@ When tests pass, refactor only if they stay green.</code></pre><div class="hint"
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Run an automated final review</h3><span class="step-tag">Automation</span></div>
           <p>Move repeatable review work out of the interactive session. Review the staged diff before committing, especially for unwanted edits and secrets.</p>
-          <span class="code-label">Terminal</span><pre><button class="copy-btn">Copy</button><code class="language-bash">git diff --staged
-claude -p "review the staged diff and list risks, unexpected changes, and secrets" --output-format text</code></pre>
+          <span class="code-label">Prompt for Claude Code</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Review the staged diff and list any risks, unexpected changes, or secrets before I commit. Do not make changes, only report findings.</code></pre>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Staged diff reviewed and no critical risks remain</span></label>
         </div>
       </div>
