@@ -4,7 +4,7 @@
 
 Static GitHub Pages site for Vibe Coding Bootcamp notes.
 
-- `/index.html` is the primary entry point: a single linear 8-step checklist flow (idea -> local setup -> plan -> implement+verify -> QA -> commit -> deploy) with a persistent progress bar. Keep this page simple, focused, and free of long reference material.
+- `/index.html` is the primary entry point: a single linear 10-step checklist flow (shape idea -> setup -> Python venv when relevant -> plan -> test-first specification -> implement -> QA -> commit -> deploy) with a persistent progress bar. Keep this page simple, focused, and free of long reference material.
 - `/artifacts/playbook/detailed-playbook.html` is the archived detailed reference (10 sections: setup, workflow, CLAUDE.md, context, hooks, steering, automation, prompts, QA, notes). Link to it from the homepage instead of duplicating its content inline.
 - `/artifacts/notes/` holds durable personal notes committed as markdown files (not localStorage).
 
@@ -27,6 +27,7 @@ Static GitHub Pages site for Vibe Coding Bootcamp notes.
 6. Keep all user-facing content in English unless another language is explicitly requested.
 7. Do not add secrets, tokens, credentials, or private URLs to the repository.
 8. Keep external links explicit and safe (`target="_blank"` with `rel="noopener noreferrer"`).
+9. This is a personal, speed-first repository: after reviewing the diff and running relevant checks, commit and push directly to `main`. Do not force-push.
 
 ## Quality requirements
 
@@ -37,7 +38,9 @@ Static GitHub Pages site for Vibe Coding Bootcamp notes.
 - No horizontal overflow on mobile.
 - JavaScript must not throw errors when storage or clipboard APIs are unavailable.
 - Escape user-entered content before inserting it into the DOM.
+- For new behavior, define acceptance criteria and write behavior-focused tests before production code. Confirm that new tests fail for the expected missing behavior before implementation, then pass afterward.
 - Prefer checkable instructions: ask Claude to verify with tests, builds, screenshots, or explicit acceptance checks.
+- For Python projects, create and activate a local `.venv` before installing dependencies; keep `.venv/` and Python cache files in `.gitignore`.
 - Keep root CLAUDE.md short; move rare or deep instructions into scoped files or skills.
 - Use hooks for mandatory enforcement and CLAUDE.md for advisory guidance.
 - When forbidding an action, provide the preferred safe alternative.

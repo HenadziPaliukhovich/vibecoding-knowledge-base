@@ -197,7 +197,7 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
 
 <div class="progress-shell">
   <div class="progress-inner">
-    <span class="progress-label"><b id="progress-count">0</b>/8 steps</span>
+    <span class="progress-label"><b id="progress-count">0</b>/10 steps</span>
     <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
     <span class="progress-label" id="progress-pct">0%</span>
   </div>
@@ -207,9 +207,9 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
 
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow">One flow, eight steps</span>
+    <span class="eyebrow">One flow, ten steps</span>
     <h1>Vibe-code your idea <em>all the way to a deployed result</em>.</h1>
-    <p class="lead">No theory, no extra sections — just a linear checklist from the first thought to a live link. Check off steps as you go; progress is saved in your browser.</p>
+    <p class="lead">No theory, no extra sections — just a linear checklist from a shaped idea to a live link. Check off steps as you go; progress is saved in your browser.</p>
     <div class="hero-cta">
       <a class="btn primary" href="#step-1">Start the flow</a>
       <a class="btn ghost" href="artifacts/playbook/detailed-playbook.html" target="_blank" rel="noopener noreferrer">Open the reference</a>
@@ -229,13 +229,15 @@ footer.site .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:
       <div class="step" data-step="1" id="step-1">
         <div class="step-marker"><span>1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Write the idea as one sentence</h3><span class="step-tag">5 min</span></div>
-          <p>Without a clear goal, Claude will guess on your behalf. Describe what the product does, who it's for, and what "done" looks like.</p>
+          <div class="step-top"><h3>Shape the idea before opening the editor</h3><span class="step-tag">10 min</span></div>
+          <p>Start with the problem and the smallest useful outcome — not screens or technologies. This stops Claude from guessing the product scope for you.</p>
           <ul class="substeps">
-            <li>One sentence: "I want [what] for [who], so that [outcome]"</li>
-            <li>Define the Definition of Done — how you'll know it's finished</li>
+            <li>Problem: [who] struggles with [specific problem]</li>
+            <li>Smallest outcome: they can [one action] so that [result]</li>
+            <li>First-version boundary: list up to three essentials and what is explicitly not included</li>
+            <li>Definition of Done: a user can complete the main scenario from start to finish</li>
           </ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Idea written down</span></label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Problem, outcome, scope, and Definition of Done are clear</span></label>
         </div>
       </div>
 
@@ -261,7 +263,7 @@ claude   # sign in via browser or set ANTHROPIC_API_KEY</code></pre>
 git init
 claude
 /init   # Claude scans the project and creates a starter CLAUDE.md</code></pre>
-          <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>You'll need an empty GitHub repository at step 7 — you can create it right now on github.com.</div>
+          <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>You'll need an empty GitHub repository before step 9 — create it now on github.com.</div>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Project and git repository created</span></label>
         </div>
       </div>
@@ -269,30 +271,63 @@ claude
       <div class="step" data-step="4">
         <div class="step-marker"><span>4</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Describe the task and ask for a plan</h3><span class="step-tag">Plan mode</span></div>
-          <p>Don't ask Claude to write code right away. Ask for a plan first — one you can correct before anything actually changes.</p>
-          <pre><button class="copy-btn">Copy</button><code># Shift+Tab turns on Plan mode
-I want to build: [your sentence from step 1].
-What's the simplest approach? Create a step-by-step plan
-before writing any code.</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Plan received and looks good</span></label>
+          <div class="step-top"><h3>Create a local Python environment</h3><span class="step-tag">5 min · Python projects</span></div>
+          <p>Keep project packages isolated from your system Python. Create the environment before installing dependencies, and never commit it.</p>
+          <pre><button class="copy-btn">Copy</button><code>python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+printf ".venv/\n__pycache__/\n" >> .gitignore</code></pre>
+          <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Skip this step only when the project does not use Python. For Python, use <code>python -m pip</code> so packages go into the active environment.</div>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Local .venv is active and ignored by git</span></label>
         </div>
       </div>
 
       <div class="step" data-step="5">
         <div class="step-marker"><span>5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
-          <div class="step-top"><h3>Implement with verification, not by eye</h3><span class="step-tag">Implement</span></div>
-          <p>The golden rule: don't just ask Claude to "do it", ask it to "do it and verify it". Give Claude a test, a build, or a screenshot as the acceptance criteria.</p>
-          <pre><button class="copy-btn">Copy</button><code>Implement the plan. Run the app/tests after each change
-and fix failures before moving on. Show me the result
-(screenshot or test output) when done.</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Implemented and verified</span></label>
+          <div class="step-top"><h3>Turn the idea into a plan</h3><span class="step-tag">Plan mode</span></div>
+          <p>Do not ask Claude to write code yet. Ask for the smallest approach, assumptions, risks, and a step-by-step plan you can correct before anything changes.</p>
+          <pre><button class="copy-btn">Copy</button><code># Shift+Tab turns on Plan mode
+I want to build: [your sentence from step 1].
+What's the simplest approach? Create a step-by-step plan
+before writing any code.</code></pre>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Plan received and looks good</span></label>
         </div>
       </div>
 
       <div class="step" data-step="6">
         <div class="step-marker"><span>6</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+        <div class="step-card">
+          <div class="step-top"><h3>Define behavior and write failing tests first</h3><span class="step-tag">Test-first</span></div>
+          <p>Tests written after implementation often mirror the code and stay green even when the product behavior is wrong. Define observable behavior first, then prove the tests fail because that behavior does not exist.</p>
+          <pre><button class="copy-btn">Copy</button><code>Before changing production code:
+1. Restate acceptance criteria as user-visible behavior.
+2. Write tests for that behavior and realistic edge cases.
+3. Run them and show they fail for the right reason.
+4. Only then implement the smallest change to pass them.</code></pre>
+          <ul class="substeps">
+            <li>Test outcomes, UI, API responses, or other observable behavior — not private implementation details</li>
+            <li>A test must fail if the feature is removed or broken</li>
+            <li>Record the red run before implementation, then keep the full suite green afterward</li>
+          </ul>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Acceptance criteria and correctly failing tests are ready</span></label>
+        </div>
+      </div>
+
+      <div class="step" data-step="7">
+        <div class="step-marker"><span>7</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+        <div class="step-card">
+          <div class="step-top"><h3>Implement with verification, not by eye</h3><span class="step-tag">Implement</span></div>
+          <p>The golden rule: don't just ask Claude to "do it", ask it to "do it and verify it". Give Claude a test, a build, or a screenshot as the acceptance criteria.</p>
+          <pre><button class="copy-btn">Copy</button><code>Implement the plan. Run the app/tests after each change
+and fix failures before moving on. Show me the result
+(screenshot or test output) when done.</code></pre>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Implemented and verified</span></label>
+        </div>
+      </div>
+
+      <div class="step" data-step="8">
+        <div class="step-marker"><span>8</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
           <div class="step-top"><h3>Check it yourself, with your own eyes</h3><span class="step-tag">QA · 5 min</span></div>
           <p>Even with automated checks, always open the result yourself. Walk through the key scenarios like a real user would.</p>
@@ -301,12 +336,12 @@ and fix failures before moving on. Show me the result
             <li>No errors in the console / logs</li>
             <li>Works at mobile screen size, if it's a web app</li>
           </ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Result verified manually</span></label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Result verified manually</span></label>
         </div>
       </div>
 
-      <div class="step" data-step="7">
-        <div class="step-marker"><span>7</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="step" data-step="9">
+        <div class="step-marker"><span>9</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
           <div class="step-top"><h3>Commit and push to GitHub</h3><span class="step-tag">Commit</span></div>
           <p>Ask Claude for a meaningful commit message right away — don't leave it for "later".</p>
@@ -315,12 +350,12 @@ and fix failures before moving on. Show me the result
 # then in the terminal:
 git remote add origin https://github.com/USER/REPO.git
 git push -u origin main</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Code is on GitHub</span></label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Code is on GitHub</span></label>
         </div>
       </div>
 
-      <div class="step" data-step="8">
-        <div class="step-marker"><span>8</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
+      <div class="step" data-step="10">
+        <div class="step-marker"><span>10</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card">
           <div class="step-top"><h3>Deploy and check the live link</h3><span class="step-tag">Deploy</span></div>
           <p>For a static site — GitHub Pages with auto-deploy on every push. The repo should already have a workflow file for this.</p>
@@ -329,7 +364,7 @@ git push -u origin main</code></pre>
 
 # open the site:
 # https://USER.github.io/REPO/</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Site opens at the live link</span></label>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="10"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Site opens at the live link</span></label>
         </div>
       </div>
 
@@ -346,7 +381,7 @@ git push -u origin main</code></pre>
 <section class="levelup">
   <div class="wrap">
     <h2>Level up the flow</h2>
-    <p>Once the 8 steps feel natural, these four habits make Claude noticeably more reliable on bigger projects.</p>
+    <p>Once the 10 steps feel natural, these four habits make Claude noticeably more reliable on bigger projects.</p>
     <div class="level-grid">
 
       <div class="level-card">
