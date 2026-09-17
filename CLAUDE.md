@@ -27,6 +27,7 @@ Static GitHub Pages site for Vibe Coding Bootcamp notes.
 7. Do not add secrets, tokens, credentials, or private URLs to the repository.
 8. Keep external links explicit and safe (`target="_blank"` with `rel="noopener noreferrer"`).
 9. This is a personal, speed-first repository: after reviewing the diff and running relevant checks, commit and push directly to `main`. Do not force-push.
+10. Use the `git-safety` skill for commit review, commit message format, and undo/revert requests.
 
 ## Quality requirements
 

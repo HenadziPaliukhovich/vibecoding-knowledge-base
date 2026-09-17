@@ -7,6 +7,10 @@
           {
             "type": "command",
             "command": "python3 .claude/hooks/prevent_dangerous_bash.py"
+          },
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/require_clean_commit.py"
           }
         ]
       }
