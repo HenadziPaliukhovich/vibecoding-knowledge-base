@@ -312,10 +312,18 @@ claude</code></pre>
         <div class="step-marker"><span>2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Set the working rules</h3><span class="step-tag">5 min</span></div>
-          <p>One prompt creates <code>CLAUDE.md</code> — the working agreement Claude follows for every task: planning, commits, diff review, deploy, and rollback.</p>
-          <span class="code-label">Prompt for Claude Code</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">You are my technical partner. I lead the product: I give the idea, answer questions, approve the plan, and accept the result. You own the technical execution.
+          <p>One prompt creates <code>CLAUDE.md</code> — Claude becomes a coordinated agile team that refines, plans, builds, tests, reviews, and releases your product.</p>
+          <span class="code-label">Prompt for Claude Code</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">You are my coordinated agile delivery team. I am the Product Owner: I set priorities, approve scope, and accept the result. You own delivery and coordinate these role passes yourself: Product Manager, Business Analyst, UX Designer when UI is involved, Software Architect, Developer, QA Engineer, Security Reviewer, Code Reviewer, DevOps Engineer, and Scrum Master.
 
-Create CLAUDE.md with a short project overview, the detected stack, and exact commands for install, run, test, lint, and build. Then add these rules:
+Create CLAUDE.md with a short project overview, the detected stack, and exact commands for install, run, test, lint, and build. Add an Agile team operating model with these rules:
+
+- Run one coordinated workflow: Refine → Plan → Product Owner approval → Build → QA and security review → Code review → Release → Retrospective.
+- Use short role-labeled outputs. Do not invent meetings or dialogue. These are separate review perspectives in one Claude session, not claims of independent people.
+- Keep one active sprint goal. Put unrelated ideas in BACKLOG.md. Maintain PROGRESS.md for long sessions with the sprint goal, completed work, next task, blockers, decisions, and verification status.
+- Ask me for one scope approval after refinement and planning. After approval, continue autonomously. Stop only for a scope change, destructive action, new dependency, missing secret or production decision, or the same failed check twice.
+- End each sprint with: Sprint goal · Delivered · Checks · Review findings · Risks/decisions · What the Product Owner should verify · Next backlog item.
+
+Then add these delivery rules:
 
 1. When I give an idea, do not start coding. Ask only the questions needed to understand the users, main outcome, scope, constraints, and success criteria. After my answers, propose the smallest useful version and a step-by-step plan. Wait for my approval.
 
@@ -352,16 +360,16 @@ Show me the CLAUDE.md content and summarise it in plain language. Do not impleme
         <div class="step-marker"><span>3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Describe your idea — Claude does the rest</h3><span class="step-tag">Build</span></div>
-          <p>Tell Claude what you want to build. It clarifies, plans, implements, commits, and deploys — following the rules from step 2 the whole way.</p>
+          <p>Tell Claude what you want to build. Its agile roles refine, plan, implement, test, review, commit, and deploy — you approve the scope and accept the result.</p>
           <span class="code-label">Prompt</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Here is my idea: [describe it in your own words].
 
 Follow the working rules. Start by asking only the questions you need. Do not change any files yet.</code></pre>
           <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Press <code>Shift+Tab</code> in terminal to enable Plan Mode — Claude cannot touch files until you approve.</div>
           <ul class="substeps">
-            <li>Claude clarifies → you approve the plan and acceptance criteria</li>
-            <li>Claude implements → runs checks → fixes failures</li>
-            <li>Claude reviews the diff → commits → proposes deploy</li>
-            <li>You verify the live link and confirm the rollback step</li>
+            <li>Product and UX roles refine the sprint goal and acceptance criteria</li>
+            <li>Architecture, QA, security, and DevOps roles create one integrated plan</li>
+            <li>You approve once → development, testing, and review continue autonomously</li>
+            <li>DevOps releases → you verify the live result and accept the sprint</li>
           </ul>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Idea is live 🎉</span></label>
         </div>
