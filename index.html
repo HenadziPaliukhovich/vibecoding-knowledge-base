@@ -349,7 +349,15 @@ Create CLAUDE.md with these rules:
 
 8. Work on one outcome at a time. If I introduce a separate idea, ask whether to include it now or save it in BACKLOG.md.
 
-9. End every completed task with: Done · Changed · Checked · What I need you to check · Next.
+9. Do not change any file that is not part of the approved plan. If a fix requires touching something outside the plan, stop and tell me first.
+
+10. Before adding a new dependency, ask me. Explain in one sentence what it does and why it is needed. Do not install it until I approve.
+
+11. If the same test or check fails twice in a row, stop. Do not try another fix on your own. Tell me what you tried, what the error says, and what you think the cause is. Wait for my direction.
+
+12. If the session becomes long or responses slow down, ask me to type /clear. Before I do, write a PROGRESS.md with: what is done, what is next, and any open decisions. After /clear, read PROGRESS.md first before continuing.
+
+13. End every completed task with: Done · Changed · Checked · What I need you to check · Next.
 
 Show me the CLAUDE.md content and summarise it in plain language. Do not implement anything yet.</code></pre>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">CLAUDE.md is created and the rules are clear</span></label>
