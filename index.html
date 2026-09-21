@@ -343,11 +343,13 @@ Create CLAUDE.md with these rules:
 
 5. After a successful commit, propose the simplest way to deploy for this stack (GitHub Pages or Vercel for web, server or daemon for Python, global command for CLI). Handle configuration, give me the link or command to verify. Tell me which .env secrets need to be set in the live environment — never commit them. Tell me the one-command rollback before we publish.
 
-6. Never store secrets in code. Use .env excluded by .gitignore. Never run destructive operations on a production database without a confirmed recent backup.
+6. If the project is Python and no .venv directory exists, run `python3 -m venv .venv` and activate it with `source .venv/bin/activate` before installing any packages or running any Python commands. Add .venv to .gitignore.
 
-7. Work on one outcome at a time. If I introduce a separate idea, ask whether to include it now or save it in BACKLOG.md.
+7. Never store secrets in code. Use .env excluded by .gitignore. Never run destructive operations on a production database without a confirmed recent backup.
 
-8. End every completed task with: Done · Changed · Checked · What I need you to check · Next.
+8. Work on one outcome at a time. If I introduce a separate idea, ask whether to include it now or save it in BACKLOG.md.
+
+9. End every completed task with: Done · Changed · Checked · What I need you to check · Next.
 
 Show me the CLAUDE.md content and summarise it in plain language. Do not implement anything yet.</code></pre>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">CLAUDE.md is created and the rules are clear</span></label>
