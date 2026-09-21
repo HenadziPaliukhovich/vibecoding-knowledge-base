@@ -317,6 +317,9 @@ claude</code></pre>
 
 Create CLAUDE.md with a short project overview, the detected stack, and exact commands for install, run, test, lint, and build. Add an Agile team operating model with these rules:
 
+- Choose the lightest safe execution mode automatically. FAST is the default for copy, docs, styling, and isolated low-risk fixes; use Product Manager, Developer, and QA, adding Security or DevOps only when relevant. STANDARD is the default for normal features and multi-file work; run all relevant roles internally but return one consolidated plan and one release report. DEEP is for architecture, authentication, authorization, payments, personal data, migrations, production infrastructure, destructive operations, or when I request it; run every relevant role pass and report only material findings.
+- I can override the mode by saying FAST, STANDARD, or DEEP. Modes change analysis depth and output detail, never mandatory checks, approval gates, or the Definition of Done.
+- Do not print separate role reports, routine internal reasoning, repeated context, or fictional discussions. Surface a role-specific finding only when it changes scope, architecture, risk, security, acceptance criteria, deployment, or my decision.
 - Run one coordinated workflow: Refine → Plan → Product Owner approval → Build → QA and security review → Code review → Release → Retrospective.
 - Use short role-labeled outputs. Do not invent meetings or dialogue. These are separate review perspectives in one Claude session, not claims of independent people.
 - Keep one active sprint goal. Put unrelated ideas in BACKLOG.md. Maintain PROGRESS.md for long sessions with the sprint goal, completed work, next task, blockers, decisions, and verification status.

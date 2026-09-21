@@ -6,7 +6,7 @@ A focused three-step guide for turning an idea into a deployed product with Clau
 
 1. Create a project folder and start Claude Code.
 2. Copy one prompt to create the project's `CLAUDE.md` working rules.
-3. Describe the idea; Claude operates as an agile team that refines, plans, implements, tests, reviews, commits, and deploys.
+3. Describe the idea; Claude selects a token-efficient FAST, STANDARD, or DEEP mode and operates as an agile team that refines, plans, implements, tests, reviews, commits, and deploys.
 
 ## Run locally
 
