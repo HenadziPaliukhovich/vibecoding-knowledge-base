@@ -6,7 +6,7 @@
 <title>Vibe Coding Flow — from idea to deploy</title>
 <meta name="description" content="One linear checklist: how to vibe-code a project with Claude Code from idea to a deployed result, without extra theory.">
 <meta property="og:title" content="Vibe Coding Flow — from idea to deploy">
-<meta property="og:description" content="A practical 9-step checklist for shipping with Claude Code.">
+<meta property="og:description" content="A practical 3-step guide for shipping with Claude Code.">
 <meta property="og:type" content="website">
 <script>(function(){try{var m=localStorage.getItem('vibe_flow_theme_mode'),t=localStorage.getItem('vibe_flow_theme'),h=new Date().getHours();document.documentElement.setAttribute('data-theme',m==='manual'&&(t==='light'||t==='dark')?t:(h>=7&&h<19?'light':'dark'))}catch(e){}})();</script>
 <link rel="preconnect" href="https://api.fontshare.com">
@@ -299,11 +299,11 @@ body.subagents-active .progress-shell,body.subagents-active .focus-bar{display:n
           <button type="button" class="preset-btn" data-preset="cli">Git Diff Clean-up CLI</button>
           <button type="button" class="preset-btn" data-preset="qa">QA Automation Suite</button>
           <button type="button" class="preset-btn" id="clear-brief">Clear</button>
-        </div><div class="studio-grid"><div class="studio-field"><label for="brief-type">Project type</label><select id="brief-type"><option value="web">Web project</option><option value="python">Python tool</option><option value="cli">CLI tool</option><option value="qa">QA automation</option></select></div><div class="studio-field"><label for="brief-name">Project name</label><input id="brief-name" placeholder="e.g. Launch notes"></div><div class="studio-field full"><label for="brief-idea">Idea</label><textarea id="brief-idea" placeholder="What are you building?"></textarea></div><div class="studio-field"><label for="brief-user">Who is it for?</label><input id="brief-user" placeholder="e.g. indie makers"></div><div class="studio-field"><label for="brief-outcome">Smallest useful outcome</label><input id="brief-outcome" placeholder="e.g. publish a note in one minute"></div><div class="studio-field full"><label for="brief-boundary">What is explicitly out of scope?</label><input id="brief-boundary" placeholder="e.g. accounts, payments, team collaboration"></div></div><div class="studio-actions"><button class="tool-btn primary-action" id="generate-brief">Create my starting prompt</button><button class="tool-btn" id="copy-prompt">Copy prompt for Claude</button></div><div class="studio-output" id="studio-output"><span class="code-label">PROJECT_BRIEF.md</span><pre><code class="language-markdown" id="brief-result"></code></pre></div><div class="studio-cta" id="studio-cta" hidden><a class="btn primary" href="#step-1">Go to Step 1 →</a><p class="studio-cta-hint">Your brief is ready. Paste it into Claude Code and follow the 9-step flow below.</p></div></div></div></section>
+        </div><div class="studio-grid"><div class="studio-field"><label for="brief-type">Project type</label><select id="brief-type"><option value="web">Web project</option><option value="python">Python tool</option><option value="cli">CLI tool</option><option value="qa">QA automation</option></select></div><div class="studio-field"><label for="brief-name">Project name</label><input id="brief-name" placeholder="e.g. Launch notes"></div><div class="studio-field full"><label for="brief-idea">Idea</label><textarea id="brief-idea" placeholder="What are you building?"></textarea></div><div class="studio-field"><label for="brief-user">Who is it for?</label><input id="brief-user" placeholder="e.g. indie makers"></div><div class="studio-field"><label for="brief-outcome">Smallest useful outcome</label><input id="brief-outcome" placeholder="e.g. publish a note in one minute"></div><div class="studio-field full"><label for="brief-boundary">What is explicitly out of scope?</label><input id="brief-boundary" placeholder="e.g. accounts, payments, team collaboration"></div></div><div class="studio-actions"><button class="tool-btn primary-action" id="generate-brief">Create my starting prompt</button><button class="tool-btn" id="copy-prompt">Copy prompt for Claude</button></div><div class="studio-output" id="studio-output"><span class="code-label">PROJECT_BRIEF.md</span><pre><code class="language-markdown" id="brief-result"></code></pre></div><div class="studio-cta" id="studio-cta" hidden><a class="btn primary" href="#step-1">Go to Step 1 →</a><p class="studio-cta-hint">Your brief is ready. Paste it into Claude Code at step 3.</p></div></div></div></section>
 <section class="flow" id="flow">
   <div class="wrap">
     <div class="flow-header">
-      <h2>From idea to live product</h2>
+      <h2>3 steps from idea to live product</h2>
       <button class="reset-link" id="reset-progress">Reset progress</button>
     </div>
     <div class="flow-tools" aria-label="Flow controls">
@@ -315,140 +315,71 @@ body.subagents-active .progress-shell,body.subagents-active .focus-bar{display:n
     </div>
 
     <div class="timeline" id="timeline">
+
       <div class="step" data-step="1" id="step-1" data-projects="web python cli qa">
         <div class="step-marker"><span>1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Create a project folder and start Claude</h3><span class="step-tag">2 min</span></div>
-          <p>Start with an empty workspace. Open Claude Code in it; the next step sets the rules it will follow for this project.</p>
+          <div class="step-top"><h3>Create a folder and start Claude</h3><span class="step-tag">2 min</span></div>
+          <p>Start with an empty workspace. Open Claude Code inside it — the next step sets the rules it will follow.</p>
           <span class="code-label">Terminal</span><pre><button class="copy-btn">Copy</button><code class="language-bash">mkdir my-project && cd my-project
 git init
 claude</code></pre>
-          <span class="code-label">Python projects (virtual environment)</span><pre><button class="copy-btn">Copy</button><code class="language-bash">python3 -m venv .venv && source .venv/bin/activate
-claude</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Create an empty GitHub repository now — you will connect and push it at step 8.</div>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Project folder, git repository, and Claude Code session are open</span></label>
+          <span class="code-label">Python projects</span><pre><button class="copy-btn">Copy</button><code class="language-bash">python3 -m venv .venv && source .venv/bin/activate
+claude</code></pre>
+          <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Create an empty GitHub repository now — you will connect it in step 3.</div>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Folder, git repo, and Claude Code session are open</span></label>
         </div>
       </div>
 
       <div class="step" data-step="2" id="step-2" data-projects="web python cli qa">
         <div class="step-marker"><span>2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Set the working agreement</h3><span class="step-tag">5 min</span></div>
-          <p>Set the rules once. Claude saves them in CLAUDE.md and follows them whenever you work on this project.</p>
-          <span class="code-label">Prompt for Claude Code</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">You are my technical partner. I lead the product: I give the idea, answer product questions, approve the plan, and accept the result. You own the technical execution.
+          <div class="step-top"><h3>Set the working rules</h3><span class="step-tag">5 min</span></div>
+          <p>One prompt creates <code>CLAUDE.md</code> — the working agreement Claude follows for every task: planning, commits, diff review, deploy, and rollback.</p>
+          <span class="code-label">Prompt for Claude Code</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">You are my technical partner. I lead the product: I give the idea, answer questions, approve the plan, and accept the result. You own the technical execution.
 
-Create CLAUDE.md for this project. Add these working rules:
-- When I give an idea, do not start coding. Ask only the questions needed to understand the users, main outcome, scope, constraints, and success criteria.
-- After my answers, create PRODUCT.md with the approved user, problem, first useful version, exclusions, and success criteria. Then propose the smallest useful version and a clear step-by-step plan. Wait for my approval before changing product files.
-- Once I approve the plan, create or update README.md with a short product description and how to run or use it. Create .gitignore before adding dependencies or local configuration; include secrets, generated files, dependencies, caches, and local environments appropriate to the chosen stack.
-- Never write API keys, tokens, or passwords directly in code. Store them in a local .env file (or equivalent) excluded by .gitignore, and read them from environment variables. Before configuring the live environment in the release step, tell me exactly which secrets need to be set there.
-- Never run destructive or schema-changing operations against a production database. Use a local or staging database for development, and ask before any migration or operation that touches real production data. Before any production migration, confirm a recent backup exists.
-- After approval, choose the technical approach, prepare the required environment, implement the work, run relevant checks, fix issues, and explain results in plain language.
-- Before implementing each planned step, give a short brief: what this step does, why it's needed, and what will change. Keep it to two or three plain-language sentences — no jargon.
-- Create DECISIONS.md only when we make a meaningful product or technical decision that would be hard to reconstruct later. Record the decision, its date, and a brief reason.
-- Before a release, create or update CHECKLIST.md with the smallest practical manual release checks for this project. Use it for the final review and update it when a recurring issue is found.
-- Before switching tasks or clearing context, save the current plan, decisions, completed work, open questions, and next action in PROGRESS.md. At the start of a new session, read PROGRESS.md first. Create PROGRESS.md when the first planned task starts.
-- Before any non-trivial work, show a short task card: what user outcome we are delivering, how we will know it works, which areas will change, and the one decision you need from me, if any. Wait for my “ok”.
-- Work on one outcome at a time. If I introduce a separate idea, ask whether to include it now or save it in BACKLOG.md. Create BACKLOG.md only when there is a first deferred idea.
-- Act independently on routine technical work, implementation, checks, documentation, and small fixes. Ask before destructive changes, paid services, irreversible migrations, changes to the product direction, or publishing confidential information.
-- Before a push to main, show one short release note: what changed, what was checked, and what will be published. Wait for my “ok”, then commit, push to main, deploy, and verify the live link.
-- Use Conventional Commits format for commit messages (feat:, fix:, test:, docs:, refactor:, chore:). Never commit if tests or linters are currently failing — fix them first.
-- End every completed task with: Done; Changed; Checked; What I need you to check; Next.
+Create CLAUDE.md with these rules:
 
-Then show me the CLAUDE.md content and summarise it in plain language. Do not implement the product yet.</code></pre><ul class="substeps"><li>Keep <code>CLAUDE.md</code> concise and under 150 lines so rules are never ignored</li><li>Claude shows a short task card and waits for <code>ok</code> before non-trivial work</li><li>After discovery: Claude creates <code>PRODUCT.md</code>; after approval, it creates <code>README.md</code>, <code>.gitignore</code>, and <code>PROGRESS.md</code></li><li>When needed: Claude maintains <code>DECISIONS.md</code>, <code>BACKLOG.md</code>, and the pre-release <code>CHECKLIST.md</code></li></ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">CLAUDE.md defines how Claude works with me on this project</span></label>
+1. When I give an idea, do not start coding. Ask only the questions needed to understand the users, main outcome, scope, constraints, and success criteria. After my answers, propose the smallest useful version and a step-by-step plan. Wait for my approval.
+
+2. After approval, define acceptance criteria as user-visible behavior. Propose the smallest set of automated and manual checks. Wait for my approval before implementing.
+
+3. Implement step by step. Run the relevant checks after each change. Fix failures before moving on. After each change explain in two or three plain sentences what the code now does.
+
+4. Before a commit, review the staged diff for risks, unexpected changes, and secrets. Report findings. Then commit with a Conventional Commits message (feat:, fix:, docs:, chore:). Never commit if tests or linters are failing.
+
+5. After a successful commit, propose the simplest way to deploy for this stack (GitHub Pages or Vercel for web, server or daemon for Python, global command for CLI). Handle configuration, give me the link or command to verify. Tell me which .env secrets need to be set in the live environment — never commit them. Tell me the one-command rollback before we publish.
+
+6. Never store secrets in code. Use .env excluded by .gitignore. Never run destructive operations on a production database without a confirmed recent backup.
+
+7. Work on one outcome at a time. If I introduce a separate idea, ask whether to include it now or save it in BACKLOG.md.
+
+8. End every completed task with: Done · Changed · Checked · What I need you to check · Next.
+
+Show me the CLAUDE.md content and summarise it in plain language. Do not implement anything yet.</code></pre>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">CLAUDE.md is created and the rules are clear</span></label>
         </div>
       </div>
 
       <div class="step" data-step="3" id="step-3" data-projects="web python cli qa">
         <div class="step-marker"><span>3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Give Claude your idea</h3><span class="step-tag">Discovery</span></div>
-          <p>Describe the product in your own words. Claude clarifies what you need, then gives you a plan to approve — it does not guess and start coding.</p>
+          <div class="step-top"><h3>Describe your idea — Claude does the rest</h3><span class="step-tag">Build</span></div>
+          <p>Tell Claude what you want to build. It clarifies, plans, implements, commits, and deploys — following the rules from step 2 the whole way.</p>
           <span class="code-label">Prompt</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Here is my idea: [describe it in your own words].
 
-Follow the project instructions. First ask only the questions you need to understand the goal, users, main scenario, scope, and success criteria. Do not make changes yet. If my idea bundles more than one outcome, tell me so we can tackle them one at a time.
-
-After I answer, give me the smallest useful version and a step-by-step plan for approval.</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Pro-tip: Press <code>Shift+Tab</code> in terminal to toggle Claude Code Plan Mode so Claude cannot touch files until you approve.</div>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Claude has clarified the idea, created PRODUCT.md, and I have approved the plan</span></label>
+Follow the working rules. Start by asking only the questions you need. Do not change any files yet.</code></pre>
+          <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Use the <strong>Studio above</strong> to turn your idea into a ready brief before pasting it here. Press <code>Shift+Tab</code> in terminal to enable Plan Mode — Claude cannot touch files until you approve.</div>
+          <ul class="substeps">
+            <li>Claude clarifies → you approve the plan and acceptance criteria</li>
+            <li>Claude implements → runs checks → fixes failures</li>
+            <li>Claude reviews the diff → commits → proposes deploy</li>
+            <li>You verify the live link and confirm the rollback step</li>
+          </ul>
+          <label class="done-toggle"><input type="checkbox" data-step-checkbox="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Idea is live 🎉</span></label>
         </div>
       </div>
 
-      <div class="step" data-step="4" id="step-4" data-projects="web python cli qa">
-        <div class="step-marker"><span>4</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
-        <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Agree on what “working” means</h3><span class="step-tag">Acceptance criteria</span></div>
-          <p>Turn the approved plan into clear, observable checks. Claude chooses the right kind of automated or manual verification for this project.</p>
-          <span class="code-label">Test plan</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Based on the approved plan, define the acceptance criteria as user-visible behavior. Propose the smallest useful set of automated checks and manual checks. Explain what each check proves, then wait for my approval before implementing.</code></pre><ul class="substeps"><li>Test UI, API responses, CLI output, or other observable behavior — not private implementation details</li><li>A test must fail if the feature is removed or broken</li><li>If the project has logins or private data: confirm protected pages and API routes reject unauthenticated access</li><li>If the project accepts user input: confirm it is validated on the server, not only in the interface</li><li>If different users share the app: confirm one user cannot read or change another user’s data</li></ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Acceptance criteria and verification approach are approved</span></label>
-        </div>
-      </div>
-
-      <div class="step" data-step="5" id="step-5" data-projects="web python cli qa">
-        <div class="step-marker"><span>5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
-        <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Implement the smallest change</h3><span class="step-tag">Implement</span></div>
-          <p>Implement only what makes the approved failing tests pass. Run the relevant tests after each small change and fix failures before moving on.</p>
-          <span class="code-label">Prompt</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Implement the approved plan against the failing tests.
-Run the relevant test suite after each change.
-When tests pass, refactor only if they stay green.
-If you add a new dependency, confirm it installs and imports cleanly before relying on it.
-After each change, explain in two or three plain-language sentences what the code now does.</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Context tip: If the session gets long or sluggish, ask Claude to update <code>PROGRESS.md</code>, type <code>/clear</code>, and continue with a fresh context.</div>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Implementation passes the relevant tests</span></label>
-        </div>
-      </div>
-
-      <div class="step" data-step="6" id="step-6" data-projects="web python cli qa">
-        <div class="step-marker"><span>6</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
-        <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Check the main scenario yourself</h3><span class="step-tag">QA · 5 min</span></div>
-          <p>Automated checks are necessary but not sufficient. Starting without errors is not the same as working — open the result and use it as a real person would.</p>
-          <ul class="substeps"><li>Complete the main user scenario manually</li><li>Try an empty field, an invalid value, and a mid-action network drop — not just the happy path</li><li>Check relevant logs or error output (and browser console for web apps)</li><li>For web apps: check responsive and mobile layout</li><li>Confirm the Definition of Done from step 3</li></ul>
-          <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Need an independent review? <a href="#subagents" id="subagents-link-step6">Subagents</a> let you run a dedicated code reviewer, security checker, or test writer in a separate Claude context — without interrupting your main flow.</div>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">I tried it myself, and it works</span></label>
-        </div>
-      </div>
-
-      <div class="step" data-step="7" id="step-7" data-projects="web python cli qa">
-        <div class="step-marker"><span>7</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
-        <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Run an automated final review</h3><span class="step-tag">Automation</span></div>
-          <p>Move repeatable review work out of the interactive session. Review the staged diff before committing, especially for unwanted edits and secrets.</p>
-          <span class="code-label">Prompt for Claude Code</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Review the staged diff and list any risks, unexpected changes, or secrets before I commit. Do not make changes, only report findings.</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="7"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">I checked the diff — nothing risky</span></label>
-        </div>
-      </div>
-
-      <div class="step" data-step="8" id="step-8" data-projects="web python cli qa">
-        <div class="step-marker"><span>8</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
-        <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Commit and push your project</h3><span class="step-tag">Commit</span></div>
-          <p>This repository is speed-first: review the diff, run checks, then commit and push directly to <code>main</code>. Never force-push.</p>
-          <span class="code-label">Prompt for Claude Code</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">Review the current changes, then stage, commit, and push them directly to main on the remote repository. Never force-push.
-
-Write a clear, short commit message describing what changed and why. If no remote is configured yet, set it up first, then push.</code></pre>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="8"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Changes are safely saved</span></label>
-        </div>
-      </div>
-
-      <div class="step" data-step="9" id="step-9" data-projects="web python cli qa">
-        <div class="step-marker"><span>9</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
-        <div class="step-card"><span class="next-badge">Next up</span>
-          <div class="step-top"><h3>Run in the real environment</h3><span class="step-tag">Release</span></div>
-          <p>A project is only finished when it runs where you actually need it. Let Claude configure and verify the target run environment for your stack.</p>
-          <span class="code-label">Prompt for Claude Code</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">The core changes are committed. Propose the simplest way to run or publish this project so I can use it end-to-end (e.g. GitHub Pages or Vercel for web, server or daemon for Python, or a global command for CLI).
-
-Explain what needs to happen in plain language, handle the configuration yourself, and give me the command or link to test it. If any secrets from .env are needed in the live environment, tell me exactly which ones to set there — never commit them.
-
-Also tell me the simplest way to roll back to the previous working version if something breaks after this release, in case I need it.</code></pre>
-          <ul class="substeps"><li>Web: verify the public link on desktop and mobile</li><li>CLI: run the installed command from any directory with real inputs</li><li>Python / Backend: verify the service or bot starts cleanly and responds</li><li>Confirm you know the rollback step before moving on</li></ul>
-          <label class="done-toggle"><input type="checkbox" data-step-checkbox="9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">It’s live, and I’ve checked it works</span></label>
-        </div>
-      </div>
-
-    <div class="finish" id="finish-card">
-      <h3>100%. Product is live 🎉</h3>
-      <p>You went all the way from idea to a deployed live link. To start your next project, reset progress.</p>
-      <button class="btn primary" id="reset-progress-2">Start new project</button>
     </div>
     </div>
   </div>
@@ -762,7 +693,7 @@ Make it a security review specialist for authentication, authorization, input va
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 <script>
 (function(){
-var root=document.documentElement,btn=document.getElementById('theme-toggle'),modeBtn=document.getElementById('theme-mode'),TOTAL=9,KEY='vibe_flow_progress',TK='vibe_flow_theme',MK='vibe_flow_theme_mode',steps=[].slice.call(document.querySelectorAll('.step'));
+var root=document.documentElement,btn=document.getElementById('theme-toggle'),modeBtn=document.getElementById('theme-mode'),TOTAL=3,KEY='vibe_flow_progress',TK='vibe_flow_theme',MK='vibe_flow_theme_mode',steps=[].slice.call(document.querySelectorAll('.step'));
 if(window.hljs)document.querySelectorAll('pre code').forEach(function(x){hljs.highlightElement(x)});
 function clockTheme(){var h=new Date().getHours();return h>=7&&h<19?'light':'dark'}function get(k){try{return localStorage.getItem(k)}catch(e){return null}}function put(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 var mode=get(MK)==='manual'?'manual':'auto',theme=mode==='manual'&&/^(light|dark)$/.test(get(TK)||'')?get(TK):clockTheme();
