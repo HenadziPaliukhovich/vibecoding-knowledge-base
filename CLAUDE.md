@@ -41,6 +41,8 @@ Static GitHub Pages site for Vibe Coding Bootcamp notes.
 - For new behavior, define acceptance criteria and write behavior-focused tests before production code. Confirm that new tests fail for the expected missing behavior before implementation, then pass afterward.
 - Prefer checkable instructions: ask Claude to verify with tests, builds, screenshots, or explicit acceptance checks.
 - For Python projects, create and activate a local `.venv` before installing dependencies; keep `.venv/` and Python cache files in `.gitignore`.
+- Run `ruff check` and `mypy` before committing any Python code. Document any linter exceptions in comments with reasoning.
+- Treat `input/` directories as read-only (reference data and test fixtures). Always write generated files to `output/` directories.
 - Keep root CLAUDE.md short; move rare or deep instructions into scoped files or skills.
 - Use hooks for mandatory enforcement and CLAUDE.md for advisory guidance.
 - When forbidding an action, provide the preferred safe alternative.

@@ -1,6 +1,6 @@
 ---
 name: git-safety
-description: Use when the user asks to save progress, commit, undo, revert, cancel changes, or when a logical step is finished and needs to be safely checkpointed.
+description: Use when the user asks to "save progress", "commit", "undo", "revert", or "cancel changes", or when a logical step is successfully finished and needs to be safely checkpointed.
 ---
 
 # Skill: git-safety
