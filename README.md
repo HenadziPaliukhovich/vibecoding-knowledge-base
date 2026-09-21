@@ -1,12 +1,12 @@
-# Vibe Coding Knowledge Base
+# Vibe Coding Flow
 
-A static knowledge base for vibe coding: practical guidance, QA checklists, prompt templates, and example `CLAUDE.md` files.
+A focused three-step guide for turning an idea into a deployed product with Claude Code.
 
-## Site
+## The flow
 
-Once GitHub Pages is enabled, the site is available at:
-
-`https://henadzipaliukhovich.github.io/vibecoding-knowledge-base/`
+1. Create a project folder and start Claude Code.
+2. Copy one prompt to create the project's `CLAUDE.md` working rules.
+3. Describe the idea; Claude clarifies, plans, tests, implements, reviews, commits, and deploys.
 
 ## Run locally
 
@@ -16,20 +16,14 @@ python3 -m http.server 8000
 
 Open `http://localhost:8000`.
 
-## Updating
+## Deploy
 
-```bash
-git add .
-git commit -m "Update knowledge base"
-git push
-```
+GitHub Pages deploys automatically after a push to `main`:
 
-Deployment runs automatically after every push to `main`. To redeploy without changing files: **Actions → Deploy GitHub Pages → Run workflow**.
+`https://henadzipaliukhovich.github.io/vibecoding-knowledge-base/`
 
-## Structure
+## Files
 
-- `index.html` — the site
-- `CLAUDE.md` — rules for the AI agent
-- `.claude/settings.json` — hooks configuration (deterministic enforcement)
-- `artifacts/` — reusable prompts, checklists, and examples
-- `.github/workflows/deploy-pages.yml` — automated deployment
+- `index.html` — the complete site
+- `CLAUDE.md` — project rules for Claude
+- `.claude/settings.json` — deterministic hooks configuration

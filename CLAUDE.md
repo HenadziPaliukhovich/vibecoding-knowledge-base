@@ -4,8 +4,7 @@
 
 Static GitHub Pages site for Vibe Coding Bootcamp notes.
 
-- `/index.html` is the primary entry point: a single linear 10-step checklist flow (shape idea -> setup -> Python venv when relevant -> plan -> test-first specification -> implement -> QA -> commit -> deploy) with a persistent progress bar. Keep this page simple, focused, and free of long reference material.
-- `/artifacts/notes/` holds durable personal notes committed as markdown files (not localStorage).
+- `/index.html` is the only user-facing page: a single linear 3-step flow (start a project -> create CLAUDE.md -> describe the idea and let Claude plan, implement, verify, commit, and deploy) with persistent progress. Keep it focused and free of optional navigation, duplicate reference material, and alternate workflows.
 
 ## Technical constraints
 
@@ -50,9 +49,8 @@ Static GitHub Pages site for Vibe Coding Bootcamp notes.
 ## Definition of done
 
 - [ ] Page opens without console errors.
-- [ ] Navigation links work.
-- [ ] Copy buttons work or fail gracefully.
-- [ ] Custom note add/delete flow works.
+- [ ] The three-step flow is complete and unambiguous.
+- [ ] Start, progress, reset, and copy buttons work or fail gracefully.
 - [ ] Layout is usable on mobile and desktop.
 - [ ] No credentials or generated secrets are committed.
 - [ ] Changes are summarized with affected files and checks performed.

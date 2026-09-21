@@ -257,22 +257,16 @@ body.subagents-active .progress-shell,body.subagents-active .focus-bar{display:n
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 17V7l8-4 8 4v10l-8 4-8-4Z"/><path d="M4 7l8 4 8-4M12 11v10"/></svg>
       Vibe Coding Flow
     </a>
-    <nav class="primary-tabs" aria-label="Main sections">
-      <a class="primary-tab" id="tab-flow" href="#flow-view" aria-current="page">Flow</a>
-      <a class="primary-tab" id="tab-subagents" href="#subagents">Subagents</a>
-      <a class="primary-tab" href="#resources">Resources</a>
-    </nav>
     <div class="head-actions">
       <button class="theme-mode" id="theme-mode" aria-label="Theme mode: automatic">Auto theme</button>
       <button id="theme-toggle" aria-label="Toggle theme"></button>
-      <button class="theme-mode" id="keyboard-help" aria-label="Keyboard shortcuts">?</button>
     </div>
   </div>
 </header>
 
 <div class="progress-shell">
   <div class="progress-inner">
-    <span class="progress-label"><b id="progress-count">0</b>/9 steps</span>
+    <span class="progress-label"><b id="progress-count">0</b>/3 steps</span>
     <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
     <span class="progress-label" id="progress-pct">0%</span>
   </div>
@@ -283,11 +277,10 @@ body.subagents-active .progress-shell,body.subagents-active .focus-bar{display:n
 
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow">You lead the product. Claude ships it.</span>
-    <h1>Turn your idea into <em>a live product with Claude Code</em>.</h1>
-    <p class="lead">You define the outcome and approve decisions. Claude Code owns the technical work: planning, implementation, checks, Git and deployment.</p>
+    <h1>Ship with Claude Code</h1>
+    <p class="lead">Three steps. You approve. Claude builds, commits, and deploys.</p>
     <div class="hero-cta">
-      <a class="btn primary" href="#step-1">Start my project</a>
+      <a class="btn primary" href="#step-1">Start</a>
     </div>
   </div>
 </section>
@@ -299,17 +292,10 @@ body.subagents-active .progress-shell,body.subagents-active .focus-bar{display:n
       <h2>3 steps from idea to live product</h2>
       <button class="reset-link" id="reset-progress">Reset progress</button>
     </div>
-    <div class="flow-tools" aria-label="Flow controls">
-      <div class="project-filter" role="group" aria-label="Project type">
-        <button class="filter-btn" data-filter="all" aria-pressed="true">All</button><button class="filter-btn" data-filter="web" aria-pressed="false">Web</button><button class="filter-btn" data-filter="python" aria-pressed="false">Python</button><button class="filter-btn" data-filter="cli" aria-pressed="false">CLI</button><button class="filter-btn" data-filter="qa" aria-pressed="false">QA</button>
-      </div>
-      <div class="tool-actions"><span class="deploy-status" id="deploy-status" aria-live="polite">Pages status: checking</span><button class="tool-btn primary-action" id="continue-flow">Show my next action</button><button class="tool-btn" id="export-progress">Export PROGRESS.md</button><button class="tool-btn" id="share-progress">Share progress</button><button class="tool-btn" id="focus-enter">One step at a time</button></div>
-      <div class="step-map" id="step-map" aria-label="Step navigation"></div>
-    </div>
 
     <div class="timeline" id="timeline">
 
-      <div class="step" data-step="1" id="step-1" data-projects="web python cli qa">
+      <div class="step" data-step="1" id="step-1">
         <div class="step-marker"><span>1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Create a folder and start Claude</h3><span class="step-tag">2 min</span></div>
@@ -317,29 +303,27 @@ body.subagents-active .progress-shell,body.subagents-active .focus-bar{display:n
           <span class="code-label">Terminal</span><pre><button class="copy-btn">Copy</button><code class="language-bash">mkdir my-project && cd my-project
 git init
 claude</code></pre>
-          <span class="code-label">Python projects</span><pre><button class="copy-btn">Copy</button><code class="language-bash">python3 -m venv .venv && source .venv/bin/activate
-claude</code></pre>
-          <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Create an empty GitHub repository now — you will connect it in step 3.</div>
+          <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>For Python projects, Claude creates and activates <code>.venv</code> in step 2. Create an empty GitHub repository now — Claude will connect it before deployment.</div>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">Folder, git repo, and Claude Code session are open</span></label>
         </div>
       </div>
 
-      <div class="step" data-step="2" id="step-2" data-projects="web python cli qa">
+      <div class="step" data-step="2" id="step-2">
         <div class="step-marker"><span>2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Set the working rules</h3><span class="step-tag">5 min</span></div>
           <p>One prompt creates <code>CLAUDE.md</code> — the working agreement Claude follows for every task: planning, commits, diff review, deploy, and rollback.</p>
           <span class="code-label">Prompt for Claude Code</span><pre><button class="copy-btn">Copy</button><code class="language-plaintext">You are my technical partner. I lead the product: I give the idea, answer questions, approve the plan, and accept the result. You own the technical execution.
 
-Create CLAUDE.md with these rules:
+Create CLAUDE.md with a short project overview, the detected stack, and exact commands for install, run, test, lint, and build. Then add these rules:
 
 1. When I give an idea, do not start coding. Ask only the questions needed to understand the users, main outcome, scope, constraints, and success criteria. After my answers, propose the smallest useful version and a step-by-step plan. Wait for my approval.
 
-2. After approval, define acceptance criteria as user-visible behavior. Propose the smallest set of automated and manual checks. Wait for my approval before implementing.
+2. After approval, define acceptance criteria as user-visible behavior. Before implementation, list the planned files, affected components or contracts, risks, edge cases, and the exact checks to run. Build test scenarios from the specification, not the current implementation. Cover the happy path, empty and missing values, boundaries, invalid types and formats, dependency failures and timeouts, permissions, access to another user's data, repeated requests and idempotency, and regression risks when relevant. Explain which risk each check closes. Wait for my approval before implementing.
 
 3. Implement step by step. Run the relevant checks after each change. Fix failures before moving on. After each change explain in two or three plain sentences what the code now does.
 
-4. Before a commit, review the staged diff for risks, unexpected changes, and secrets. Report findings. Then commit with a Conventional Commits message (feat:, fix:, docs:, chore:). Never commit if tests or linters are failing.
+4. Before a commit, do an independent review of the staged diff. Verify: alignment with acceptance criteria; one logical scope; logic errors and edge cases; input validation; resource-level authorization; error handling; secrets or personal data in code or logs; API backward compatibility; justified dependencies; and happy-path, negative, and regression test coverage. For every issue report severity, file and line, reproduction, and the smallest fix. Run the relevant tests, linter, build, dependency audit, security checks, and one manual user scenario when available. Fix all blocking findings. Never remove tests or security checks to make a build pass. Then commit with a Conventional Commits message (feat:, fix:, docs:, chore:). Never commit while required checks fail.
 
 5. After a successful commit, propose the simplest way to deploy for this stack (GitHub Pages or Vercel for web, server or daemon for Python, global command for CLI). Handle configuration, give me the link or command to verify. Tell me which .env secrets need to be set in the live environment — never commit them. Tell me the one-command rollback before we publish.
 
@@ -357,14 +341,14 @@ Create CLAUDE.md with these rules:
 
 12. If the session becomes long or responses slow down, ask me to type /clear. Before I do, write a PROGRESS.md with: what is done, what is next, and any open decisions. After /clear, read PROGRESS.md first before continuing.
 
-13. End every completed task with: Done · Changed · Checked · What I need you to check · Next.
+13. A task is done only when: acceptance criteria are met; changed behavior has tests or an explicit reason why tests do not apply; required tests, lint, and build pass; errors and edge cases are handled; the staged diff contains no secrets or unrelated changes; and the result is manually verified in the main user scenario. End every completed task with: Done · Changed · Checked · What I need you to check · Next.
 
 Show me the CLAUDE.md content and summarise it in plain language. Do not implement anything yet.</code></pre>
           <label class="done-toggle"><input type="checkbox" data-step-checkbox="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg><span class="done-label">CLAUDE.md is created and the rules are clear</span></label>
         </div>
       </div>
 
-      <div class="step" data-step="3" id="step-3" data-projects="web python cli qa">
+      <div class="step" data-step="3" id="step-3">
         <div class="step-marker"><span>3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Describe your idea — Claude does the rest</h3><span class="step-tag">Build</span></div>
@@ -373,18 +357,6 @@ Show me the CLAUDE.md content and summarise it in plain language. Do not impleme
 
 Follow the working rules. Start by asking only the questions you need. Do not change any files yet.</code></pre>
           <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86l-8.48 14.7A1 1 0 0 0 2.66 20h18.68a1 1 0 0 0 .87-1.44l-8.48-14.7a1 1 0 0 0-1.74 0Z"/></svg>Press <code>Shift+Tab</code> in terminal to enable Plan Mode — Claude cannot touch files until you approve.</div>
-          <details class="studio-inline" id="studio-inline">
-            <summary class="studio-inline-toggle">Need help formulating the idea? Open brief builder</summary>
-            <div class="studio-card studio-card--inline"><h2 id="studio-title">Set the product direction</h2><p>Describe what you want to achieve. Claude Code will turn it into a technical plan and do the implementation.</p>
-        <div class="brief-presets">
-          <span class="preset-label">Quick examples:</span>
-          <button type="button" class="preset-btn" data-preset="web">Personal Portfolio Web</button>
-          <button type="button" class="preset-btn" data-preset="python">API Smoke Test Runner</button>
-          <button type="button" class="preset-btn" data-preset="cli">Git Diff Clean-up CLI</button>
-          <button type="button" class="preset-btn" data-preset="qa">QA Automation Suite</button>
-          <button type="button" class="preset-btn" id="clear-brief">Clear</button>
-        </div><div class="studio-grid"><div class="studio-field"><label for="brief-type">Project type</label><select id="brief-type"><option value="web">Web project</option><option value="python">Python tool</option><option value="cli">CLI tool</option><option value="qa">QA automation</option></select></div><div class="studio-field"><label for="brief-name">Project name</label><input id="brief-name" placeholder="e.g. Launch notes"></div><div class="studio-field full"><label for="brief-idea">Idea</label><textarea id="brief-idea" placeholder="What are you building?"></textarea></div><div class="studio-field"><label for="brief-user">Who is it for?</label><input id="brief-user" placeholder="e.g. indie makers"></div><div class="studio-field"><label for="brief-outcome">Smallest useful outcome</label><input id="brief-outcome" placeholder="e.g. publish a note in one minute"></div><div class="studio-field full"><label for="brief-boundary">What is explicitly out of scope?</label><input id="brief-boundary" placeholder="e.g. accounts, payments, team collaboration"></div></div><div class="studio-actions"><button class="tool-btn primary-action" id="generate-brief">Create my starting prompt</button><button class="tool-btn" id="copy-prompt">Copy prompt for Claude</button></div><div class="studio-output" id="studio-output"><span class="code-label">PROJECT_BRIEF.md</span><pre><code class="language-markdown" id="brief-result"></code></pre></div><div class="studio-cta" id="studio-cta" hidden><p class="studio-cta-hint">Your brief is ready. Paste it into Claude Code at step 3.</p            </div>
-          </details>
           <ul class="substeps">
             <li>Claude clarifies → you approve the plan and acceptance criteria</li>
             <li>Claude implements → runs checks → fixes failures</li>
@@ -400,130 +372,7 @@ Follow the working rules. Start by asking only the questions you need. Do not ch
   </div>
 </section>
 
-<section class="resources" id="resources" aria-labelledby="resources-title">
-  <div class="wrap">
-    <div class="flow-header">
-      <h2 id="resources-title">Checklists &amp; Prompts</h2>
-      <p class="resources-sub">Ready-to-use artifacts. Click any card to expand, then copy directly into Claude Code.</p>
-    </div>
-    <div class="resources-grid">
 
-      <details class="resource-card">
-        <summary><span class="resource-tag">Checklist</span><span class="resource-title">AI-generated code review</span></summary>
-        <div class="resource-body">
-          <span class="code-label">ai-code-review.md</span>
-          <pre><button class="copy-btn">Copy</button><code class="language-markdown">- [ ] The requirement maps to the acceptance criteria
-- [ ] The diff is scoped to one logical task
-- [ ] No unexpected changes outside the agreed scope
-- [ ] New dependencies are justified
-- [ ] No secrets or personal data leaked into code or logs
-- [ ] Input is validated
-- [ ] Authorization is checked at the resource level
-- [ ] Errors are not swallowed and return the expected contract
-- [ ] API preserves backward compatibility, or the change is documented
-- [ ] Happy path and negative scenarios are covered by tests
-- [ ] Linter, tests, dependency audit, and security checks pass
-- [ ] The change was manually verified in a user scenario</code></pre>
-        </div>
-      </details>
-
-      <details class="resource-card">
-        <summary><span class="resource-tag">Prompt</span><span class="resource-title">Planning</span></summary>
-        <div class="resource-body">
-          <span class="code-label">prompts/planning.md</span>
-          <pre><button class="copy-btn">Copy</button><code class="language-plaintext">Before writing any code, put together an implementation plan.
-
-Specify:
-1. How you understood the task and its acceptance criteria.
-2. Which files need to be changed or created.
-3. Which components and contracts are affected.
-4. Which risks and edge cases need to be considered.
-5. Which checks and tests need to be run.
-
-Do not change any code until the plan is confirmed.</code></pre>
-        </div>
-      </details>
-
-      <details class="resource-card">
-        <summary><span class="resource-tag">Prompt</span><span class="resource-title">Testing</span></summary>
-        <div class="resource-body">
-          <span class="code-label">prompts/testing.md</span>
-          <pre><button class="copy-btn">Copy</button><code class="language-plaintext">Based on the specification, not the current implementation, prepare test scenarios.
-
-Be sure to cover:
-- the happy path;
-- empty and missing values;
-- minimum and maximum boundaries;
-- invalid types and formats;
-- dependency failures and timeouts;
-- permissions and attempts to access another user's data;
-- repeated requests and idempotency;
-- regression scenarios.
-
-Do not change production code. First show the list of tests and explain which risk each test closes.</code></pre>
-        </div>
-      </details>
-
-      <details class="resource-card">
-        <summary><span class="resource-tag">Prompt</span><span class="resource-title">Code review</span></summary>
-        <div class="resource-body">
-          <span class="code-label">prompts/code-review.md</span>
-          <pre><button class="copy-btn">Copy</button><code class="language-plaintext">Do an independent review of the current diff. Do not assume the implementation is correct.
-
-Check for:
-- alignment with the acceptance criteria;
-- logic errors and edge cases;
-- authorization and access to other users' data;
-- input validation;
-- error handling;
-- leaked secrets or personal data;
-- API backward compatibility;
-- missing tests.
-
-For each issue, report severity, file and line, a reproduction scenario, and the minimal fix.</code></pre>
-        </div>
-      </details>
-
-      <details class="resource-card resource-card--wide">
-        <summary><span class="resource-tag">Template</span><span class="resource-title">CLAUDE.md starter template</span></summary>
-        <div class="resource-body">
-          <span class="code-label">claude-md/example-claude.md</span>
-          <pre><button class="copy-btn">Copy</button><code class="language-markdown"># CLAUDE.md template
-
-## Project overview
-
-Describe what the application does, who uses it, and the main technical stack.
-
-## Commands
-
-- Install: `&lt;command&gt;`
-- Run: `&lt;command&gt;`
-- Test: `&lt;command&gt;`
-- Lint: `&lt;command&gt;`
-- Build: `&lt;command&gt;`
-
-## Rules
-
-1. Read existing code and tests before editing.
-2. Ask before adding a dependency or changing a public API.
-3. Make one logical change at a time.
-4. Add or update tests for changed behavior.
-5. Never remove tests or security checks to make the build pass.
-6. Never expose credentials, tokens, personal data, or secrets in logs.
-
-## Definition of done
-
-- [ ] Acceptance criteria met
-- [ ] Tests added or updated
-- [ ] Tests, lint, and build pass
-- [ ] Errors and edge cases handled
-- [ ] Short change summary provided</code></pre>
-        </div>
-      </details>
-
-    </div>
-  </div>
-</section>
 
 
 
@@ -531,170 +380,10 @@ Describe what the application does, who uses it, and the main technical stack.
 
 </div>
 
-<section class="page-view subagents-view" id="subagents" aria-labelledby="subagents-title" hidden>
-  <div class="subagents-shell">
-    <div class="subagents-hero">
-      <span class="eyebrow">Advanced workflow</span>
-      <h2 id="subagents-title">Delegate focused work without losing the main thread.</h2>
-      <p class="lead">A subagent is a specialist Claude runs in a separate context. It reads, investigates, or reviews independently, then returns a concise result to your main conversation.</p>
-      <div class="subagents-actions">
-        <a class="btn primary" href="#subagent-quickstart">Create your first subagent</a>
-        <a class="btn" href="https://code.claude.com/docs/en/sub-agents" target="_blank" rel="noopener noreferrer">Official Claude Code guide</a>
-      </div>
-    </div>
 
-    <div class="subagents-grid">
-      <article class="subagent-card">
-        <span class="eyebrow">Use them for</span>
-        <h2>Focused side tasks</h2>
-        <ul>
-          <li>Research that would flood the main conversation with files or logs</li>
-          <li>Independent code, security, or accessibility reviews</li>
-          <li>Parallel investigations that do not edit the same files</li>
-          <li>Repeatable specialist roles with restricted tools</li>
-        </ul>
-      </article>
-
-      <article class="subagent-card">
-        <span class="eyebrow">Keep in main</span>
-        <h2>Product decisions and implementation</h2>
-        <ul>
-          <li>Work that depends on the full conversation and user decisions</li>
-          <li>Small tasks that are faster to do directly</li>
-          <li>Several agents editing the same files without worktree isolation</li>
-          <li>Anything destructive, paid, or irreversible without approval</li>
-        </ul>
-      </article>
-
-      <article class="subagent-card wide">
-        <span class="eyebrow">Choose the right tool</span>
-        <h2>Skill, subagent, or team?</h2>
-        <div class="decision-list">
-          <div class="decision-row"><strong>Skill</strong><span>Reusable instructions loaded into the current conversation. Use when Claude needs a known workflow but should keep your context.</span></div>
-          <div class="decision-row"><strong>Subagent</strong><span>An isolated worker that returns a result. Use for focused research, review, or noisy investigation.</span></div>
-          <div class="decision-row"><strong>Agent team</strong><span>Independent teammates that coordinate with each other. Use only when the work genuinely needs shared tasks and cross-agent communication.</span></div>
-        </div>
-      </article>
-
-      <article class="subagent-card wide" id="subagent-quickstart">
-        <span class="eyebrow">Quick start</span>
-        <h2>Create a read-only code reviewer</h2>
-        <p>Project subagents live in <code>.claude/agents/</code>. Give review agents read-only tools so they can inspect the project but cannot change it.</p>
-        <span class="code-label">Prompt for Claude Code</span>
-        <pre><button class="copy-btn">Copy</button><code class="language-plaintext">Create .claude/agents/code-reviewer.md for this project.
-
-Make it a read-only subagent that reviews a requested diff or file for correctness, security, error handling, and missing tests. Allow only Read, Grep, and Glob tools. It must report findings by severity with file and line references, suggest fixes, and never edit files.
-
-After creating it, show me the full file and explain in plain language when Claude will delegate to it.</code></pre>
-        <h3>Then use it</h3>
-        <pre><button class="copy-btn">Copy</button><code class="language-plaintext">Use the code-reviewer subagent to review the staged diff. Return only blockers, should-fix issues, and exact file:line references. Do not change files.</code></pre>
-        <div class="subagents-rule"><strong>Beginner guardrail:</strong> start with one read-only subagent. Keep implementation in the main conversation until delegation is clearly saving time.</div>
-      </article>
-
-      <article class="subagent-card wide">
-        <span class="eyebrow">Role library</span>
-        <h2>Useful subagent roles to add next</h2>
-        <p>Start with roles that have a narrow brief, obvious success criteria, and minimal tool access. These are easy to trust and easy for Claude to route correctly.</p>
-        <div class="decision-list">
-          <div class="decision-row"><strong>Debugger</strong><span>Investigates failing tests, stack traces, and reproducible bugs. Best with Read, Grep, Glob, and optionally Bash for running tests.</span></div>
-          <div class="decision-row"><strong>Test-writer</strong><span>Adds or improves tests after implementation. Good for coverage gaps, regression cases, and edge conditions.</span></div>
-          <div class="decision-row"><strong>Security-reviewer</strong><span>Reviews auth, input validation, secrets, permissions, and unsafe shell usage. Keep it mostly read-only.</span></div>
-          <div class="decision-row"><strong>Docs-writer</strong><span>Turns code changes into README, migration notes, release notes, or setup instructions.</span></div>
-          <div class="decision-row"><strong>Refactor-planner</strong><span>Maps risks, dependencies, and safe ordering before touching a large area of the codebase.</span></div>
-          <div class="decision-row"><strong>Dependency-researcher</strong><span>Compares libraries, APIs, and tradeoffs, then returns a short recommendation with constraints and risks.</span></div>
-        </div>
-      </article>
-
-      <article class="subagent-card wide">
-        <span class="eyebrow">Starter stacks</span>
-        <h2>Recommended subagent stack by project type</h2>
-        <p>Claude Code suggests using subagents for focused side work and reserving agent teams for heavier collaboration, because teams add coordination and token overhead. These starter stacks keep the main session in charge while offloading bounded work.</p>
-        <div class="decision-list">
-          <div class="decision-row"><strong>Web app</strong><span>Start with code-reviewer, debugger, test-writer, and docs-writer. Add security-reviewer once auth, payments, uploads, or admin features appear.</span></div>
-          <div class="decision-row"><strong>Python tool</strong><span>Start with debugger, dependency-researcher, test-writer, and docs-writer. Add refactor-planner before touching package layout or CLI contracts.</span></div>
-          <div class="decision-row"><strong>CLI tool</strong><span>Start with debugger, test-writer, and docs-writer. Add security-reviewer if the tool runs shell commands, touches credentials, or manipulates user files.</span></div>
-          <div class="decision-row"><strong>Large refactor</strong><span>Use refactor-planner first, then code-reviewer and test-writer. If multiple people or layers must coordinate independently, consider an agent team instead of piling on more subagents.</span></div>
-        </div>
-        <div class="subagents-rule"><strong>Simple rule:</strong> begin with 2 to 4 subagents max. If you need live coordination, direct messaging between workers, or shared task ownership, that is usually the point where agent teams become the better fit.</div>
-      </article>
-
-      <article class="subagent-card wide">
-        <span class="eyebrow">Recommended order</span>
-        <h2>Add subagents in this sequence</h2>
-        <p>Claude Code works best when each subagent has a short description and a narrow responsibility. This order starts with read-only review, then adds investigation and supporting specialists only when the project earns them.</p>
-        <ol>
-          <li><strong>Code-reviewer first:</strong> easiest to trust, minimal tools, immediate value after changes.</li>
-          <li><strong>Debugger second:</strong> add it once you have failing tests, runtime issues, or noisy logs.</li>
-          <li><strong>Test-writer third:</strong> add after the main build loop is stable and you want better regression coverage.</li>
-          <li><strong>Docs-writer fourth:</strong> add when features start landing often enough that README and release notes fall behind.</li>
-          <li><strong>Security-reviewer later:</strong> bring it in when auth, payments, secrets, uploads, admin actions, or shell execution appear.</li>
-          <li><strong>Refactor-planner or dependency-researcher last:</strong> use these when you face larger architectural decisions rather than day-to-day shipping.</li>
-        </ol>
-        <div class="subagents-rule"><strong>Upgrade path:</strong> if you still keep adding more overlapping specialists, that usually means the problem is no longer “one more subagent” but “use an agent team or a worktree-based workflow.”</div>
-      </article>
-
-      <article class="subagent-card">
-        <span class="eyebrow">Prompt template</span>
-        <h2>Create a debugger role</h2>
-        <p>This role is useful early because it can investigate failures without changing files by default.</p>
-        <pre><button class="copy-btn">Copy</button><code class="language-plaintext">Create .claude/agents/debugger.md for this project.
-
-Make it a debugging specialist for test failures, runtime errors, and flaky behavior. Default to read-only investigation first. Allow Read, Grep, Glob, and Bash. It should identify likely root causes, show the shortest path to reproduce, and recommend the next fix to make. Do not edit files unless I explicitly ask for implementation.</code></pre>
-      </article>
-
-      <article class="subagent-card">
-        <span class="eyebrow">Prompt template</span>
-        <h2>Create a docs-writer role</h2>
-        <p>Use this after code lands, so the main thread stays focused on implementation while documentation is prepared separately.</p>
-        <pre><button class="copy-btn">Copy</button><code class="language-plaintext">Create .claude/agents/docs-writer.md for this project.
-
-Make it a documentation specialist for README updates, quickstart guides, changelogs, migration notes, and release notes. Allow Read, Grep, Glob, and Write. It should explain changes in plain language, preserve technical accuracy, and highlight anything the user still needs to verify manually.</code></pre>
-      </article>
-
-      <article class="subagent-card">
-        <span class="eyebrow">Prompt template</span>
-        <h2>Create a test-writer role</h2>
-        <p>Use this after implementation to expand coverage without distracting the main thread with test design details.</p>
-        <pre><button class="copy-btn">Copy</button><code class="language-plaintext">Create .claude/agents/test-writer.md for this project.
-
-Make it a testing specialist for regression coverage, edge cases, and missing scenarios around recent code changes. Allow Read, Grep, Glob, Bash, and Write. It should inspect existing test patterns first, propose the smallest valuable test additions, implement focused tests, and explain what behavior is now covered versus still untested.</code></pre>
-      </article>
-
-      <article class="subagent-card">
-        <span class="eyebrow">Prompt template</span>
-        <h2>Create a security-reviewer role</h2>
-        <p>Keep this one mostly read-only so it can flag risks before any fix is attempted in the main conversation.</p>
-        <pre><button class="copy-btn">Copy</button><code class="language-plaintext">Create .claude/agents/security-reviewer.md for this project.
-
-Make it a security review specialist for authentication, authorization, input validation, secrets handling, unsafe shell usage, and data exposure risks. Allow Read, Grep, Glob, and Bash. It should report findings by severity, cite exact files or commands involved, describe realistic impact, and suggest the safest remediation path. Do not edit files unless I explicitly request a fix pass.</code></pre>
-      </article>
-
-      <article class="subagent-card">
-        <span class="eyebrow">Good defaults</span>
-        <h2>Rules that prevent chaos</h2>
-        <ul>
-          <li>Give each subagent one clear responsibility</li>
-          <li>Restrict tools to the minimum it needs</li>
-          <li>Ask for a short result, not a raw activity dump</li>
-          <li>Do not delegate product decisions</li>
-          <li>Review findings before implementing them</li>
-        </ul>
-      </article>
-
-      <article class="subagent-card">
-        <span class="eyebrow">Parallel work</span>
-        <h2>Avoid file conflicts</h2>
-        <p>Parallel research is usually safe. Parallel editing is not: if multiple agents must write code, isolate them in separate Git worktrees and let the main agent review and combine the results.</p>
-        <span class="code-label">Safe delegation prompt</span>
-        <pre><button class="copy-btn">Copy</button><code class="language-plaintext">Use two subagents in parallel to investigate these independent questions. They must not edit files. Return one combined summary with disagreements called out.</code></pre>
-      </article>
-    </div>
-  </div>
-</section>
 
 </main>
 
-<div class="focus-bar" id="focus-bar"><button class="tool-btn" id="focus-prev">Previous</button><span id="focus-label" class="progress-label"></span><button class="tool-btn primary-action" id="focus-complete">Complete step</button><button class="tool-btn" id="focus-exit">Exit focus</button></div>
 <footer class="site">
   <div class="wrap">
     <span>Vibe Coding Flow · a linear checklist for a 100% result</span>
@@ -702,87 +391,79 @@ Make it a security review specialist for authentication, authorization, input va
   </div>
 </footer>
 
-<div class="kbd-help" id="kbd-help" role="dialog" aria-modal="true" aria-labelledby="kbd-title">
-  <div class="kbd-panel"><h2 id="kbd-title">Keyboard shortcuts</h2><div class="kbd-row"><span>Next step</span><kbd>J</kbd></div><div class="kbd-row"><span>Previous step</span><kbd>K</kbd></div><div class="kbd-row"><span>Mark current step complete</span><kbd>Space</kbd></div><div class="kbd-row"><span>Close this panel</span><kbd>Esc</kbd></div><button class="tool-btn" id="close-help" style="margin-top:var(--space-4)">Close</button></div>
-</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 <script>
 (function(){
-var root=document.documentElement,btn=document.getElementById('theme-toggle'),modeBtn=document.getElementById('theme-mode'),TOTAL=3,KEY='vibe_flow_progress',TK='vibe_flow_theme',MK='vibe_flow_theme_mode',steps=[].slice.call(document.querySelectorAll('.step'));
-if(window.hljs)document.querySelectorAll('pre code').forEach(function(x){hljs.highlightElement(x)});
-function clockTheme(){var h=new Date().getHours();return h>=7&&h<19?'light':'dark'}function get(k){try{return localStorage.getItem(k)}catch(e){return null}}function put(k,v){try{localStorage.setItem(k,v)}catch(e){}}
-var mode=get(MK)==='manual'?'manual':'auto',theme=mode==='manual'&&/^(light|dark)$/.test(get(TK)||'')?get(TK):clockTheme();
-function icons(){return '<span class="theme-icon light" aria-hidden="true">☀</span><span class="theme-icon dark" aria-hidden="true">☾</span>'}function setTheme(t,save){theme=t;root.dataset.theme=t;btn.dataset.theme=t;btn.setAttribute('aria-label','Switch to '+(t==='dark'?'light':'dark')+' theme');modeBtn.textContent=mode==='auto'?'Auto':'Manual';modeBtn.setAttribute('aria-pressed',mode==='auto'?'true':'false');if(save){put(TK,t);put(MK,mode)}}btn.innerHTML=icons();setTheme(theme,false);btn.onclick=function(){mode='manual';setTheme(theme==='dark'?'light':'dark',true)};modeBtn.onclick=function(){mode=mode==='auto'?'manual':'auto';setTheme(mode==='auto'?clockTheme():theme,true)};setInterval(function(){if(mode==='auto')setTheme(clockTheme(),false)},60000);
-function load(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}}function save(x){try{localStorage.setItem(KEY,JSON.stringify(x))}catch(e){}}function current(){return steps.find(function(x){return !load()[x.dataset.step]})||steps[steps.length-1]}
-function draw(){var st=load(),visible=steps.filter(function(x){return !x.classList.contains('filtered-out')}),count=visible.filter(function(x){return st[x.dataset.step]}).length,act=current();steps.forEach(function(x){var d=!!st[x.dataset.step];x.classList.toggle('done',d);x.classList.toggle('active',x===act);x.querySelector('input').checked=d});document.getElementById('progress-count').textContent=count;document.getElementById('progress-pct').textContent=Math.round(count/visible.length*100)+'%';document.getElementById('progress-fill').style.width=(count/visible.length*100)+'%';var m=document.getElementById('step-map');m.innerHTML='';visible.forEach(function(x){var b=document.createElement('button');b.className='map-dot'+(st[x.dataset.step]?' done':'')+(x===act?' active':'');b.setAttribute('aria-label','Go to step '+x.dataset.step);b.onclick=function(){x.classList.add('expanded');x.scrollIntoView({behavior:'smooth',block:'center'})};m.appendChild(b)});document.getElementById('finish-card').classList.toggle('show',Object.keys(st).length===TOTAL)}
-var hash=new URLSearchParams(location.hash.slice(1));if(hash.has('progress')&&!get(KEY)){var imported={};hash.get('progress').split(',').forEach(function(n){if(/^([1-9]|1[0-4])$/.test(n))imported[n]=true});save(imported)}
-document.querySelectorAll('[data-step-checkbox]').forEach(function(c){c.onchange=function(){var s=load();s[c.dataset.stepCheckbox]=c.checked;save(s);draw()}});steps.forEach(function(x){x.querySelector('.step-card').onclick=function(e){if(x.classList.contains('done')&&!e.target.closest('label,button,a,pre'))x.classList.toggle('expanded')}});document.getElementById('continue-flow').onclick=function(){var x=current();x.classList.add('expanded');x.scrollIntoView({behavior:'smooth',block:'center'})};document.getElementById('reset-progress').onclick=function(){save({});draw()};
-var r2=document.getElementById('reset-progress-2');if(r2)r2.onclick=function(){save({});draw();location.href='#top'};
-document.querySelectorAll('.filter-btn').forEach(function(b){b.onclick=function(){var f=b.dataset.filter;document.querySelectorAll('.filter-btn').forEach(function(q){q.setAttribute('aria-pressed',q===b?'true':'false')});steps.forEach(function(x){x.classList.toggle('filtered-out',f!=='all'&&!(x.dataset.projects||'web python cli').includes(f))});draw()}});
-document.getElementById('export-progress').onclick=function(){var s=load(),done=steps.filter(function(x){return s[x.dataset.step]}).map(function(x){return '- [x] '+x.dataset.step+'. '+x.querySelector('h3').textContent}).join('\n');var text='# Vibe Coding Progress\n\nCompleted: '+Object.keys(s).length+'/'+TOTAL+'\n\n## Done\n'+(done||'- None yet')+'\n\n## Next action\n- [ ] '+current().querySelector('h3').textContent+'\n',a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/markdown'}));a.download='PROGRESS.md';a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},100)};
-document.getElementById('share-progress').onclick=function(){var u=new URL(location.href);u.hash='progress='+steps.filter(function(x){return load()[x.dataset.step]}).map(function(x){return x.dataset.step}).join(',');navigator.clipboard&&navigator.clipboard.writeText(u.href);this.textContent='Link copied';var b=this;setTimeout(function(){b.textContent='Share progress'},1400)};
-function brief(){var v=function(id){return document.getElementById(id).value.trim()||'[add this]'},type=v('brief-type'),name=v('brief-name'),idea=v('brief-idea'),user=v('brief-user'),out=v('brief-outcome'),boundary=v('brief-boundary');var text='# '+name+'\n\n## Problem\n'+user+' need a way to '+idea+'\n\n## Smallest useful outcome\nThey can '+out+'.\n\n## Out of scope\n'+boundary+'\n\n## Project type\n'+type+'\n\n## Definition of Done\nA user can complete the main outcome end to end.';document.getElementById('brief-result').textContent=text;document.getElementById('studio-output').classList.add('show');if(window.hljs){hljs.highlightElement(document.getElementById('brief-result'))}return {text:text,type:type,name:name,idea:idea,user:user,out:out,boundary:boundary}}var PRESETS={
-  web:{
-    type:'web',
-    name:'Minimalist Photo Portfolio',
-    idea:'showcase photography projects with high performance, light/dark mode, and mobile-friendly galleries',
-    user:'Designers and photographers',
-    out:'browse collections, view full-screen photos, and read project stories',
-    boundary:'client accounts, comments, payments, or analytics dashboard'
-  },
-  python:{
-    type:'python',
-    name:'API Smoke Test Runner',
-    idea:'run quick health checks against staging endpoints and export an easy markdown summary report',
-    user:'QA engineers and backend developers',
-    out:'run a single command to verify core routes and see pass/fail status in terminal',
-    boundary:'web UI, database storage, complex auth providers, or multi-tenant scheduling'
-  },
-  cli:{
-    type:'cli',
-    name:'Git Branch Cleaner CLI',
-    idea:'find merged and stale local git branches and safely delete them with confirmation',
-    user:'Developers working on fast-paced feature branches',
-    out:'list merged branches and clean them interactively in one command',
-    boundary:'remote git operations, force delete on unmerged branches, or GUI'
-  },
-  qa:{
-    type:'qa',
-    name:'E2E QA Automation Suite',
-    idea:'run end-to-end tests against a web app with Playwright, generate a structured HTML report, and fail CI on regressions',
-    user:'QA engineers and developers who ship features fast',
-    out:'run one command to execute the full test suite and open the HTML report',
-    boundary:'visual regression snapshots, load testing, cross-browser matrix, or test management integrations'
+  var root=document.documentElement;
+  var themeToggle=document.getElementById('theme-toggle');
+  var modeButton=document.getElementById('theme-mode');
+  var steps=Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var total=steps.length;
+  var progressKey='vibe_flow_progress';
+  var themeKey='vibe_flow_theme';
+  var modeKey='vibe_flow_theme_mode';
+
+  function safeGet(key){try{return localStorage.getItem(key)}catch(e){return null}}
+  function safeSet(key,value){try{localStorage.setItem(key,value)}catch(e){}}
+  function safeRemove(key){try{localStorage.removeItem(key)}catch(e){}}
+  function loadProgress(){try{return JSON.parse(safeGet(progressKey)||'{}')}catch(e){return {}}}
+  function saveProgress(value){safeSet(progressKey,JSON.stringify(value))}
+  function currentStep(progress){return steps.find(function(step){return !progress[step.dataset.step]})||steps[steps.length-1]}
+
+  function draw(){
+    var progress=loadProgress();
+    var done=steps.filter(function(step){return !!progress[step.dataset.step]}).length;
+    var active=currentStep(progress);
+    steps.forEach(function(step){
+      var isDone=!!progress[step.dataset.step];
+      step.classList.toggle('done',isDone);
+      step.classList.toggle('active',step===active&&done<total);
+      var input=step.querySelector('[data-step-checkbox]');
+      if(input) input.checked=isDone;
+    });
+    var count=document.getElementById('progress-count');
+    var pct=document.getElementById('progress-pct');
+    var fill=document.getElementById('progress-fill');
+    if(count) count.textContent=done;
+    if(pct) pct.textContent=Math.round(done/total*100)+'%';
+    if(fill) fill.style.width=(done/total*100)+'%';
   }
-};
-document.querySelectorAll('.preset-btn').forEach(function(btn){
-  btn.onclick=function(){
-    var p=PRESETS[btn.dataset.preset];
-    if(!p)return;
-    document.getElementById('brief-type').value=p.type;
-    document.getElementById('brief-name').value=p.name;
-    document.getElementById('brief-idea').value=p.idea;
-    document.getElementById('brief-user').value=p.user;
-    document.getElementById('brief-outcome').value=p.out;
-    document.getElementById('brief-boundary').value=p.boundary;
-    brief();
-  };
-});
-document.getElementById('clear-brief').onclick=function(){
-  ['brief-name','brief-idea','brief-user','brief-outcome','brief-boundary'].forEach(function(id){document.getElementById(id).value=''});
-  document.getElementById('brief-type').value='web';
-  document.getElementById('studio-output').classList.remove('show');
-  document.getElementById('studio-cta').setAttribute('hidden','');
-};
-document.getElementById('generate-brief').onclick=function(){brief();document.getElementById('studio-cta').removeAttribute('hidden');document.getElementById('studio-cta').scrollIntoView({behavior:'smooth',block:'nearest'})};document.getElementById('copy-prompt').onclick=function(){var b=brief(),prompt='You are my technical partner. I set the product direction and approve the result; you own the technical execution.\n\nUse this project brief:\n\n'+b.text+'\n\nFirst, explain the product in plain language and propose a short implementation plan. State what you will build, what I should review, and any decisions that need my approval. Do not change files until I approve the plan. After approval, handle implementation, checks, Git and deployment yourself.';navigator.clipboard?navigator.clipboard.writeText(prompt):window.prompt('Copy prompt:',prompt);this.textContent='Prompt copied';var x=this;setTimeout(function(){x.textContent='Copy prompt for Claude'},1400)};
-function focus(on){document.body.classList.toggle('focus-mode',on);if(on){var x=current();x.classList.add('expanded');document.getElementById('focus-label').textContent='Step '+x.dataset.step+' of '+TOTAL+': '+x.querySelector('h3').textContent;x.scrollIntoView({behavior:'smooth',block:'center'})}}document.getElementById('focus-enter').onclick=function(){focus(true)};document.getElementById('focus-exit').onclick=function(){focus(false)};document.getElementById('focus-complete').onclick=function(){var c=current().querySelector('input');c.checked=true;c.dispatchEvent(new Event('change'));focus(true)};document.getElementById('focus-prev').onclick=function(){var i=steps.indexOf(current());var x=steps[Math.max(0,i-1)];x.classList.add('expanded');x.scrollIntoView({behavior:'smooth',block:'center'});document.getElementById('focus-label').textContent='Step '+x.dataset.step+' of '+TOTAL+': '+x.querySelector('h3').textContent};
-var help=document.getElementById('kbd-help');document.getElementById('keyboard-help').onclick=function(){help.classList.add('show');document.getElementById('close-help').focus()};document.getElementById('close-help').onclick=function(){help.classList.remove('show')};help.onclick=function(e){if(e.target===help)help.classList.remove('show')};
-document.addEventListener('click',function(e){if(e.target.classList.contains('copy-btn')){var c=e.target.nextElementSibling.innerText;navigator.clipboard?navigator.clipboard.writeText(c):window.prompt('Copy:',c);e.target.textContent='Copied';setTimeout(function(){e.target.textContent='Copy'},1200)}});document.addEventListener('keydown',function(e){if(e.key==='Escape')help.classList.remove('show');if(/INPUT|TEXTAREA|BUTTON/.test(document.activeElement.tagName))return;if(e.key==='j'||e.key==='k'){var i=steps.indexOf(current()),x=steps[Math.max(0,Math.min(TOTAL-1,i+(e.key==='j'?1:-1)))];x.scrollIntoView({behavior:'smooth',block:'center'})}if(e.key===' '){e.preventDefault();var c=current().querySelector('input');c.checked=!c.checked;c.dispatchEvent(new Event('change'))}});
-var flowTab=document.getElementById('tab-flow'),subagentsTab=document.getElementById('tab-subagents'),flowView=document.getElementById('flow-view'),subagentsView=document.getElementById('subagents');
-function setMainView(){var showSubagents=location.hash==='#subagents'||location.hash.indexOf('#subagent-')===0;flowView.hidden=showSubagents;subagentsView.hidden=!showSubagents;document.body.classList.toggle('subagents-active',showSubagents);flowTab.setAttribute('aria-current',showSubagents?'false':'page');subagentsTab.setAttribute('aria-current',showSubagents?'page':'false');if(showSubagents)focus(false)}
-window.addEventListener('hashchange',setMainView);setMainView();
-var status=document.getElementById('deploy-status');fetch('https://api.github.com/repos/HenadziPaliukhovich/vibecoding-knowledge-base/pages',{headers:{Accept:'application/vnd.github+json'}}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(x){status.textContent='Pages: '+(x.status||'published');status.className='deploy-status ok'}).catch(function(){status.textContent='Pages status unavailable';status.className='deploy-status warn'});
-if(!matchMedia('(prefers-reduced-motion:reduce)').matches&&'IntersectionObserver'in window){var o=new IntersectionObserver(function(es,ob){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');ob.unobserve(e.target)}})},{threshold:.12});steps.forEach(function(x,i){x.style.transitionDelay=i%3*70+'ms';o.observe(x)})}else steps.forEach(function(x){x.classList.add('is-visible')});draw();
+
+  document.querySelectorAll('[data-step-checkbox]').forEach(function(input){
+    input.addEventListener('change',function(){
+      var progress=loadProgress();
+      progress[input.dataset.stepCheckbox]=input.checked;
+      saveProgress(progress);
+      draw();
+    });
+  });
+
+  var reset=document.getElementById('reset-progress');
+  if(reset) reset.addEventListener('click',function(){safeRemove(progressKey);draw()});
+
+  document.querySelectorAll('.copy-btn').forEach(function(button){
+    button.addEventListener('click',function(){
+      var code=button.parentElement.querySelector('code');
+      var text=code?code.textContent:'';
+      function done(label){button.textContent=label;setTimeout(function(){button.textContent='Copy'},1200)}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){done('Copied')},function(){done('Copy failed')})}
+      else{try{var area=document.createElement('textarea');area.value=text;area.setAttribute('readonly','');area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();var ok=document.execCommand('copy');area.remove();done(ok?'Copied':'Copy failed')}catch(e){done('Copy failed')}}
+    });
+  });
+
+  function applyTheme(theme){root.dataset.theme=theme;safeSet(themeKey,theme);if(themeToggle)themeToggle.setAttribute('aria-label','Theme: '+theme)}
+  function applyMode(mode){
+    safeSet(modeKey,mode);
+    if(modeButton)modeButton.textContent=mode==='auto'?'Auto theme':'Manual theme';
+    if(mode==='auto'){var hour=new Date().getHours();applyTheme(hour>=7&&hour<19?'light':'dark')}
+    else applyTheme(safeGet(themeKey)||'dark');
+  }
+  if(themeToggle)themeToggle.addEventListener('click',function(){safeSet(modeKey,'manual');applyTheme(root.dataset.theme==='dark'?'light':'dark');if(modeButton)modeButton.textContent='Manual theme'});
+  if(modeButton)modeButton.addEventListener('click',function(){applyMode(safeGet(modeKey)==='auto'?'manual':'auto')});
+
+  applyMode(safeGet(modeKey)||'auto');
+  draw();
+  if(window.hljs)window.hljs.highlightAll();
 })();
 </script>
 </body>
