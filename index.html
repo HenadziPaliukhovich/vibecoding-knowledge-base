@@ -295,8 +295,9 @@ body.subagents-active .progress-shell,body.subagents-active .focus-bar{display:n
           <button type="button" class="preset-btn" data-preset="web">Personal Portfolio Web</button>
           <button type="button" class="preset-btn" data-preset="python">API Smoke Test Runner</button>
           <button type="button" class="preset-btn" data-preset="cli">Git Diff Clean-up CLI</button>
+          <button type="button" class="preset-btn" data-preset="qa">QA Automation Suite</button>
           <button type="button" class="preset-btn" id="clear-brief">Clear</button>
-        </div><div class="studio-grid"><div class="studio-field"><label for="brief-type">Project type</label><select id="brief-type"><option value="web">Web project</option><option value="python">Python tool</option><option value="cli">CLI tool</option></select></div><div class="studio-field"><label for="brief-name">Project name</label><input id="brief-name" placeholder="e.g. Launch notes"></div><div class="studio-field full"><label for="brief-idea">Idea</label><textarea id="brief-idea" placeholder="What are you building?"></textarea></div><div class="studio-field"><label for="brief-user">Who is it for?</label><input id="brief-user" placeholder="e.g. indie makers"></div><div class="studio-field"><label for="brief-outcome">Smallest useful outcome</label><input id="brief-outcome" placeholder="e.g. publish a note in one minute"></div><div class="studio-field full"><label for="brief-boundary">What is explicitly out of scope?</label><input id="brief-boundary" placeholder="e.g. accounts, payments, team collaboration"></div></div><div class="studio-actions"><button class="tool-btn primary-action" id="generate-brief">Create my starting prompt</button><button class="tool-btn" id="copy-prompt">Copy prompt for Claude</button></div><div class="studio-output" id="studio-output"><span class="code-label">PROJECT_BRIEF.md</span><pre><code class="language-markdown" id="brief-result"></code></pre></div><div class="studio-cta" id="studio-cta" hidden><a class="btn primary" href="#step-1">Go to Step 1 →</a><p class="studio-cta-hint">Your brief is ready. Paste it into Claude Code and follow the 9-step flow below.</p></div></div></div></section>
+        </div><div class="studio-grid"><div class="studio-field"><label for="brief-type">Project type</label><select id="brief-type"><option value="web">Web project</option><option value="python">Python tool</option><option value="cli">CLI tool</option><option value="qa">QA automation</option></select></div><div class="studio-field"><label for="brief-name">Project name</label><input id="brief-name" placeholder="e.g. Launch notes"></div><div class="studio-field full"><label for="brief-idea">Idea</label><textarea id="brief-idea" placeholder="What are you building?"></textarea></div><div class="studio-field"><label for="brief-user">Who is it for?</label><input id="brief-user" placeholder="e.g. indie makers"></div><div class="studio-field"><label for="brief-outcome">Smallest useful outcome</label><input id="brief-outcome" placeholder="e.g. publish a note in one minute"></div><div class="studio-field full"><label for="brief-boundary">What is explicitly out of scope?</label><input id="brief-boundary" placeholder="e.g. accounts, payments, team collaboration"></div></div><div class="studio-actions"><button class="tool-btn primary-action" id="generate-brief">Create my starting prompt</button><button class="tool-btn" id="copy-prompt">Copy prompt for Claude</button></div><div class="studio-output" id="studio-output"><span class="code-label">PROJECT_BRIEF.md</span><pre><code class="language-markdown" id="brief-result"></code></pre></div><div class="studio-cta" id="studio-cta" hidden><a class="btn primary" href="#step-1">Go to Step 1 →</a><p class="studio-cta-hint">Your brief is ready. Paste it into Claude Code and follow the 9-step flow below.</p></div></div></div></section>
 <section class="flow" id="flow">
   <div class="wrap">
     <div class="flow-header">
@@ -305,14 +306,14 @@ body.subagents-active .progress-shell,body.subagents-active .focus-bar{display:n
     </div>
     <div class="flow-tools" aria-label="Flow controls">
       <div class="project-filter" role="group" aria-label="Project type">
-        <button class="filter-btn" data-filter="all" aria-pressed="true">All</button><button class="filter-btn" data-filter="web" aria-pressed="false">Web</button><button class="filter-btn" data-filter="python" aria-pressed="false">Python</button><button class="filter-btn" data-filter="cli" aria-pressed="false">CLI</button>
+        <button class="filter-btn" data-filter="all" aria-pressed="true">All</button><button class="filter-btn" data-filter="web" aria-pressed="false">Web</button><button class="filter-btn" data-filter="python" aria-pressed="false">Python</button><button class="filter-btn" data-filter="cli" aria-pressed="false">CLI</button><button class="filter-btn" data-filter="qa" aria-pressed="false">QA</button>
       </div>
       <div class="tool-actions"><span class="deploy-status" id="deploy-status" aria-live="polite">Pages status: checking</span><button class="tool-btn primary-action" id="continue-flow">Show my next action</button><button class="tool-btn" id="export-progress">Export PROGRESS.md</button><button class="tool-btn" id="share-progress">Share progress</button><button class="tool-btn" id="focus-enter">One step at a time</button></div>
       <div class="step-map" id="step-map" aria-label="Step navigation"></div>
     </div>
 
     <div class="timeline" id="timeline">
-      <div class="step" data-step="1" id="step-1" data-projects="web python cli">
+      <div class="step" data-step="1" id="step-1" data-projects="web python cli qa">
         <div class="step-marker"><span>1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Create a project folder and start Claude</h3><span class="step-tag">2 min</span></div>
@@ -326,7 +327,7 @@ claude</code></pre><div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke
         </div>
       </div>
 
-      <div class="step" data-step="2" id="step-2" data-projects="web python cli">
+      <div class="step" data-step="2" id="step-2" data-projects="web python cli qa">
         <div class="step-marker"><span>2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Set the working agreement</h3><span class="step-tag">5 min</span></div>
@@ -356,7 +357,7 @@ Then show me the CLAUDE.md content and summarise it in plain language. Do not im
         </div>
       </div>
 
-      <div class="step" data-step="3" id="step-3" data-projects="web python cli">
+      <div class="step" data-step="3" id="step-3" data-projects="web python cli qa">
         <div class="step-marker"><span>3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Give Claude your idea</h3><span class="step-tag">Discovery</span></div>
@@ -370,7 +371,7 @@ After I answer, give me the smallest useful version and a step-by-step plan for 
         </div>
       </div>
 
-      <div class="step" data-step="4" id="step-4" data-projects="web python cli">
+      <div class="step" data-step="4" id="step-4" data-projects="web python cli qa">
         <div class="step-marker"><span>4</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Agree on what “working” means</h3><span class="step-tag">Acceptance criteria</span></div>
@@ -380,7 +381,7 @@ After I answer, give me the smallest useful version and a step-by-step plan for 
         </div>
       </div>
 
-      <div class="step" data-step="5" id="step-5" data-projects="web python cli">
+      <div class="step" data-step="5" id="step-5" data-projects="web python cli qa">
         <div class="step-marker"><span>5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Implement the smallest change</h3><span class="step-tag">Implement</span></div>
@@ -394,7 +395,7 @@ After each change, explain in two or three plain-language sentences what the cod
         </div>
       </div>
 
-      <div class="step" data-step="6" id="step-6" data-projects="web python cli">
+      <div class="step" data-step="6" id="step-6" data-projects="web python cli qa">
         <div class="step-marker"><span>6</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Check the main scenario yourself</h3><span class="step-tag">QA · 5 min</span></div>
@@ -405,7 +406,7 @@ After each change, explain in two or three plain-language sentences what the cod
         </div>
       </div>
 
-      <div class="step" data-step="7" id="step-7" data-projects="web python cli">
+      <div class="step" data-step="7" id="step-7" data-projects="web python cli qa">
         <div class="step-marker"><span>7</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Run an automated final review</h3><span class="step-tag">Automation</span></div>
@@ -415,7 +416,7 @@ After each change, explain in two or three plain-language sentences what the cod
         </div>
       </div>
 
-      <div class="step" data-step="8" id="step-8" data-projects="web python cli">
+      <div class="step" data-step="8" id="step-8" data-projects="web python cli qa">
         <div class="step-marker"><span>8</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Commit and push your project</h3><span class="step-tag">Commit</span></div>
@@ -427,7 +428,7 @@ Write a clear, short commit message describing what changed and why. If no remot
         </div>
       </div>
 
-      <div class="step" data-step="9" id="step-9" data-projects="web python cli">
+      <div class="step" data-step="9" id="step-9" data-projects="web python cli qa">
         <div class="step-marker"><span>9</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg></div>
         <div class="step-card"><span class="next-badge">Next up</span>
           <div class="step-top"><h3>Run in the real environment</h3><span class="step-tag">Release</span></div>
@@ -671,6 +672,14 @@ function brief(){var v=function(id){return document.getElementById(id).value.tri
     user:'Developers working on fast-paced feature branches',
     out:'list merged branches and clean them interactively in one command',
     boundary:'remote git operations, force delete on unmerged branches, or GUI'
+  },
+  qa:{
+    type:'qa',
+    name:'E2E QA Automation Suite',
+    idea:'run end-to-end tests against a web app with Playwright, generate a structured HTML report, and fail CI on regressions',
+    user:'QA engineers and developers who ship features fast',
+    out:'run one command to execute the full test suite and open the HTML report',
+    boundary:'visual regression snapshots, load testing, cross-browser matrix, or test management integrations'
   }
 };
 document.querySelectorAll('.preset-btn').forEach(function(btn){
