@@ -11,6 +11,14 @@
           {
             "type": "command",
             "command": "python3 .claude/hooks/require_clean_commit.py"
+          },
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/require_tests_before_commit.py"
+          },
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/require_lint_and_format_before_commit.py"
           }
         ]
       }
